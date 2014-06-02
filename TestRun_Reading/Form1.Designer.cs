@@ -286,6 +286,7 @@
             this.screenshot1.Name = "screenshot1";
             this.screenshot1.Size = new System.Drawing.Size(134, 186);
             this.screenshot1.TabIndex = 18;
+            this.screenshot1.Load += new System.EventHandler(this.screenshot1_Load);
             // 
             // Form1
             // 

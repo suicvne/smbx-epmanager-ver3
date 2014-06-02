@@ -3,7 +3,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:EpisodeManager" x:Class="EpisodeManager.MainWindow"
-        Title="MainWindow" Height="598.675" Width="1047.1" Loaded="MetroWindow_Loaded" WindowStartupLocation="CenterScreen" MinWidth="1030.6" MinHeight="619.675">
+        Title="MainWindow" Height="598.675" Width="1047.1" Loaded="MetroWindow_Loaded" WindowStartupLocation="CenterScreen" MinWidth="1030.6" MinHeight="619.675" ResizeMode="NoResize" ShowMaxRestoreButton="False">
     <Grid>
         <TabControl>
             <TabItem Header="Local Episodes">
@@ -20,31 +20,35 @@
                         </ListView.View>
                     </ListView>
                     <GroupBox Grid.Column="1" Header="" Margin="173,0,0,0">
-                        <Grid HorizontalAlignment="Left" Height="194" Margin="193,234,0,0" VerticalAlignment="Top" Width="358"/>
+                        <Image x:Name="bgss">
+                            <Image.Effect>
+                                <BlurEffect Radius="20"/>
+                            </Image.Effect>
+                        </Image>
                     </GroupBox>
                     <TextBlock x:Name="episodeName" Margin="174,30,0,0" TextWrapping="Wrap" Text="episodeName" VerticalAlignment="Top" FontSize="24" Foreground="#CC119EDA" Height="43" HorizontalAlignment="Left" Grid.Column="1"/>
-                    <TextBlock x:Name="authorLabel" Margin="191,78,4,0" TextWrapping="Wrap" Text="by: " VerticalAlignment="Top" Height="21" Grid.Column="1"/>
-                    <Image Margin="387,0,0,11" Width="136" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="115" Grid.Column="1">
+                    <TextBlock x:Name="authorLabel" Margin="176,60,19,0" TextWrapping="Wrap" Text="by: " VerticalAlignment="Top" Height="21" Grid.Column="1"/>
+                    <Image x:Name="ss2" Margin="387,0,0,11" Width="136" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="115" Grid.Column="1">
                         <Image.Effect>
                             <DropShadowEffect/>
                         </Image.Effect>
                     </Image>
-                    <Image Margin="527,0,0,11" Width="136" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="115" Grid.Column="1">
+                    <Image x:Name="ss3" Margin="527,0,0,11" Width="136" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="115" Grid.Column="1">
                         <Image.Effect>
                             <DropShadowEffect/>
                         </Image.Effect>
                     </Image>
-                    <Image Margin="667,0,0,12" Width="138" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="116" Grid.Column="1">
+                    <Image x:Name="ss4" Margin="667,0,0,12" Width="138" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="116" Grid.Column="1">
                         <Image.Effect>
                             <DropShadowEffect/>
                         </Image.Effect>
                     </Image>
-                    <Image Margin="247,0,0,12" Width="134" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="115" Grid.Column="1">
+                    <Image x:Name="ss1" Margin="247,0,0,12" Width="134" Source="noimg.png" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="115" Grid.Column="1">
                         <Image.Effect>
                             <DropShadowEffect/>
                         </Image.Effect>
                     </Image>
-                    <TextBlock x:Name="descriptionLabel" Margin="191,0,14,280" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Height="155" Grid.Column="1"/>
+                    <TextBlock x:Name="descriptionLabel" Margin="176,0,10,301" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Bottom" Height="155" Grid.Column="1"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Available Episodes">
