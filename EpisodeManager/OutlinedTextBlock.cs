@@ -6,81 +6,84 @@ using System.Windows.Documents;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-[ContentProperty("Text")]
-public class OutlinedTextBlock : FrameworkElement
+
+namespace OutlinedTextBlock
+{
+    [ContentProperty("Text")]
+public class OutlinedTextBlockClass : FrameworkElement
 {
     public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
         "Fill",
         typeof(Brush),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
 
     public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
         "Stroke",
         typeof(Brush),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
 
     public static readonly DependencyProperty StrokeThicknessProperty = DependencyProperty.Register(
         "StrokeThickness",
         typeof(double),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(1d, FrameworkPropertyMetadataOptions.AffectsRender));
 
     public static readonly DependencyProperty FontFamilyProperty = TextElement.FontFamilyProperty.AddOwner(
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty FontSizeProperty = TextElement.FontSizeProperty.AddOwner(
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty FontStretchProperty = TextElement.FontStretchProperty.AddOwner(
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty FontStyleProperty = TextElement.FontStyleProperty.AddOwner(
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty FontWeightProperty = TextElement.FontWeightProperty.AddOwner(
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
         "Text",
         typeof(string),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextInvalidated));
 
     public static readonly DependencyProperty TextAlignmentProperty = DependencyProperty.Register(
         "TextAlignment",
         typeof(TextAlignment),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty TextDecorationsProperty = DependencyProperty.Register(
         "TextDecorations",
         typeof(TextDecorationCollection),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty TextTrimmingProperty = DependencyProperty.Register(
         "TextTrimming",
         typeof(TextTrimming),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
     public static readonly DependencyProperty TextWrappingProperty = DependencyProperty.Register(
         "TextWrapping",
         typeof(TextWrapping),
-        typeof(OutlinedTextBlock),
+        typeof(OutlinedTextBlockClass),
         new FrameworkPropertyMetadata(TextWrapping.NoWrap, OnFormattedTextUpdated));
 
     private FormattedText formattedText;
     private Geometry textGeometry;
 
-    public OutlinedTextBlock()
+    public OutlinedTextBlockClass()
     {
         this.TextDecorations = new TextDecorationCollection();
     }
@@ -171,6 +174,7 @@ public class OutlinedTextBlock : FrameworkElement
         drawingContext.DrawGeometry(this.Fill, new Pen(this.Stroke, this.StrokeThickness), this.textGeometry);
     }
 
+    /*
     protected override Size MeasureOverride(Size availableSize)
     {
         this.EnsureFormattedText();
@@ -180,6 +184,29 @@ public class OutlinedTextBlock : FrameworkElement
         // the Math.Max call is to ensure we don't hit zero, which will cause MaxTextHeight to throw
         this.formattedText.MaxTextWidth = Math.Min(3579139, availableSize.Width);
         this.formattedText.MaxTextHeight = Math.Max(0.0001d, availableSize.Height);
+
+        // return the desired size
+        return new Size(this.formattedText.Width, this.formattedText.Height);
+    }*/
+    protected override Size MeasureOverride(Size availableSize)
+    {
+        this.EnsureFormattedText();
+
+        if (this.formattedText == null)
+        {
+            this.formattedText = new FormattedText(
+                                (this.Text == null) ? "" : this.Text,
+                                CultureInfo.CurrentUICulture,
+                                this.FlowDirection,
+                                new Typeface(this.FontFamily, this.FontStyle, this.FontWeight, FontStretches.Normal),
+                                this.FontSize,
+                                Brushes.Black);
+        }
+
+        // constrain the formatted text according to the available size
+        // the Math.Min call is important - without this constraint (which seems arbitrary, but is the maximum allowable text width), things blow up when availableSize is infinite in both directions
+        this.formattedText.MaxTextWidth = Math.Min(3579139, availableSize.Width);
+        this.formattedText.MaxTextHeight = availableSize.Height;
 
         // return the desired size
         return new Size(this.formattedText.Width, this.formattedText.Height);
@@ -201,7 +228,7 @@ public class OutlinedTextBlock : FrameworkElement
 
     private static void OnFormattedTextInvalidated(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
-        var outlinedTextBlock = (OutlinedTextBlock)dependencyObject;
+        var outlinedTextBlock = (OutlinedTextBlockClass)dependencyObject;
         outlinedTextBlock.formattedText = null;
         outlinedTextBlock.textGeometry = null;
 
@@ -211,7 +238,7 @@ public class OutlinedTextBlock : FrameworkElement
 
     private static void OnFormattedTextUpdated(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
     {
-        var outlinedTextBlock = (OutlinedTextBlock)dependencyObject;
+        var outlinedTextBlock = (OutlinedTextBlockClass)dependencyObject;
         outlinedTextBlock.UpdateFormattedText();
         outlinedTextBlock.textGeometry = null;
 
@@ -266,4 +293,6 @@ public class OutlinedTextBlock : FrameworkElement
         this.EnsureFormattedText();
         this.textGeometry = this.formattedText.BuildGeometry(new Point(0, 0));
     }
+   
+}
 }

@@ -14,6 +14,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IndexReader;
+using OutlinedTextBlock;
+using System.Diagnostics;
+using Setting;
+using Microsoft.Win32;
 
 namespace EpisodeManager
 {
@@ -23,7 +27,12 @@ namespace EpisodeManager
     public partial class MainWindow : MetroWindow
     {
         IndexReaderClass inReader = new IndexReaderClass();
+        IniFile settingsIni = new IniFile(Environment.CurrentDirectory + @"\settings.ini");
         public static int randomNumber;
+        public static string forumLink;
+        public static string serverUrl;
+        public static string smbxWorldsDir;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -40,6 +49,12 @@ namespace EpisodeManager
                 localEpisodesList.Items.Add(lvi);
             }
         }
+
+        private void obtainWorldsLoc()
+        {
+            smbxWorldsDir = settingsIni.ReadValue("Settings", "worldlocation");
+        }
+
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListViewItem lvi = ((sender as ListView).SelectedItem as ListViewItem);
@@ -51,9 +66,11 @@ namespace EpisodeManager
                 episodeName.Text = inReader.episodeName(indexToLoad);
                 authorLabel.Text = "by: " + inReader.authorName(indexToLoad);
                 descriptionLabel.Text = inReader.descriptionText(indexToLoad);
+                forumLink = inReader.forumLink(indexToLoad);
+                serverUrl = inReader.serverUrl(indexToLoad);
 
                 rng();
-
+                /*
                 if(randomNumber == 0)
                 {
                     bgss.Source = new BitmapImage(new Uri(pathToLoadFrom + @"\image1.png"));
@@ -69,7 +86,7 @@ namespace EpisodeManager
                 else if(randomNumber == 3)
                 {
                     bgss.Source = new BitmapImage(new Uri(pathToLoadFrom + @"\image4.png"));
-                }
+                }*/
                 
                 //bgss.Source = new BitmapImage(new Uri(indexToLoad + @"\image1.png"));
                 ss1.Source = new BitmapImage(new Uri(pathToLoadFrom + @"\image1.png"));
@@ -87,9 +104,12 @@ namespace EpisodeManager
                 ss2.Source = null;
                 ss3.Source = null;
                 ss4.Source = null;
-                bgss.Source = null;
+                //bgss.Source = null;
             }
         }
+        /// <summary>
+        /// Random number generating.
+        /// </summary>
         static Random ran = new Random();
         static void rng()
         {
@@ -97,13 +117,75 @@ namespace EpisodeManager
             randomNumber = n;
         }
 
+        #region Misc Stuff.
         private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            if (File.Exists(Environment.CurrentDirectory + @"\settings.ini") != true)
+            {
+                StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + @"\settings.ini");
+                sw.WriteLine("[Settings]");
+                sw.WriteLine(@"worldlocation=C:\SMBX\worlds");
+            }
+
             populateListView();
             localEpisodesList.SelectedIndex = 0;
-            bgss.Source = null;
+            obtainWorldsLoc();
+            //bgss.Source = null;
         }
 
+        private void ss1_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ss1.Source != null)
+            {
+                ViewScreenshot vs = new ViewScreenshot();
+                vs.ss_view.Source = ss1.Source;
+                vs.ShowDialog();
+            }
+        }
+
+        private void ss2_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ss1.Source != null)
+            {
+                ViewScreenshot vs = new ViewScreenshot();
+                vs.ss_view.Source = ss2.Source;
+                vs.ShowDialog();
+            }
+        }
+
+        private void ss3_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ss1.Source != null)
+            {
+                ViewScreenshot vs = new ViewScreenshot();
+                vs.ss_view.Source = ss3.Source;
+                vs.ShowDialog();
+            }
+        }
+
+        private void ss4_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (ss1.Source != null)
+            {
+                ViewScreenshot vs = new ViewScreenshot();
+                vs.ss_view.Source = ss4.Source;
+                vs.ShowDialog();
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if(forumLink != null)
+            {
+                Process.Start(forumLink);
+            }
+        }
+        #endregion
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            
+        }
         
     }
 }

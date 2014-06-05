@@ -61,6 +61,42 @@ namespace IndexReader
             }
             return null;
         }
+        //
+        public string forumLink(string fileToRead)
+        {
+            using (StreamReader sr = new StreamReader(fileToRead))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Contains("forumUrl"))
+                    {
+                        var split = line.Split(new char[] { '=' }, 2);
+                        return split[1].ToString();
+                    }
+                }
+            }
+            return null;
+        }
+        //
+        public string serverUrl(string fileToRead)
+        {
+            using (StreamReader sr = new StreamReader(fileToRead))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (line.Contains("server"))
+                    {
+                        var split = line.Split(new char[] { '=' }, 2);
+                        return split[1].ToString();
+                    }
+                }
+            }
+            return null;
+        }
+        //
+        
 
     }
 }
