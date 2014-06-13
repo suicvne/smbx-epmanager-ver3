@@ -11,7 +11,7 @@ namespace TestRun_Reading
 {
     public partial class TextEditor : Form
     {
-        Form1 form = new Form1();
+        MainForm form = new MainForm();
 
         public TextEditor()
         {

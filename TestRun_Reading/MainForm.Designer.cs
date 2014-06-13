@@ -1,6 +1,6 @@
 ﻿namespace TestRun_Reading
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -51,10 +51,11 @@
             this.serverLinkText = new System.Windows.Forms.TextBox();
             this.forumLinkText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.screenshot4 = new TestRun_Reading.Screenshot();
-            this.screenshot3 = new TestRun_Reading.Screenshot();
-            this.screenshot2 = new TestRun_Reading.Screenshot();
-            this.screenshot1 = new TestRun_Reading.Screenshot();
+            this.screenshot4 = new TestRun_Reading.Icon();
+            this.screenshot3 = new TestRun_Reading.Icon();
+            this.screenshot2 = new TestRun_Reading.Icon();
+            this.screenshot1 = new TestRun_Reading.Icon();
+            this.iconPic1 = new TestRun_Reading.IconPic();
             this.SuspendLayout();
             // 
             // directoryText
@@ -181,7 +182,7 @@
             // 
             this.button5.Location = new System.Drawing.Point(497, 55);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(94, 23);
+            this.button5.Size = new System.Drawing.Size(129, 23);
             this.button5.TabIndex = 16;
             this.button5.Text = "Save Project";
             this.button5.UseVisualStyleBackColor = true;
@@ -191,7 +192,7 @@
             // 
             this.button6.Location = new System.Drawing.Point(497, 84);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 23);
+            this.button6.Size = new System.Drawing.Size(129, 23);
             this.button6.TabIndex = 17;
             this.button6.Text = "Load from Index";
             this.button6.UseVisualStyleBackColor = true;
@@ -211,7 +212,7 @@
             // 
             this.button2.Location = new System.Drawing.Point(497, 28);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 23);
+            this.button2.Size = new System.Drawing.Size(129, 23);
             this.button2.TabIndex = 14;
             this.button2.Text = "Refresh Dir";
             this.button2.UseVisualStyleBackColor = true;
@@ -221,7 +222,7 @@
             // 
             this.button8.Location = new System.Drawing.Point(497, 114);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(94, 46);
+            this.button8.Size = new System.Drawing.Size(129, 46);
             this.button8.TabIndex = 23;
             this.button8.Text = "Generate Changes";
             this.button8.UseVisualStyleBackColor = true;
@@ -261,38 +262,46 @@
             // 
             // screenshot4
             // 
-            this.screenshot4.Location = new System.Drawing.Point(739, 228);
+            this.screenshot4.Location = new System.Drawing.Point(774, 228);
             this.screenshot4.Name = "screenshot4";
             this.screenshot4.Size = new System.Drawing.Size(134, 186);
             this.screenshot4.TabIndex = 21;
             // 
             // screenshot3
             // 
-            this.screenshot3.Location = new System.Drawing.Point(599, 228);
+            this.screenshot3.Location = new System.Drawing.Point(634, 228);
             this.screenshot3.Name = "screenshot3";
             this.screenshot3.Size = new System.Drawing.Size(134, 186);
             this.screenshot3.TabIndex = 20;
             // 
             // screenshot2
             // 
-            this.screenshot2.Location = new System.Drawing.Point(739, 28);
+            this.screenshot2.Location = new System.Drawing.Point(774, 28);
             this.screenshot2.Name = "screenshot2";
             this.screenshot2.Size = new System.Drawing.Size(134, 186);
             this.screenshot2.TabIndex = 19;
             // 
             // screenshot1
             // 
-            this.screenshot1.Location = new System.Drawing.Point(599, 28);
+            this.screenshot1.Location = new System.Drawing.Point(634, 28);
             this.screenshot1.Name = "screenshot1";
             this.screenshot1.Size = new System.Drawing.Size(134, 186);
             this.screenshot1.TabIndex = 18;
             this.screenshot1.Load += new System.EventHandler(this.screenshot1_Load);
             // 
-            // Form1
+            // iconPic1
+            // 
+            this.iconPic1.Location = new System.Drawing.Point(497, 166);
+            this.iconPic1.Name = "iconPic1";
+            this.iconPic1.Size = new System.Drawing.Size(129, 182);
+            this.iconPic1.TabIndex = 27;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 465);
+            this.ClientSize = new System.Drawing.Size(919, 465);
+            this.Controls.Add(this.iconPic1);
             this.Controls.Add(this.forumLinkText);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.serverLinkText);
@@ -321,7 +330,7 @@
             this.Controls.Add(this.directoryText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Episode Index Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -346,10 +355,10 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private Screenshot screenshot1;
-        private Screenshot screenshot2;
-        private Screenshot screenshot3;
-        private Screenshot screenshot4;
+        private Icon screenshot1;
+        private Icon screenshot2;
+        private Icon screenshot3;
+        private Icon screenshot4;
         private System.Windows.Forms.Button button7;
         public System.Windows.Forms.TextBox descText;
         private System.Windows.Forms.Button button2;
@@ -358,6 +367,7 @@
         private System.Windows.Forms.TextBox serverLinkText;
         private System.Windows.Forms.TextBox forumLinkText;
         private System.Windows.Forms.Label label4;
+        private IconPic iconPic1;
     }
 }
 

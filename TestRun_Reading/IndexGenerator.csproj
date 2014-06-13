@@ -50,11 +50,17 @@
     <Compile Include="EnterVersion.Designer.cs">
       <DependentUpon>EnterVersion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="IconPic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IconPic.Designer.cs">
+      <DependentUpon>IconPic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TextEditor.cs">
       <SubType>Form</SubType>
@@ -79,8 +85,11 @@
     <EmbeddedResource Include="EnterVersion.resx">
       <DependentUpon>EnterVersion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="IconPic.resx">
+      <DependentUpon>IconPic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TextEditor.resx">
       <DependentUpon>TextEditor.cs</DependentUpon>

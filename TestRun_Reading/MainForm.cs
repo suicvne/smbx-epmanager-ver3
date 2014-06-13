@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace TestRun_Reading
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -187,6 +187,15 @@ namespace TestRun_Reading
                 screenshot4.screenshot1.Image.Save(directoryText.Text + @"\image4.png", ImageFormat.Png);
             }
             //
+            if (iconPic1.icon1.Image != null)
+            {
+                if (File.Exists(directoryText.Text + @"\icon.png"))
+                {
+                    File.Delete(directoryText.Text + @"\icon.png");
+                }
+                iconPic1.icon1.Image.Save(directoryText.Text + @"\icon.png", ImageFormat.Png);
+            }
+            //
             sw.Write("filesList=");
             foreach (ListViewItem item in listView1.Items)
             {
@@ -300,6 +309,17 @@ namespace TestRun_Reading
                         {
                             screenshot4.screenshot1.Image = null;
                         }
+                        //
+                        if (File.Exists(directoryText.Text + @"\icon.png"))
+                        {
+                            Image icon = Image.FromFile(directoryText.Text + @"\icon.png");
+                            iconPic1.icon1.Image = icon;
+                        }
+                        else
+                        {
+                            iconPic1.icon1.Image = null;
+                        }
+                        //
                     }
                 }
             }

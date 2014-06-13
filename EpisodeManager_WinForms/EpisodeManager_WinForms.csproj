@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="IndexReader">
-      <HintPath>..\IndexReader\bin\Debug\IndexReader.dll</HintPath>
-    </Reference>
     <Reference Include="MetroFramework">
       <HintPath>..\packages\ModernUI.1.1.0.1\lib\net45\MetroFramework.dll</HintPath>
     </Reference>
@@ -56,16 +53,32 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DebugInformation.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="IndexReaderClass.cs" />
+    <Compile Include="LocalEpisodesControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LocalEpisodesControl.Designer.cs">
+      <DependentUpon>LocalEpisodesControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main_NEW.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Main_NEW.Designer.cs">
+      <DependentUpon>Main_NEW.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="ScreenshotViewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScreenshotViewer.Designer.cs">
+      <DependentUpon>ScreenshotViewer.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="LocalEpisodesControl.resx">
+      <DependentUpon>LocalEpisodesControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main_NEW.resx">
+      <DependentUpon>Main_NEW.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,6 +90,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScreenshotViewer.resx">
+      <DependentUpon>ScreenshotViewer.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -99,6 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\noimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frame.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

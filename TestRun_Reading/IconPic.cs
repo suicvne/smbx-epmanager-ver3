@@ -10,31 +10,19 @@ using System.Drawing.Imaging;
 
 namespace TestRun_Reading
 {
-    public partial class Icon : UserControl
+    public partial class IconPic : UserControl
     {
-        ViewScreenshot vs = new ViewScreenshot();
-        public Icon()
+        public IconPic()
         {
             InitializeComponent();
-        }
-
-        private void screenshot1_Click(object sender, EventArgs e)
-        {
-            if (screenshot1.Image != null)
-            {
-                //ViewScreenshot vs = new ViewScreenshot();
-                vs.pictureBox1.Image = screenshot1.Image;
-                vs.ShowDialog();
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Image Files (*.jpg, *.png, *.bmp, *.jpeg)|*.jpg;*.png;*.bmp;*.jpeg)";
-            if(of.ShowDialog() == DialogResult.OK)
+            of.Filter = "Image Files (*.jpg, *.png, *.bmp, *.jpeg, *.gif)|*.jpg;*.png;*.bmp;*.jpeg;*.gif)";
+            if (of.ShowDialog() == DialogResult.OK)
             {
-                string imageLoc = of.FileName;
                 using (Image sourceImg = Image.FromFile(of.FileName))
                 {
                     Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
@@ -42,15 +30,15 @@ namespace TestRun_Reading
                     {
                         copy.DrawImage(sourceImg, 0, 0);
                     }
-                    screenshot1.InitialImage = null;
-                    screenshot1.Image = clonedImg;
+                    icon1.InitialImage = null;
+                    icon1.Image = clonedImg;
                 }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            screenshot1.Image = null;
+            icon1.Image = null;
         }
     }
 }

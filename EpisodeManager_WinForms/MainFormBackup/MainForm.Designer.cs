@@ -1,6 +1,6 @@
 ﻿namespace EpisodeManager_WinForms
 {
-    partial class MainForm
+    partial class MainForm_BACKUP
     {
         /// <summary>
         /// Required designer variable.
@@ -31,9 +31,21 @@
             this.metroStyleManager1 = new MetroFramework.Components.MetroStyleManager();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroButton3 = new MetroFramework.Controls.MetroButton();
+            this.smbxversionlabel = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.execLocTb = new MetroFramework.Controls.MetroTextBox();
+            this.worldPathTb = new MetroFramework.Controls.MetroTextBox();
+            this.smbxPathTb = new MetroFramework.Controls.MetroTextBox();
             this.epInfoPanel = new System.Windows.Forms.Panel();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.checkServer = new MetroFramework.Controls.MetroButton();
+            this.iconFrame = new System.Windows.Forms.PictureBox();
+            this.viewFilesButton = new MetroFramework.Controls.MetroButton();
+            this.checkServerButton = new MetroFramework.Controls.MetroButton();
             this.forumTopicButton = new MetroFramework.Controls.MetroButton();
             this.ss4 = new System.Windows.Forms.PictureBox();
             this.ss3 = new System.Windows.Forms.PictureBox();
@@ -45,29 +57,21 @@
             this.listViewPanel = new System.Windows.Forms.Panel();
             this.localEpisodesListview = new System.Windows.Forms.ListView();
             this.Episode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
-            this.metroButton3 = new MetroFramework.Controls.MetroButton();
-            this.smbxversionlabel = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.execLocTb = new MetroFramework.Controls.MetroTextBox();
-            this.worldPathTb = new MetroFramework.Controls.MetroTextBox();
-            this.smbxPathTb = new MetroFramework.Controls.MetroTextBox();
+            this.iconPicture = new System.Windows.Forms.PictureBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
+            this.metroTabPage3.SuspendLayout();
             this.epInfoPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss1)).BeginInit();
             this.listViewPanel.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
-            this.metroTabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // metroStyleManager1
@@ -119,188 +123,6 @@
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
             // 
-            // epInfoPanel
-            // 
-            this.epInfoPanel.BackColor = System.Drawing.Color.Transparent;
-            this.epInfoPanel.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
-            this.epInfoPanel.Controls.Add(this.metroButton1);
-            this.epInfoPanel.Controls.Add(this.checkServer);
-            this.epInfoPanel.Controls.Add(this.forumTopicButton);
-            this.epInfoPanel.Controls.Add(this.ss4);
-            this.epInfoPanel.Controls.Add(this.ss3);
-            this.epInfoPanel.Controls.Add(this.ss2);
-            this.epInfoPanel.Controls.Add(this.ss1);
-            this.epInfoPanel.Controls.Add(this.descriptionLabel);
-            this.epInfoPanel.Controls.Add(this.authorName);
-            this.epInfoPanel.Controls.Add(this.episodeNameLabel);
-            this.epInfoPanel.Location = new System.Drawing.Point(230, 0);
-            this.epInfoPanel.Name = "epInfoPanel";
-            this.epInfoPanel.Size = new System.Drawing.Size(562, 466);
-            this.epInfoPanel.TabIndex = 3;
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Highlight = false;
-            this.metroButton1.Location = new System.Drawing.Point(124, 400);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(112, 52);
-            this.metroButton1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroButton1.StyleManager = null;
-            this.metroButton1.TabIndex = 9;
-            this.metroButton1.Text = "View Files";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // checkServer
-            // 
-            this.checkServer.Highlight = false;
-            this.checkServer.Location = new System.Drawing.Point(6, 429);
-            this.checkServer.Name = "checkServer";
-            this.checkServer.Size = new System.Drawing.Size(112, 23);
-            this.checkServer.Style = MetroFramework.MetroColorStyle.Purple;
-            this.checkServer.StyleManager = null;
-            this.checkServer.TabIndex = 8;
-            this.checkServer.Text = "CHECK SERVER";
-            this.checkServer.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // forumTopicButton
-            // 
-            this.forumTopicButton.Highlight = false;
-            this.forumTopicButton.Location = new System.Drawing.Point(6, 400);
-            this.forumTopicButton.Name = "forumTopicButton";
-            this.forumTopicButton.Size = new System.Drawing.Size(112, 23);
-            this.forumTopicButton.Style = MetroFramework.MetroColorStyle.Purple;
-            this.forumTopicButton.StyleManager = null;
-            this.forumTopicButton.TabIndex = 7;
-            this.forumTopicButton.Text = "VISIT FORUM TOPIC";
-            this.forumTopicButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            // 
-            // ss4
-            // 
-            this.ss4.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
-            this.ss4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ss4.Location = new System.Drawing.Point(360, 304);
-            this.ss4.Name = "ss4";
-            this.ss4.Size = new System.Drawing.Size(112, 90);
-            this.ss4.TabIndex = 6;
-            this.ss4.TabStop = false;
-            // 
-            // ss3
-            // 
-            this.ss3.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
-            this.ss3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ss3.Location = new System.Drawing.Point(242, 304);
-            this.ss3.Name = "ss3";
-            this.ss3.Size = new System.Drawing.Size(112, 90);
-            this.ss3.TabIndex = 5;
-            this.ss3.TabStop = false;
-            // 
-            // ss2
-            // 
-            this.ss2.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
-            this.ss2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ss2.Location = new System.Drawing.Point(124, 304);
-            this.ss2.Name = "ss2";
-            this.ss2.Size = new System.Drawing.Size(112, 90);
-            this.ss2.TabIndex = 4;
-            this.ss2.TabStop = false;
-            // 
-            // ss1
-            // 
-            this.ss1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
-            this.ss1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ss1.Location = new System.Drawing.Point(6, 304);
-            this.ss1.Name = "ss1";
-            this.ss1.Size = new System.Drawing.Size(112, 90);
-            this.ss1.TabIndex = 3;
-            this.ss1.TabStop = false;
-            // 
-            // descriptionLabel
-            // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.CustomBackground = false;
-            this.descriptionLabel.CustomForeColor = false;
-            this.descriptionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.descriptionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.descriptionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.descriptionLabel.Location = new System.Drawing.Point(6, 73);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(35, 19);
-            this.descriptionLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.descriptionLabel.StyleManager = null;
-            this.descriptionLabel.TabIndex = 2;
-            this.descriptionLabel.Text = "desc";
-            this.descriptionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.descriptionLabel.UseStyleColors = false;
-            // 
-            // authorName
-            // 
-            this.authorName.AutoSize = true;
-            this.authorName.CustomBackground = false;
-            this.authorName.CustomForeColor = false;
-            this.authorName.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.authorName.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.authorName.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.authorName.Location = new System.Drawing.Point(6, 44);
-            this.authorName.Name = "authorName";
-            this.authorName.Size = new System.Drawing.Size(30, 19);
-            this.authorName.Style = MetroFramework.MetroColorStyle.Blue;
-            this.authorName.StyleManager = null;
-            this.authorName.TabIndex = 1;
-            this.authorName.Text = "by: ";
-            this.authorName.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.authorName.UseStyleColors = false;
-            // 
-            // episodeNameLabel
-            // 
-            this.episodeNameLabel.AutoSize = true;
-            this.episodeNameLabel.CustomBackground = false;
-            this.episodeNameLabel.CustomForeColor = false;
-            this.episodeNameLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.episodeNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.episodeNameLabel.ForeColor = System.Drawing.Color.Fuchsia;
-            this.episodeNameLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.episodeNameLabel.Location = new System.Drawing.Point(6, 9);
-            this.episodeNameLabel.Name = "episodeNameLabel";
-            this.episodeNameLabel.Size = new System.Drawing.Size(117, 25);
-            this.episodeNameLabel.Style = MetroFramework.MetroColorStyle.Purple;
-            this.episodeNameLabel.StyleManager = null;
-            this.episodeNameLabel.TabIndex = 0;
-            this.episodeNameLabel.Text = "episodeName";
-            this.episodeNameLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.episodeNameLabel.UseStyleColors = false;
-            // 
-            // listViewPanel
-            // 
-            this.listViewPanel.BackColor = System.Drawing.Color.Transparent;
-            this.listViewPanel.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.listviewbgo;
-            this.listViewPanel.Controls.Add(this.localEpisodesListview);
-            this.listViewPanel.Location = new System.Drawing.Point(0, 0);
-            this.listViewPanel.Name = "listViewPanel";
-            this.listViewPanel.Size = new System.Drawing.Size(230, 466);
-            this.listViewPanel.TabIndex = 2;
-            // 
-            // localEpisodesListview
-            // 
-            this.localEpisodesListview.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.localEpisodesListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Episode});
-            this.localEpisodesListview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.localEpisodesListview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.localEpisodesListview.FullRowSelect = true;
-            this.localEpisodesListview.Location = new System.Drawing.Point(0, 0);
-            this.localEpisodesListview.MultiSelect = false;
-            this.localEpisodesListview.Name = "localEpisodesListview";
-            this.localEpisodesListview.Size = new System.Drawing.Size(230, 466);
-            this.localEpisodesListview.TabIndex = 0;
-            this.localEpisodesListview.UseCompatibleStateImageBehavior = false;
-            this.localEpisodesListview.View = System.Windows.Forms.View.Details;
-            this.localEpisodesListview.SelectedIndexChanged += new System.EventHandler(this.localEpisodesListview_SelectedIndexChanged);
-            // 
-            // Episode
-            // 
-            this.Episode.Text = "Episode";
-            this.Episode.Width = 229;
-            // 
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.panel2);
@@ -322,24 +144,6 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Transparent;
-            this.panel2.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
-            this.panel2.Location = new System.Drawing.Point(230, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(562, 466);
-            this.panel2.TabIndex = 5;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.listviewbgo;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(230, 466);
-            this.panel3.TabIndex = 4;
             // 
             // metroTabPage3
             // 
@@ -521,6 +325,230 @@
             this.smbxPathTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.smbxPathTb.UseStyleColors = true;
             // 
+            // epInfoPanel
+            // 
+            this.epInfoPanel.BackColor = System.Drawing.Color.Transparent;
+            this.epInfoPanel.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
+            this.epInfoPanel.Controls.Add(this.iconPicture);
+            this.epInfoPanel.Controls.Add(this.iconFrame);
+            this.epInfoPanel.Controls.Add(this.viewFilesButton);
+            this.epInfoPanel.Controls.Add(this.checkServerButton);
+            this.epInfoPanel.Controls.Add(this.forumTopicButton);
+            this.epInfoPanel.Controls.Add(this.ss4);
+            this.epInfoPanel.Controls.Add(this.ss3);
+            this.epInfoPanel.Controls.Add(this.ss2);
+            this.epInfoPanel.Controls.Add(this.ss1);
+            this.epInfoPanel.Controls.Add(this.descriptionLabel);
+            this.epInfoPanel.Controls.Add(this.authorName);
+            this.epInfoPanel.Controls.Add(this.episodeNameLabel);
+            this.epInfoPanel.Location = new System.Drawing.Point(230, 0);
+            this.epInfoPanel.Name = "epInfoPanel";
+            this.epInfoPanel.Size = new System.Drawing.Size(562, 466);
+            this.epInfoPanel.TabIndex = 3;
+            // 
+            // iconFrame
+            // 
+            this.iconFrame.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.Frame;
+            this.iconFrame.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.iconFrame.Location = new System.Drawing.Point(175, 137);
+            this.iconFrame.Name = "iconFrame";
+            this.iconFrame.Size = new System.Drawing.Size(128, 116);
+            this.iconFrame.TabIndex = 10;
+            this.iconFrame.TabStop = false;
+            // 
+            // viewFilesButton
+            // 
+            this.viewFilesButton.Highlight = false;
+            this.viewFilesButton.Location = new System.Drawing.Point(124, 400);
+            this.viewFilesButton.Name = "viewFilesButton";
+            this.viewFilesButton.Size = new System.Drawing.Size(112, 52);
+            this.viewFilesButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.viewFilesButton.StyleManager = null;
+            this.viewFilesButton.TabIndex = 9;
+            this.viewFilesButton.Text = "View Files";
+            this.viewFilesButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // checkServerButton
+            // 
+            this.checkServerButton.Highlight = false;
+            this.checkServerButton.Location = new System.Drawing.Point(6, 429);
+            this.checkServerButton.Name = "checkServerButton";
+            this.checkServerButton.Size = new System.Drawing.Size(112, 23);
+            this.checkServerButton.Style = MetroFramework.MetroColorStyle.Purple;
+            this.checkServerButton.StyleManager = null;
+            this.checkServerButton.TabIndex = 8;
+            this.checkServerButton.Text = "CHECK SERVER";
+            this.checkServerButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // forumTopicButton
+            // 
+            this.forumTopicButton.Highlight = false;
+            this.forumTopicButton.Location = new System.Drawing.Point(6, 400);
+            this.forumTopicButton.Name = "forumTopicButton";
+            this.forumTopicButton.Size = new System.Drawing.Size(112, 23);
+            this.forumTopicButton.Style = MetroFramework.MetroColorStyle.Purple;
+            this.forumTopicButton.StyleManager = null;
+            this.forumTopicButton.TabIndex = 7;
+            this.forumTopicButton.Text = "VISIT FORUM TOPIC";
+            this.forumTopicButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // ss4
+            // 
+            this.ss4.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
+            this.ss4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ss4.Location = new System.Drawing.Point(360, 304);
+            this.ss4.Name = "ss4";
+            this.ss4.Size = new System.Drawing.Size(112, 90);
+            this.ss4.TabIndex = 6;
+            this.ss4.TabStop = false;
+            this.ss4.Click += new System.EventHandler(this.ss4_Click);
+            // 
+            // ss3
+            // 
+            this.ss3.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
+            this.ss3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ss3.Location = new System.Drawing.Point(242, 304);
+            this.ss3.Name = "ss3";
+            this.ss3.Size = new System.Drawing.Size(112, 90);
+            this.ss3.TabIndex = 5;
+            this.ss3.TabStop = false;
+            this.ss3.Click += new System.EventHandler(this.ss3_Click);
+            // 
+            // ss2
+            // 
+            this.ss2.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
+            this.ss2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ss2.Location = new System.Drawing.Point(124, 304);
+            this.ss2.Name = "ss2";
+            this.ss2.Size = new System.Drawing.Size(112, 90);
+            this.ss2.TabIndex = 4;
+            this.ss2.TabStop = false;
+            this.ss2.Click += new System.EventHandler(this.ss2_Click);
+            // 
+            // ss1
+            // 
+            this.ss1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.noimg;
+            this.ss1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ss1.Location = new System.Drawing.Point(6, 304);
+            this.ss1.Name = "ss1";
+            this.ss1.Size = new System.Drawing.Size(112, 90);
+            this.ss1.TabIndex = 3;
+            this.ss1.TabStop = false;
+            this.ss1.Click += new System.EventHandler(this.ss1_Click);
+            // 
+            // descriptionLabel
+            // 
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.CustomBackground = false;
+            this.descriptionLabel.CustomForeColor = false;
+            this.descriptionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.descriptionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.descriptionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.descriptionLabel.Location = new System.Drawing.Point(6, 73);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(35, 19);
+            this.descriptionLabel.Style = MetroFramework.MetroColorStyle.Blue;
+            this.descriptionLabel.StyleManager = null;
+            this.descriptionLabel.TabIndex = 2;
+            this.descriptionLabel.Text = "desc";
+            this.descriptionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.descriptionLabel.UseStyleColors = false;
+            // 
+            // authorName
+            // 
+            this.authorName.AutoSize = true;
+            this.authorName.CustomBackground = false;
+            this.authorName.CustomForeColor = false;
+            this.authorName.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.authorName.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.authorName.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.authorName.Location = new System.Drawing.Point(6, 44);
+            this.authorName.Name = "authorName";
+            this.authorName.Size = new System.Drawing.Size(30, 19);
+            this.authorName.Style = MetroFramework.MetroColorStyle.Blue;
+            this.authorName.StyleManager = null;
+            this.authorName.TabIndex = 1;
+            this.authorName.Text = "by: ";
+            this.authorName.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.authorName.UseStyleColors = false;
+            // 
+            // episodeNameLabel
+            // 
+            this.episodeNameLabel.AutoSize = true;
+            this.episodeNameLabel.CustomBackground = false;
+            this.episodeNameLabel.CustomForeColor = false;
+            this.episodeNameLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.episodeNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.episodeNameLabel.ForeColor = System.Drawing.Color.Fuchsia;
+            this.episodeNameLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.episodeNameLabel.Location = new System.Drawing.Point(6, 9);
+            this.episodeNameLabel.Name = "episodeNameLabel";
+            this.episodeNameLabel.Size = new System.Drawing.Size(117, 25);
+            this.episodeNameLabel.Style = MetroFramework.MetroColorStyle.Purple;
+            this.episodeNameLabel.StyleManager = null;
+            this.episodeNameLabel.TabIndex = 0;
+            this.episodeNameLabel.Text = "episodeName";
+            this.episodeNameLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.episodeNameLabel.UseStyleColors = false;
+            // 
+            // listViewPanel
+            // 
+            this.listViewPanel.BackColor = System.Drawing.Color.Transparent;
+            this.listViewPanel.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.listviewbgo;
+            this.listViewPanel.Controls.Add(this.localEpisodesListview);
+            this.listViewPanel.Location = new System.Drawing.Point(0, 0);
+            this.listViewPanel.Name = "listViewPanel";
+            this.listViewPanel.Size = new System.Drawing.Size(230, 466);
+            this.listViewPanel.TabIndex = 2;
+            // 
+            // localEpisodesListview
+            // 
+            this.localEpisodesListview.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.localEpisodesListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Episode});
+            this.localEpisodesListview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.localEpisodesListview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.localEpisodesListview.FullRowSelect = true;
+            this.localEpisodesListview.Location = new System.Drawing.Point(0, 0);
+            this.localEpisodesListview.MultiSelect = false;
+            this.localEpisodesListview.Name = "localEpisodesListview";
+            this.localEpisodesListview.Size = new System.Drawing.Size(230, 466);
+            this.localEpisodesListview.TabIndex = 0;
+            this.localEpisodesListview.UseCompatibleStateImageBehavior = false;
+            this.localEpisodesListview.View = System.Windows.Forms.View.Details;
+            this.localEpisodesListview.SelectedIndexChanged += new System.EventHandler(this.localEpisodesListview_SelectedIndexChanged);
+            // 
+            // Episode
+            // 
+            this.Episode.Text = "Episode";
+            this.Episode.Width = 229;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
+            this.panel2.Location = new System.Drawing.Point(230, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(562, 466);
+            this.panel2.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.listviewbgo;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(230, 466);
+            this.panel3.TabIndex = 4;
+            // 
+            // iconPicture
+            // 
+            this.iconPicture.Location = new System.Drawing.Point(183, 145);
+            this.iconPicture.Name = "iconPicture";
+            this.iconPicture.Size = new System.Drawing.Size(112, 100);
+            this.iconPicture.TabIndex = 11;
+            this.iconPicture.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -539,16 +567,18 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage3.ResumeLayout(false);
+            this.metroTabPage3.PerformLayout();
             this.epInfoPanel.ResumeLayout(false);
             this.epInfoPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss1)).EndInit();
             this.listViewPanel.ResumeLayout(false);
-            this.metroTabPage2.ResumeLayout(false);
-            this.metroTabPage3.ResumeLayout(false);
-            this.metroTabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -569,12 +599,12 @@
         private System.Windows.Forms.PictureBox ss1;
         private MetroFramework.Controls.MetroLabel descriptionLabel;
         private MetroFramework.Controls.MetroLabel authorName;
-        private MetroFramework.Controls.MetroButton checkServer;
+        private MetroFramework.Controls.MetroButton checkServerButton;
         private MetroFramework.Controls.MetroButton forumTopicButton;
         private System.Windows.Forms.PictureBox ss4;
         private System.Windows.Forms.PictureBox ss3;
         private System.Windows.Forms.PictureBox ss2;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton viewFilesButton;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
@@ -585,6 +615,8 @@
         private MetroFramework.Controls.MetroLabel smbxversionlabel;
         private MetroFramework.Controls.MetroButton metroButton3;
         public MetroFramework.Controls.MetroTabControl metroTabControl1;
+        private System.Windows.Forms.PictureBox iconFrame;
+        private System.Windows.Forms.PictureBox iconPicture;
 
     }
 }
