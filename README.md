@@ -16,12 +16,20 @@ NEW
 TO-DO
 =====
 
--Finish the initial UI
+-~~Finish the initial UI~~
+
 -Code the main program.
+
 -Write the update application
+
 -Lots and lots and lots of testing.
--Icon design for the main program and index generator.
+
+-~~Icon design for the main program and index generator. ~~
+
 -Attempt to program a way to install version 3.0 with the 2.0 update application
+
 -Work on a better custom installer.
+
 -Create .index files for all of the existing episodes.
+
 -Release date.
