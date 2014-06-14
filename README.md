@@ -24,7 +24,7 @@ TO-DO
 
 -Lots and lots and lots of testing.
 
--~~Icon design for the main program and index generator. ~~
+-~~Icon design for the main program and index generator~~
 
 -Attempt to program a way to install version 3.0 with the 2.0 update application
 
