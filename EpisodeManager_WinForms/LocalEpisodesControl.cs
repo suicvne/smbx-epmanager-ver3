@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
 using IndexReader;
+using System.Net.NetworkInformation;
+using System.Net;
 
 namespace EpisodeManager_WinForms
 {
@@ -47,6 +49,25 @@ namespace EpisodeManager_WinForms
             }*/
         }
 
+        private bool Ping(string url)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create(url);
+                request.Timeout = 3000;
+                request.AllowAutoRedirect = false;
+                request.Method = "HEAD";
+                using (var response = request.GetResponse())
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         #region Controls Functions
         private void viewFilesButton_Click(object sender, EventArgs e)
         {
@@ -54,30 +75,25 @@ namespace EpisodeManager_WinForms
         }
 
         private void forumTopicButton_Click(object sender, EventArgs e)
-        {/*
+        {
             try
             {
-                Process.Start(MainForm_BACKUP.forumLink);
+                Process.Start(Main_NEW.forumLink);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }*/
+            }
         }
-
-        private void checkServerButton_Click(object sender, EventArgs e)
-        {
-
-        }
-        
+    
         private void ss1_Click(object sender, EventArgs e)
-        {/*
+        {
             if (ss1.BackgroundImage != null)
             {
                 ScreenshotViewer sv = new ScreenshotViewer();
                 sv.BackgroundImage = ss1.BackgroundImage;
                 sv.ShowDialog();
-            }*/
+            }
         }
 
         private void ss2_Click(object sender, EventArgs e)
@@ -111,14 +127,14 @@ namespace EpisodeManager_WinForms
         }
 
         private void localEpisodesListview_SelectedIndexChanged(object sender, EventArgs e)
-        {/*
+        {
             string indexToLoad;
             string pathToLoad;
             if (localEpisodesListview.SelectedItems.Count == 1)
             {
                 episodeNameLabel.Text = localEpisodesListview.SelectedItems[0].Text;
-                indexToLoad = MainForm_BACKUP.smbxWorldsDir + @"\" + localEpisodesListview.SelectedItems[0].Text + @"\project.index";
-                pathToLoad = MainForm_BACKUP.smbxWorldsDir + @"\" + localEpisodesListview.SelectedItems[0].Text;
+                indexToLoad = Main_NEW.smbxWorldsDir + @"\" + localEpisodesListview.SelectedItems[0].Text + @"\project.index";
+                pathToLoad = Main_NEW.smbxWorldsDir + @"\" + localEpisodesListview.SelectedItems[0].Text;
             }
             else
             {
@@ -130,8 +146,8 @@ namespace EpisodeManager_WinForms
                 episodeNameLabel.Text = inReader.episodeName(indexToLoad);
                 authorName.Text = "by: " + inReader.authorName(indexToLoad);
                 descriptionLabel.Text = inReader.descriptionText(indexToLoad);
-                MainForm_BACKUP.forumLink = inReader.forumLink(indexToLoad);
-                MainForm_BACKUP.serverUrl = inReader.serverUrl(indexToLoad);
+                Main_NEW.forumLink = inReader.forumLink(indexToLoad);
+                Main_NEW.serverUrl = inReader.serverUrl(indexToLoad);
                 try
                 {
                     Image art = Image.FromFile(pathToLoad + @"\image1.png");
@@ -178,7 +194,18 @@ namespace EpisodeManager_WinForms
                     Image icon = Image.FromFile(pathToLoad + @"\icon.png");
                     iconPicture.BackgroundImage = icon;
                 }
-                checkServerButton.Enabled = true;
+                //checkServerButton.Enabled = true;
+                //EpisodeManager_WinForms.Properties.Resources.ok_32
+                if (serverOn(Main_NEW.serverUrl) == true)
+                {
+                    serverStatusOnPb.Visible = true;
+                    serverStatusOffPb.Visible = false;
+                }
+                else
+                {
+                    serverStatusOnPb.Visible = false;
+                    serverStatusOffPb.Visible = true;
+                }
                 viewFilesButton.Enabled = true;
                 forumTopicButton.Enabled = true;
             }
@@ -192,14 +219,33 @@ namespace EpisodeManager_WinForms
                 ss4.BackgroundImage = null;
                 iconFrame.Visible = false;
                 iconPicture.Visible = false;
-
-                checkServerButton.Enabled = false;
+                //
+                serverStatusOffPb.Visible = true;
+                serverStatusOnPb.Visible = false;
+                //checkServerButton.Enabled = false;
                 viewFilesButton.Enabled = false;
                 forumTopicButton.Enabled = false;
 
-            }*/
+            }
+        }
+        private void LocalEpisodesControl_Load(object sender, EventArgs e)
+        {
+            authorName.RightToLeft = RightToLeft.Yes;
         }
         #endregion
+        public bool serverOn(string url)
+        {
+            if (Ping(url) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        
+        }
+        
 
     }
 }
