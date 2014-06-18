@@ -9,6 +9,40 @@ namespace IndexReader
 {
     public class IndexReaderClass
     {
+        public string versionNumber(string fileToRead)
+        {
+            using (StreamReader sr = new StreamReader(fileToRead))
+            {
+                string line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if(line.Contains("version"))
+                    {
+                        var split = line.Split(new char[] { '=' }, 2);
+                        return split[1].ToString();
+                    }
+                }
+            }
+            return null;
+        }
+
+        public string filesList(string fileToRead)
+        {
+            using(StreamReader sr = new StreamReader(fileToRead))
+            {
+                string line;
+                while((line = sr.ReadLine()) != null)
+                {
+                    if(line.Contains("filesList"))
+                    {
+                        var split = line.Split(new char[] { '=' }, 2);
+                        return split[1].ToString();
+                    }
+                }
+            }
+            return null;
+        }
+
         public string episodeName(string fileToRead)
         {
             string ep;

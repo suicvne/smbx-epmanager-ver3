@@ -18,9 +18,14 @@ namespace EpisodeManager_WinForms
         IniFile settingsIni = new IniFile(Environment.CurrentDirectory + @"\settings.ini");
         public static string forumLink;
         public static string serverUrl;
+        public static Image bgImage;
+        public static int availVer;
+        public static int epVer;
+        public static string selectedFolderName;
         public static string smbxDir;
         public static string smbxExeLoc;
         public static string smbxWorldsDir;
+
 
         public Main_NEW()
         {
@@ -29,6 +34,9 @@ namespace EpisodeManager_WinForms
 
         private void Main_NEW_Load(object sender, EventArgs e)
         {
+            Control.CheckForIllegalCrossThreadCalls = false;
+
+            localEpisodes.updateCheckSpinner.Visible = false;
             localEpisodes.epInfoPanel.BackgroundImage = null;
             localEpisodes.episodeNameLabel.Text = "";
             localEpisodes.descriptionLabel.Text = "";
@@ -40,6 +48,7 @@ namespace EpisodeManager_WinForms
             localEpisodes.iconFrame.Visible = false;
             localEpisodes.iconPicture.Visible = false;
             writeInitialIni();
+            writeInitialPaths();
             smbxWorldsDir = settingsIni.ReadValue("Settings", "worldlocation");
             smbxDir = settingsIni.ReadValue("Settings", "smbxpath");
             smbxExeLoc = settingsIni.ReadValue("Settings", "executableloc");
@@ -57,6 +66,19 @@ namespace EpisodeManager_WinForms
                 settingsIni.WriteValue("Settings", "worldlocation", @"C:\SMBX\worlds");
                 settingsIni.WriteValue("Settings", "smbxpath", @"C:\SMBX\");
                 settingsIni.WriteValue("Settings", "executableloc", @"C:\SMBX\smbx.exe");
+            }
+        }
+        private void writeInitialPaths()
+        {
+            try
+            {
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp");
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp\Update");
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp\ZipReading");
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

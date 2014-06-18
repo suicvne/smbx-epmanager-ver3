@@ -53,6 +53,7 @@
             this.Name = "TextEditor";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TextEditor_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TextEditor_FormClosed);
+            this.Load += new System.EventHandler(this.TextEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

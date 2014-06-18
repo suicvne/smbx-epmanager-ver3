@@ -31,9 +31,6 @@
             this.localEpisodesListview = new System.Windows.Forms.ListView();
             this.Episode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.epInfoPanel = new System.Windows.Forms.Panel();
-            this.serverStatusOffPb = new System.Windows.Forms.PictureBox();
-            this.serverStatusOnPb = new System.Windows.Forms.PictureBox();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.iconPicture = new System.Windows.Forms.PictureBox();
             this.iconFrame = new System.Windows.Forms.PictureBox();
             this.viewFilesButton = new MetroFramework.Controls.MetroButton();
@@ -45,9 +42,11 @@
             this.authorName = new MetroFramework.Controls.MetroLabel();
             this.episodeNameLabel = new MetroFramework.Controls.MetroLabel();
             this.descriptionLabel = new MetroFramework.Controls.MetroLabel();
+            this.checkForUpdatesBgWork = new System.ComponentModel.BackgroundWorker();
+            this.versionLabel = new MetroFramework.Controls.MetroLabel();
+            this.updateButton = new MetroFramework.Controls.MetroButton();
+            this.updateCheckSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.epInfoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatusOffPb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatusOnPb)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFrame)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss4)).BeginInit();
@@ -82,9 +81,9 @@
             // 
             this.epInfoPanel.BackColor = System.Drawing.Color.White;
             this.epInfoPanel.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
-            this.epInfoPanel.Controls.Add(this.serverStatusOffPb);
-            this.epInfoPanel.Controls.Add(this.serverStatusOnPb);
-            this.epInfoPanel.Controls.Add(this.metroLabel1);
+            this.epInfoPanel.Controls.Add(this.updateCheckSpinner);
+            this.epInfoPanel.Controls.Add(this.updateButton);
+            this.epInfoPanel.Controls.Add(this.versionLabel);
             this.epInfoPanel.Controls.Add(this.iconPicture);
             this.epInfoPanel.Controls.Add(this.iconFrame);
             this.epInfoPanel.Controls.Add(this.viewFilesButton);
@@ -100,45 +99,6 @@
             this.epInfoPanel.Name = "epInfoPanel";
             this.epInfoPanel.Size = new System.Drawing.Size(516, 466);
             this.epInfoPanel.TabIndex = 5;
-            // 
-            // serverStatusOffPb
-            // 
-            this.serverStatusOffPb.BackColor = System.Drawing.Color.Transparent;
-            this.serverStatusOffPb.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.cancel_32;
-            this.serverStatusOffPb.Location = new System.Drawing.Point(365, 411);
-            this.serverStatusOffPb.Name = "serverStatusOffPb";
-            this.serverStatusOffPb.Size = new System.Drawing.Size(32, 32);
-            this.serverStatusOffPb.TabIndex = 14;
-            this.serverStatusOffPb.TabStop = false;
-            this.serverStatusOffPb.Visible = false;
-            // 
-            // serverStatusOnPb
-            // 
-            this.serverStatusOnPb.BackColor = System.Drawing.Color.Transparent;
-            this.serverStatusOnPb.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.ok_32;
-            this.serverStatusOnPb.Location = new System.Drawing.Point(365, 411);
-            this.serverStatusOnPb.Name = "serverStatusOnPb";
-            this.serverStatusOnPb.Size = new System.Drawing.Size(32, 32);
-            this.serverStatusOnPb.TabIndex = 13;
-            this.serverStatusOnPb.TabStop = false;
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.CustomBackground = false;
-            this.metroLabel1.CustomForeColor = false;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel1.Location = new System.Drawing.Point(273, 418);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(92, 19);
-            this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel1.StyleManager = null;
-            this.metroLabel1.TabIndex = 12;
-            this.metroLabel1.Text = "Server Status: ";
-            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroLabel1.UseStyleColors = false;
             // 
             // iconPicture
             // 
@@ -287,6 +247,56 @@
             this.descriptionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.descriptionLabel.UseStyleColors = false;
             // 
+            // checkForUpdatesBgWork
+            // 
+            this.checkForUpdatesBgWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.checkForUpdatesBgWork_DoWork);
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.CustomBackground = false;
+            this.versionLabel.CustomForeColor = false;
+            this.versionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.versionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.versionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.versionLabel.Location = new System.Drawing.Point(391, 282);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(15, 19);
+            this.versionLabel.Style = MetroFramework.MetroColorStyle.Blue;
+            this.versionLabel.StyleManager = null;
+            this.versionLabel.TabIndex = 15;
+            this.versionLabel.Text = "v";
+            this.versionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.versionLabel.UseStyleColors = false;
+            this.versionLabel.Visible = false;
+            // 
+            // updateButton
+            // 
+            this.updateButton.Enabled = false;
+            this.updateButton.Highlight = false;
+            this.updateButton.Location = new System.Drawing.Point(274, 400);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(111, 52);
+            this.updateButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.updateButton.StyleManager = null;
+            this.updateButton.TabIndex = 16;
+            this.updateButton.Text = "Update";
+            this.updateButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // updateCheckSpinner
+            // 
+            this.updateCheckSpinner.CustomBackground = false;
+            this.updateCheckSpinner.Location = new System.Drawing.Point(391, 409);
+            this.updateCheckSpinner.Maximum = 100;
+            this.updateCheckSpinner.Name = "updateCheckSpinner";
+            this.updateCheckSpinner.Size = new System.Drawing.Size(32, 32);
+            this.updateCheckSpinner.Speed = 3F;
+            this.updateCheckSpinner.Style = MetroFramework.MetroColorStyle.Purple;
+            this.updateCheckSpinner.StyleManager = null;
+            this.updateCheckSpinner.TabIndex = 17;
+            this.updateCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
             // LocalEpisodesControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,8 +308,6 @@
             this.Load += new System.EventHandler(this.LocalEpisodesControl_Load);
             this.epInfoPanel.ResumeLayout(false);
             this.epInfoPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatusOffPb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.serverStatusOnPb)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFrame)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ss4)).EndInit();
@@ -326,8 +334,9 @@
         public System.Windows.Forms.Panel epInfoPanel;
         public System.Windows.Forms.PictureBox iconFrame;
         public System.Windows.Forms.ListView localEpisodesListview;
-        private System.Windows.Forms.PictureBox serverStatusOnPb;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
-        private System.Windows.Forms.PictureBox serverStatusOffPb;
+        private MetroFramework.Controls.MetroLabel versionLabel;
+        private System.ComponentModel.BackgroundWorker checkForUpdatesBgWork;
+        public MetroFramework.Controls.MetroProgressSpinner updateCheckSpinner;
+        public MetroFramework.Controls.MetroButton updateButton;
     }
 }

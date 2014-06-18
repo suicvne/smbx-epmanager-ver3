@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.directoryText = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,18 +45,18 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.serverLinkText = new System.Windows.Forms.TextBox();
             this.forumLinkText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.iconPic1 = new TestRun_Reading.IconPic();
             this.screenshot4 = new TestRun_Reading.Icon();
             this.screenshot3 = new TestRun_Reading.Icon();
             this.screenshot2 = new TestRun_Reading.Icon();
             this.screenshot1 = new TestRun_Reading.Icon();
-            this.iconPic1 = new TestRun_Reading.IconPic();
             this.SuspendLayout();
             // 
             // directoryText
@@ -120,7 +121,7 @@
             // 
             this.descText.Location = new System.Drawing.Point(101, 352);
             this.descText.Name = "descText";
-            this.descText.Size = new System.Drawing.Size(353, 20);
+            this.descText.Size = new System.Drawing.Size(389, 20);
             this.descText.TabIndex = 9;
             // 
             // Description
@@ -198,16 +199,6 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(460, 351);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(30, 21);
-            this.button7.TabIndex = 22;
-            this.button7.Text = ">";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(497, 28);
@@ -220,9 +211,9 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(497, 114);
+            this.button8.Location = new System.Drawing.Point(496, 114);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(129, 46);
+            this.button8.Size = new System.Drawing.Size(130, 22);
             this.button8.TabIndex = 23;
             this.button8.Text = "Generate Changes";
             this.button8.UseVisualStyleBackColor = true;
@@ -243,6 +234,7 @@
             this.serverLinkText.Name = "serverLinkText";
             this.serverLinkText.Size = new System.Drawing.Size(389, 20);
             this.serverLinkText.TabIndex = 12;
+            this.toolTip.SetToolTip(this.serverLinkText, "Be sure to end the URL with a \"/\"!");
             // 
             // forumLinkText
             // 
@@ -259,6 +251,13 @@
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 26;
             this.label4.Text = "Forum URL: ";
+            // 
+            // iconPic1
+            // 
+            this.iconPic1.Location = new System.Drawing.Point(497, 166);
+            this.iconPic1.Name = "iconPic1";
+            this.iconPic1.Size = new System.Drawing.Size(129, 182);
+            this.iconPic1.TabIndex = 27;
             // 
             // screenshot4
             // 
@@ -289,25 +288,17 @@
             this.screenshot1.TabIndex = 18;
             this.screenshot1.Load += new System.EventHandler(this.screenshot1_Load);
             // 
-            // iconPic1
-            // 
-            this.iconPic1.Location = new System.Drawing.Point(497, 166);
-            this.iconPic1.Name = "iconPic1";
-            this.iconPic1.Size = new System.Drawing.Size(129, 182);
-            this.iconPic1.TabIndex = 27;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 465);
+            this.ClientSize = new System.Drawing.Size(919, 464);
             this.Controls.Add(this.iconPic1);
             this.Controls.Add(this.forumLinkText);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.serverLinkText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.screenshot4);
             this.Controls.Add(this.screenshot3);
             this.Controls.Add(this.screenshot2);
@@ -359,7 +350,6 @@
         private Icon screenshot2;
         private Icon screenshot3;
         private Icon screenshot4;
-        private System.Windows.Forms.Button button7;
         public System.Windows.Forms.TextBox descText;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button8;
@@ -368,6 +358,7 @@
         private System.Windows.Forms.TextBox forumLinkText;
         private System.Windows.Forms.Label label4;
         private IconPic iconPic1;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

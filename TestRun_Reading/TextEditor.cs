@@ -11,7 +11,7 @@ namespace TestRun_Reading
 {
     public partial class TextEditor : Form
     {
-        MainForm form = new MainForm();
+        MainForm form = new MainForm(null);
 
         public TextEditor()
         {
@@ -30,7 +30,12 @@ namespace TestRun_Reading
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            form.descText.Text = textBox1.Text;
+            //form.descText.Text = textBox1.Text;
+        }
+
+        private void TextEditor_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = form.descText.Text;
         }
     }
 }

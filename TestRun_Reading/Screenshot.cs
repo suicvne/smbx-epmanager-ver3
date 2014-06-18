@@ -44,6 +44,7 @@ namespace TestRun_Reading
                     }
                     screenshot1.InitialImage = null;
                     screenshot1.Image = clonedImg;
+                    
                 }
             }
         }

@@ -19,6 +19,7 @@ namespace EpisodeManager_WinForms
     {
         //
         IndexReaderClass inReader = new IndexReaderClass();
+        public static string availVer;
         //
 
         public LocalEpisodesControl()
@@ -143,6 +144,8 @@ namespace EpisodeManager_WinForms
             }
             if (File.Exists(indexToLoad) == true)
             {
+                Main_NEW.selectedFolderName = localEpisodesListview.SelectedItems[0].Text;
+
                 episodeNameLabel.Text = inReader.episodeName(indexToLoad);
                 authorName.Text = "by: " + inReader.authorName(indexToLoad);
                 descriptionLabel.Text = inReader.descriptionText(indexToLoad);
@@ -196,7 +199,7 @@ namespace EpisodeManager_WinForms
                 }
                 //checkServerButton.Enabled = true;
                 //EpisodeManager_WinForms.Properties.Resources.ok_32
-                if (serverOn(Main_NEW.serverUrl) == true)
+                /*if (serverOn(Main_NEW.serverUrl) == true)
                 {
                     serverStatusOnPb.Visible = true;
                     serverStatusOffPb.Visible = false;
@@ -205,9 +208,16 @@ namespace EpisodeManager_WinForms
                 {
                     serverStatusOnPb.Visible = false;
                     serverStatusOffPb.Visible = true;
-                }
+                }*/
                 viewFilesButton.Enabled = true;
                 forumTopicButton.Enabled = true;
+                if (inReader.versionNumber(indexToLoad) != null)
+                {
+                    versionLabel.Visible = true;
+                    versionLabel.Text = "v" + inReader.versionNumber(indexToLoad);
+                    Main_NEW.epVer = Int32.Parse(inReader.versionNumber(indexToLoad));
+                }
+                checkForUpdatesBgWork.RunWorkerAsync();
             }
             else
             {
@@ -220,17 +230,62 @@ namespace EpisodeManager_WinForms
                 iconFrame.Visible = false;
                 iconPicture.Visible = false;
                 //
-                serverStatusOffPb.Visible = true;
-                serverStatusOnPb.Visible = false;
+                //serverStatusOffPb.Visible = true;
+                //serverStatusOnPb.Visible = false;
                 //checkServerButton.Enabled = false;
                 viewFilesButton.Enabled = false;
                 forumTopicButton.Enabled = false;
+                versionLabel.Visible = false;
 
             }
         }
+        //
         private void LocalEpisodesControl_Load(object sender, EventArgs e)
         {
+            Control.CheckForIllegalCrossThreadCalls = false;
             authorName.RightToLeft = RightToLeft.Yes;
+        }
+        private void checkForUpdatesBgWork_DoWork(object sender, DoWorkEventArgs e)
+        {
+            updateButton.Enabled = false;
+            updateButton.Text = "Checking for \nupdates..";
+            updateCheckSpinner.Visible = true;
+
+            if(serverOn(Main_NEW.serverUrl) == false)
+            {
+                updateButton.Text = "Server offline\nCan't update";
+                updateCheckSpinner.Visible = false;
+            }
+            else //true
+            {
+                try
+                {
+                    WebClient wc = new WebClient();
+                    wc.DownloadFile(Main_NEW.serverUrl + @"changes.index", Environment.CurrentDirectory + @"\temp\Update\changes.index");
+                    int avVer = Int32.Parse(inReader.versionNumber(Environment.CurrentDirectory + @"\temp\Update\changes.index"));
+                    if(avVer > Main_NEW.epVer == true)
+                    {
+                        updateButton.Enabled = true;
+                        updateButton.Text = "Update Available!\nv" + avVer;
+                        updateCheckSpinner.Visible = false;
+                        Main_NEW.availVer = avVer;
+                        Main_NEW.bgImage = iconPicture.BackgroundImage;
+                    }
+                    else
+                    {
+                        updateButton.Enabled = false;
+                        updateButton.Text = "No updates\navailable :)";
+                        updateCheckSpinner.Visible = false;
+                    }
+                }
+                catch (WebException we)
+                {
+                    updateButton.Enabled = false;
+                    updateButton.Text = "No updates \navailable";
+                    updateCheckSpinner.Visible = false;
+                    MessageBox.Show(we.Message);
+                }
+            }
         }
         #endregion
         public bool serverOn(string url)
@@ -245,6 +300,14 @@ namespace EpisodeManager_WinForms
             }
         
         }
+
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            UpdateEpisode ue = new UpdateEpisode();
+            ue.ShowDialog();
+        }
+
+        
         
 
     }

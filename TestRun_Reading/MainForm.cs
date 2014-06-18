@@ -13,8 +13,11 @@ namespace TestRun_Reading
 {
     public partial class MainForm : Form
     {
-        public MainForm()
+        public static string pathToTryLoad = null;
+
+        public MainForm(string path)
         {
+            pathToTryLoad = path;
             InitializeComponent();
         }
 
@@ -152,7 +155,7 @@ namespace TestRun_Reading
             {
                 sw.WriteLine("forumUrl=" + forumLinkText.Text);
             }
-
+            sw.Dispose();
             //write images
             if(screenshot1.screenshot1.Image != null)
             {
@@ -215,7 +218,7 @@ namespace TestRun_Reading
         private void button6_Click(object sender, EventArgs e)
         {
             OpenFileDialog of = new OpenFileDialog();
-            of.Filter = "Index Files (*.index)|*.index";
+            of.Filter = "Project Index Files (project.index)|project.index|All Index Files (*.index)|*.index";
 
             if(of.ShowDialog() == DialogResult.OK)
             {
@@ -275,8 +278,16 @@ namespace TestRun_Reading
 
                         if (File.Exists(directoryText.Text + @"\image1.png"))
                         {
-                            Image art = Image.FromFile(directoryText.Text + @"\image1.png");
-                            screenshot1.screenshot1.Image = art;
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image1.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;   
+                            }
                         }
                         else
                         {
@@ -284,8 +295,16 @@ namespace TestRun_Reading
                         }
                         if (File.Exists(directoryText.Text + @"\image2.png"))
                         {
-                            Image art = Image.FromFile(directoryText.Text + @"\image2.png");
-                            screenshot2.screenshot1.Image = art;
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image2.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
                         }
                         else
                         {
@@ -293,8 +312,16 @@ namespace TestRun_Reading
                         }
                         if (File.Exists(directoryText.Text + @"\image3.png"))
                         {
-                            Image art = Image.FromFile(directoryText.Text + @"\image3.png");
-                            screenshot3.screenshot1.Image = art;
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image3.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
                         }
                         else
                         {
@@ -302,8 +329,16 @@ namespace TestRun_Reading
                         }
                         if (File.Exists(directoryText.Text + @"\image4.png"))
                         {
-                            Image art = Image.FromFile(directoryText.Text + @"\image4.png");
-                            screenshot4.screenshot1.Image = art;
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image4.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
                         }
                         else
                         {
@@ -312,8 +347,16 @@ namespace TestRun_Reading
                         //
                         if (File.Exists(directoryText.Text + @"\icon.png"))
                         {
-                            Image icon = Image.FromFile(directoryText.Text + @"\icon.png");
-                            iconPic1.icon1.Image = icon;
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\icon.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
                         }
                         else
                         {
@@ -332,8 +375,9 @@ namespace TestRun_Reading
 
         private void button7_Click(object sender, EventArgs e)
         {
+            
             TextEditor textEdit = new TextEditor();
-            textEdit.textBox1.Text = descText.Text;
+            
             textEdit.ShowDialog();
         }
 
@@ -376,10 +420,54 @@ namespace TestRun_Reading
                         sww.Write(lvi.Text + ",");
                     }
                 }
+                DialogResult dr = MessageBox.Show("Would you like to copy the changed files to a directory on the desktop?", 
+                    "Question", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
+                switch(dr)
+                {
+                    case DialogResult.Yes:
+                        copyChanged();
+                        break;
+
+                    case DialogResult.No:
+
+                        break;
+                }
+
             }
             MessageBox.Show("Done!");
         }
 
+        private void copyChanged()
+        {
+            string desktopPath = Path.GetFullPath(Environment.SpecialFolder.DesktopDirectory.ToString());
+            string copyFromUrl = directoryText.Text;
+            string copyToUrl = desktopPath + @"\SMBX Changes";
+            try
+            {
+                //epNameText
+                Directory.CreateDirectory(desktopPath + @"\" + epNameText.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            foreach(ListViewItem lvi in listView1.Items)
+            {
+                if(lvi.Checked == true)
+                {
+                    try
+                    {
+                        File.Copy(copyFromUrl + @"\" + lvi.Text, copyToUrl + @"\" + lvi.Text);
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
         private void screenshot1_Load(object sender, EventArgs e)
         {
 
@@ -387,7 +475,92 @@ namespace TestRun_Reading
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            if(pathToTryLoad != null)
+            {
+                directoryText.Text = pathToTryLoad;
+                foreach (ListViewItem lvi in listView1.Items)
+                {
+                    lvi.Remove();
+                }
+                
+                    try
+                    {
+                        addLvl(directoryText.Text);
+                        addWld(directoryText.Text);
+                        addGif(directoryText.Text);
+                        addMp3(directoryText.Text);
+                        if (File.Exists(pathToTryLoad + @"\image1.png"))
+                        {
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image1.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
+                        }
+                        if (File.Exists(pathToTryLoad + @"\image2.png"))
+                        {
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image1.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
+                        }
+                        if (File.Exists(pathToTryLoad + @"\image3.png"))
+                        {
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image1.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
+                        }
+                        if (File.Exists(pathToTryLoad + @"\image4.png"))
+                        {
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\image1.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
+                        }
+                        if (File.Exists(pathToTryLoad + @"\icon.png"))
+                        {
+                            using (Image sourceImg = Image.FromFile(directoryText.Text + @"\icon.png"))
+                            {
+                                Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                                using (var copy = Graphics.FromImage(clonedImg))
+                                {
+                                    copy.DrawImage(sourceImg, 0, 0);
+                                }
+                                screenshot1.screenshot1.Image = null;
+                                screenshot1.screenshot1.Image = clonedImg;
+                            }
+                        }
+                    }
+                    catch (DirectoryNotFoundException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                
+            }
         }
         /*
         private void button3_Click(object sender, EventArgs e)
