@@ -292,7 +292,7 @@ namespace EpisodeManager_WinForms
         private void LocalEpisodesControl_Load(object sender, EventArgs e)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            authorName.RightToLeft = RightToLeft.Yes;
+            //authorName.RightToLeft = RightToLeft.Yes;
         }
         private void checkForUpdatesBgWork_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -356,7 +356,7 @@ namespace EpisodeManager_WinForms
                     updateButton.Enabled = false;
                     updateButton.Text = "No updates \navailable";
                     updateCheckSpinner.Visible = false;
-                    MessageBox.Show(we.Message);
+                    //MessageBox.Show(we.Message);
                 }
             }
             localEpisodesListview.Enabled = true;

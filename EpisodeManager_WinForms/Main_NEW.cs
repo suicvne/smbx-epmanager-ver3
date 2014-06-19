@@ -34,6 +34,8 @@ namespace EpisodeManager_WinForms
 
         private void Main_NEW_Load(object sender, EventArgs e)
         {
+            metroTabControl1.SelectedTab = metroTabPage1;
+            
             Control.CheckForIllegalCrossThreadCalls = false;
 
             localEpisodes.updateCheckSpinner.Visible = false;
@@ -124,6 +126,30 @@ namespace EpisodeManager_WinForms
         {
             AboutBox ab = new AboutBox();
             ab.ShowDialog();
+        }
+
+        private void menuItem1_Click(object sender, EventArgs e)
+        {
+            //delete
+            DialogResult dr = MessageBox.Show("Are you sure you'd like to delete '" + Main_NEW.selectedFolderName + "'?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch (dr)
+            {
+                case (DialogResult.Yes):
+                    deleteEpisode();
+                    break;
+                case(DialogResult.No):
+                    break;
+            }
+        }
+
+        private void deleteEpisode()
+        {
+            
+        }
+
+        private void episodesMoreButton_Click_1(object sender, EventArgs e)
+        {
+            episodeContext.Show(episodesMoreButton, new System.Drawing.Point(0, 40));
         }
 
     }

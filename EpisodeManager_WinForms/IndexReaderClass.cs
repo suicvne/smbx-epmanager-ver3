@@ -16,7 +16,7 @@ namespace IndexReader
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if(line.Contains("version"))
+                    if(line.Contains("version="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         return split[1].ToString();
@@ -33,7 +33,7 @@ namespace IndexReader
                 string line;
                 while((line = sr.ReadLine()) != null)
                 {
-                    if(line.Contains("filesList"))
+                    if(line.Contains("filesList="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         return split[1].ToString();
@@ -51,7 +51,7 @@ namespace IndexReader
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Contains("episodeName"))
+                    if (line.Contains("episodeName="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         ep = split[1].ToString();
@@ -69,7 +69,7 @@ namespace IndexReader
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Contains("author"))
+                    if (line.Contains("author="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         return split[1].ToString();
@@ -86,7 +86,7 @@ namespace IndexReader
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Contains("description"))
+                    if (line.Contains("description="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         return split[1].ToString();
@@ -103,7 +103,7 @@ namespace IndexReader
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Contains("forumUrl"))
+                    if (line.Contains("forumUrl="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         return split[1].ToString();
@@ -120,7 +120,7 @@ namespace IndexReader
                 string line;
                 while ((line = sr.ReadLine()) != null)
                 {
-                    if (line.Contains("server"))
+                    if (line.Contains("server="))
                     {
                         var split = line.Split(new char[] { '=' }, 2);
                         return split[1].ToString();
