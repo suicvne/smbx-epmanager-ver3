@@ -39,7 +39,7 @@ namespace EpisodeManager_WinForms
             localEpisodes.updateCheckSpinner.Visible = false;
             localEpisodes.epInfoPanel.BackgroundImage = null;
             localEpisodes.episodeNameLabel.Text = "";
-            localEpisodes.descriptionLabel.Text = "";
+            localEpisodes.descLabel.Text = "";
             localEpisodes.authorName.Text = "";
             localEpisodes.ss1.BackgroundImage = null;
             localEpisodes.ss2.BackgroundImage = null;

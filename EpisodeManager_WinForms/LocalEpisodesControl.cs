@@ -12,6 +12,7 @@ using System.Diagnostics;
 using IndexReader;
 using System.Net.NetworkInformation;
 using System.Net;
+using Microsoft.VisualBasic.Devices;
 
 namespace EpisodeManager_WinForms
 {
@@ -72,7 +73,50 @@ namespace EpisodeManager_WinForms
         #region Controls Functions
         private void viewFilesButton_Click(object sender, EventArgs e)
         {
+            if(File.Exists(Environment.CurrentDirectory + @"\IndexGenerator.exe"))
+            {
+                launchIndexGenerator();
+            }
+            else
+            {
+                DialogResult dr = MessageBox.Show("Index Generator not found, would you like to download it?",
+                "Information", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                switch(dr)
+                {
+                    case DialogResult.Yes:
+                        Computer myComputer = new Computer();
+                        myComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/IndexGenerator.exe", Environment.CurrentDirectory + @"\IndexGenerator.exe", null, null, true, 3000, true);
+                        try
+                        {
+                            launchIndexGenerator();
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                        break;
+                    case DialogResult.No:
+                        break;
+                }
+            }
+        }
 
+        public void launchIndexGenerator()
+        {
+            try
+            {
+                string args = "\"" + Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName + "\"";
+                //MessageBox.Show(args);
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = Environment.CurrentDirectory + @"\IndexGenerator.exe";
+                startInfo.Arguments = args;
+                Process.Start(startInfo);
+            }
+            catch(Win32Exception w32ex)
+            {
+                MessageBox.Show(w32ex.Message + "\nTry redownloading!");
+            }
+            
         }
 
         private void forumTopicButton_Click(object sender, EventArgs e)
@@ -148,7 +192,7 @@ namespace EpisodeManager_WinForms
 
                 episodeNameLabel.Text = inReader.episodeName(indexToLoad);
                 authorName.Text = "by: " + inReader.authorName(indexToLoad);
-                descriptionLabel.Text = inReader.descriptionText(indexToLoad);
+                descLabel.Text = inReader.descriptionText(indexToLoad);
                 Main_NEW.forumLink = inReader.forumLink(indexToLoad);
                 Main_NEW.serverUrl = inReader.serverUrl(indexToLoad);
                 try
@@ -209,8 +253,9 @@ namespace EpisodeManager_WinForms
                     serverStatusOnPb.Visible = false;
                     serverStatusOffPb.Visible = true;
                 }*/
-                viewFilesButton.Enabled = true;
+                createIndexButton.Enabled = true;
                 forumTopicButton.Enabled = true;
+                createIndexButton.Visible = false;
                 if (inReader.versionNumber(indexToLoad) != null)
                 {
                     versionLabel.Visible = true;
@@ -218,25 +263,29 @@ namespace EpisodeManager_WinForms
                     Main_NEW.epVer = Int32.Parse(inReader.versionNumber(indexToLoad));
                 }
                 checkForUpdatesBgWork.RunWorkerAsync();
+                
             }
             else
             {
-                authorName.Text = "This episode doesn't seem to have an index file associated with it :(";
-                descriptionLabel.Text = "";
-                ss1.BackgroundImage = null;
-                ss2.BackgroundImage = null;
-                ss3.BackgroundImage = null;
-                ss4.BackgroundImage = null;
-                iconFrame.Visible = false;
-                iconPicture.Visible = false;
-                //
-                //serverStatusOffPb.Visible = true;
-                //serverStatusOnPb.Visible = false;
-                //checkServerButton.Enabled = false;
-                viewFilesButton.Enabled = false;
-                forumTopicButton.Enabled = false;
-                versionLabel.Visible = false;
-
+                if (localEpisodesListview.SelectedItems.Count == 1)
+                {
+                    Main_NEW.selectedFolderName = localEpisodesListview.SelectedItems[0].Text;
+                    authorName.Text = "This episode doesn't seem to have an index file associated with it :(";
+                    descLabel.Text = "Would you like to make one?";
+                    createIndexButton.Visible = true;
+                    ss1.BackgroundImage = null;
+                    ss2.BackgroundImage = null;
+                    ss3.BackgroundImage = null;
+                    ss4.BackgroundImage = null;
+                    iconFrame.Visible = false;
+                    iconPicture.Visible = false;
+                    //
+                    //serverStatusOffPb.Visible = true;
+                    //serverStatusOnPb.Visible = false;
+                    //checkServerButton.Enabled = false;
+                    forumTopicButton.Enabled = false;
+                    versionLabel.Visible = false;
+                }
             }
         }
         //
@@ -247,7 +296,16 @@ namespace EpisodeManager_WinForms
         }
         private void checkForUpdatesBgWork_DoWork(object sender, DoWorkEventArgs e)
         {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            if(worker.CancellationPending == true)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             updateButton.Enabled = false;
+            localEpisodesListview.Enabled = false;
             updateButton.Text = "Checking for \nupdates..";
             updateCheckSpinner.Visible = true;
 
@@ -255,16 +313,29 @@ namespace EpisodeManager_WinForms
             {
                 updateButton.Text = "Server offline\nCan't update";
                 updateCheckSpinner.Visible = false;
+                localEpisodesListview.Enabled = true;
             }
             else //true
             {
+                
                 try
                 {
+                    if (worker.CancellationPending == true)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
                     WebClient wc = new WebClient();
-                    wc.DownloadFile(Main_NEW.serverUrl + @"changes.index", Environment.CurrentDirectory + @"\temp\Update\changes.index");
+                    if (worker.CancellationPending != true)
+                    {
+                        wc.DownloadFile(Main_NEW.serverUrl + @"changes.index", Environment.CurrentDirectory + @"\temp\Update\changes.index");
+                    }
+                    
+
                     int avVer = Int32.Parse(inReader.versionNumber(Environment.CurrentDirectory + @"\temp\Update\changes.index"));
                     if(avVer > Main_NEW.epVer == true)
                     {
+                        localEpisodesListview.Enabled = true;
                         updateButton.Enabled = true;
                         updateButton.Text = "Update Available!\nv" + avVer;
                         updateCheckSpinner.Visible = false;
@@ -273,6 +344,7 @@ namespace EpisodeManager_WinForms
                     }
                     else
                     {
+                        localEpisodesListview.Enabled = true;
                         updateButton.Enabled = false;
                         updateButton.Text = "No updates\navailable :)";
                         updateCheckSpinner.Visible = false;
@@ -280,12 +352,14 @@ namespace EpisodeManager_WinForms
                 }
                 catch (WebException we)
                 {
+                    localEpisodesListview.Enabled = true;
                     updateButton.Enabled = false;
                     updateButton.Text = "No updates \navailable";
                     updateCheckSpinner.Visible = false;
                     MessageBox.Show(we.Message);
                 }
             }
+            localEpisodesListview.Enabled = true;
         }
         #endregion
         public bool serverOn(string url)
@@ -305,6 +379,75 @@ namespace EpisodeManager_WinForms
         {
             UpdateEpisode ue = new UpdateEpisode();
             ue.ShowDialog();
+        }
+
+        private void checkForUpdatesBgWork2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+
+            if (worker.CancellationPending == true)
+            {
+                e.Cancel = true;
+                return;
+            }
+
+            updateButton.Enabled = false;
+            updateButton.Text = "Checking for \nupdates..";
+            updateCheckSpinner.Visible = true;
+
+            if (serverOn(Main_NEW.serverUrl) == false)
+            {
+                updateButton.Text = "Server offline\nCan't update";
+                updateCheckSpinner.Visible = false;
+            }
+            else //true
+            {
+
+                try
+                {
+                    if (worker.CancellationPending == true)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                    WebClient wc = new WebClient();
+                    if (worker.CancellationPending != true)
+                    {
+                        wc.DownloadFile(Main_NEW.serverUrl + @"changes.index", Environment.CurrentDirectory + @"\temp\Update\changes.index");
+                    }
+
+
+                    int avVer = Int32.Parse(inReader.versionNumber(Environment.CurrentDirectory + @"\temp\Update\changes.index"));
+                    if (avVer > Main_NEW.epVer == true)
+                    {
+
+                        updateButton.Enabled = true;
+                        updateButton.Text = "Update Available!\nv" + avVer;
+                        updateCheckSpinner.Visible = false;
+                        Main_NEW.availVer = avVer;
+                        Main_NEW.bgImage = iconPicture.BackgroundImage;
+                    }
+                    else
+                    {
+
+                        updateButton.Enabled = false;
+                        updateButton.Text = "No updates\navailable :)";
+                        updateCheckSpinner.Visible = false;
+                    }
+                }
+                catch (WebException we)
+                {
+                    updateButton.Enabled = false;
+                    updateButton.Text = "No updates \navailable";
+                    updateCheckSpinner.Visible = false;
+                    MessageBox.Show(we.Message);
+                }
+            }
+            if (worker.CancellationPending == true)
+            {
+                e.Cancel = true;
+                return;
+            }
         }
 
         

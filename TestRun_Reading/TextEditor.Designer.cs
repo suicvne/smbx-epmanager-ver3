@@ -1,4 +1,4 @@
-﻿namespace TestRun_Reading
+﻿namespace IndexGenerator
 {
     partial class TextEditor
     {

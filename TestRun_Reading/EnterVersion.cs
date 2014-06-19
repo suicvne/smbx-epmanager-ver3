@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestRun_Reading
+namespace IndexGenerator
 {
     public partial class EnterVersion : Form
     {

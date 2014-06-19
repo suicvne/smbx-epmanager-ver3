@@ -37,12 +37,21 @@
             this.execLocTb = new MetroFramework.Controls.MetroTextBox();
             this.worldPathTb = new MetroFramework.Controls.MetroTextBox();
             this.smbxPathTb = new MetroFramework.Controls.MetroTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkIndexGeneratorUpdates = new System.ComponentModel.BackgroundWorker();
+            this.indexGenVerLabel = new MetroFramework.Controls.MetroLabel();
+            this.availIgVerLabel = new MetroFramework.Controls.MetroLabel();
+            this.updateIndexGen = new MetroFramework.Controls.MetroButton();
+            this.igVerCheckSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroButton3
             // 
             this.metroButton3.Highlight = false;
-            this.metroButton3.Location = new System.Drawing.Point(186, 208);
+            this.metroButton3.Location = new System.Drawing.Point(156, 141);
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(95, 23);
             this.metroButton3.Style = MetroFramework.MetroColorStyle.Blue;
@@ -61,7 +70,7 @@
             this.smbxversionlabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.smbxversionlabel.ForeColor = System.Drawing.Color.DarkGreen;
             this.smbxversionlabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.smbxversionlabel.Location = new System.Drawing.Point(182, 185);
+            this.smbxversionlabel.Location = new System.Drawing.Point(152, 118);
             this.smbxversionlabel.Name = "smbxversionlabel";
             this.smbxversionlabel.Size = new System.Drawing.Size(95, 19);
             this.smbxversionlabel.Style = MetroFramework.MetroColorStyle.Blue;
@@ -79,7 +88,7 @@
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel3.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel3.Location = new System.Drawing.Point(64, 163);
+            this.metroLabel3.Location = new System.Drawing.Point(34, 96);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(119, 19);
             this.metroLabel3.Style = MetroFramework.MetroColorStyle.Blue;
@@ -97,7 +106,7 @@
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel2.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel2.Location = new System.Drawing.Point(77, 134);
+            this.metroLabel2.Location = new System.Drawing.Point(47, 67);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(106, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
@@ -115,7 +124,7 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel1.Location = new System.Drawing.Point(106, 105);
+            this.metroLabel1.Location = new System.Drawing.Point(76, 38);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(80, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
@@ -128,7 +137,7 @@
             // metroButton2
             // 
             this.metroButton2.Highlight = true;
-            this.metroButton2.Location = new System.Drawing.Point(615, 101);
+            this.metroButton2.Location = new System.Drawing.Point(585, 34);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(31, 23);
             this.metroButton2.Style = MetroFramework.MetroColorStyle.Green;
@@ -144,7 +153,7 @@
             this.execLocTb.CustomForeColor = false;
             this.execLocTb.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.execLocTb.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.execLocTb.Location = new System.Drawing.Point(186, 159);
+            this.execLocTb.Location = new System.Drawing.Point(156, 92);
             this.execLocTb.Multiline = false;
             this.execLocTb.Name = "execLocTb";
             this.execLocTb.SelectedText = "";
@@ -162,7 +171,7 @@
             this.worldPathTb.CustomForeColor = false;
             this.worldPathTb.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.worldPathTb.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.worldPathTb.Location = new System.Drawing.Point(186, 130);
+            this.worldPathTb.Location = new System.Drawing.Point(156, 63);
             this.worldPathTb.Multiline = false;
             this.worldPathTb.Name = "worldPathTb";
             this.worldPathTb.SelectedText = "";
@@ -179,7 +188,7 @@
             this.smbxPathTb.CustomForeColor = false;
             this.smbxPathTb.FontSize = MetroFramework.MetroTextBoxSize.Small;
             this.smbxPathTb.FontWeight = MetroFramework.MetroTextBoxWeight.Regular;
-            this.smbxPathTb.Location = new System.Drawing.Point(186, 101);
+            this.smbxPathTb.Location = new System.Drawing.Point(156, 34);
             this.smbxPathTb.Multiline = false;
             this.smbxPathTb.Name = "smbxPathTb";
             this.smbxPathTb.SelectedText = "";
@@ -190,20 +199,113 @@
             this.smbxPathTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.smbxPathTb.UseStyleColors = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.metroLabel1);
+            this.groupBox1.Controls.Add(this.metroButton3);
+            this.groupBox1.Controls.Add(this.smbxPathTb);
+            this.groupBox1.Controls.Add(this.smbxversionlabel);
+            this.groupBox1.Controls.Add(this.worldPathTb);
+            this.groupBox1.Controls.Add(this.metroLabel3);
+            this.groupBox1.Controls.Add(this.execLocTb);
+            this.groupBox1.Controls.Add(this.metroLabel2);
+            this.groupBox1.Controls.Add(this.metroButton2);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(23, 63);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(648, 187);
+            this.groupBox1.TabIndex = 29;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "SMBX Related Settings";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.igVerCheckSpinner);
+            this.groupBox2.Controls.Add(this.updateIndexGen);
+            this.groupBox2.Controls.Add(this.availIgVerLabel);
+            this.groupBox2.Controls.Add(this.indexGenVerLabel);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(24, 257);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(647, 179);
+            this.groupBox2.TabIndex = 30;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Index Generator";
+            // 
+            // checkIndexGeneratorUpdates
+            // 
+            this.checkIndexGeneratorUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.checkIndexGeneratorUpdates_DoWork);
+            // 
+            // indexGenVerLabel
+            // 
+            this.indexGenVerLabel.AutoSize = true;
+            this.indexGenVerLabel.CustomBackground = false;
+            this.indexGenVerLabel.CustomForeColor = false;
+            this.indexGenVerLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.indexGenVerLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.indexGenVerLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.indexGenVerLabel.Location = new System.Drawing.Point(33, 41);
+            this.indexGenVerLabel.Name = "indexGenVerLabel";
+            this.indexGenVerLabel.Size = new System.Drawing.Size(234, 19);
+            this.indexGenVerLabel.Style = MetroFramework.MetroColorStyle.Blue;
+            this.indexGenVerLabel.StyleManager = null;
+            this.indexGenVerLabel.TabIndex = 0;
+            this.indexGenVerLabel.Text = "Downloaded Index Generator Version: ";
+            this.indexGenVerLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.indexGenVerLabel.UseStyleColors = false;
+            // 
+            // availIgVerLabel
+            // 
+            this.availIgVerLabel.AutoSize = true;
+            this.availIgVerLabel.CustomBackground = false;
+            this.availIgVerLabel.CustomForeColor = false;
+            this.availIgVerLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.availIgVerLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.availIgVerLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.availIgVerLabel.Location = new System.Drawing.Point(33, 78);
+            this.availIgVerLabel.Name = "availIgVerLabel";
+            this.availIgVerLabel.Size = new System.Drawing.Size(0, 0);
+            this.availIgVerLabel.Style = MetroFramework.MetroColorStyle.Blue;
+            this.availIgVerLabel.StyleManager = null;
+            this.availIgVerLabel.TabIndex = 1;
+            this.availIgVerLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.availIgVerLabel.UseStyleColors = false;
+            // 
+            // updateIndexGen
+            // 
+            this.updateIndexGen.Enabled = false;
+            this.updateIndexGen.Highlight = false;
+            this.updateIndexGen.Location = new System.Drawing.Point(33, 100);
+            this.updateIndexGen.Name = "updateIndexGen";
+            this.updateIndexGen.Size = new System.Drawing.Size(119, 49);
+            this.updateIndexGen.Style = MetroFramework.MetroColorStyle.Blue;
+            this.updateIndexGen.StyleManager = null;
+            this.updateIndexGen.TabIndex = 2;
+            this.updateIndexGen.Text = "UPDATE";
+            this.updateIndexGen.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.updateIndexGen.Click += new System.EventHandler(this.updateIndexGen_Click);
+            // 
+            // igVerCheckSpinner
+            // 
+            this.igVerCheckSpinner.CustomBackground = false;
+            this.igVerCheckSpinner.Location = new System.Drawing.Point(158, 108);
+            this.igVerCheckSpinner.Maximum = 100;
+            this.igVerCheckSpinner.Name = "igVerCheckSpinner";
+            this.igVerCheckSpinner.Size = new System.Drawing.Size(32, 32);
+            this.igVerCheckSpinner.Speed = 3F;
+            this.igVerCheckSpinner.Style = MetroFramework.MetroColorStyle.Green;
+            this.igVerCheckSpinner.StyleManager = null;
+            this.igVerCheckSpinner.TabIndex = 3;
+            this.igVerCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.igVerCheckSpinner.Visible = false;
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(694, 287);
-            this.Controls.Add(this.metroButton3);
-            this.Controls.Add(this.smbxversionlabel);
-            this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroButton2);
-            this.Controls.Add(this.execLocTb);
-            this.Controls.Add(this.worldPathTb);
-            this.Controls.Add(this.smbxPathTb);
+            this.ClientSize = new System.Drawing.Size(694, 459);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -217,8 +319,11 @@
             this.Text = "Settings";
             this.TextAlign = MetroFramework.Forms.TextAlign.Center;
             this.Load += new System.EventHandler(this.SettingsForm_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -233,5 +338,12 @@
         public MetroFramework.Controls.MetroTextBox execLocTb;
         public MetroFramework.Controls.MetroTextBox worldPathTb;
         public MetroFramework.Controls.MetroTextBox smbxPathTb;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private MetroFramework.Controls.MetroButton updateIndexGen;
+        private MetroFramework.Controls.MetroLabel availIgVerLabel;
+        private MetroFramework.Controls.MetroLabel indexGenVerLabel;
+        private System.ComponentModel.BackgroundWorker checkIndexGeneratorUpdates;
+        private MetroFramework.Controls.MetroProgressSpinner igVerCheckSpinner;
     }
 }

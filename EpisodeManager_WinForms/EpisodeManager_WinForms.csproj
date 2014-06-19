@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Icon_SMB3_ICO.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MetroFramework">
       <HintPath>..\packages\ModernUI.1.1.0.1\lib\net45\MetroFramework.dll</HintPath>
@@ -191,6 +194,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\twitter-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icon_SMB3_ICO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

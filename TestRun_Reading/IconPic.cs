@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 
-namespace TestRun_Reading
+namespace IndexGenerator
 {
     public partial class IconPic : UserControl
     {
@@ -39,6 +39,11 @@ namespace TestRun_Reading
         private void button2_Click(object sender, EventArgs e)
         {
             icon1.Image = null;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

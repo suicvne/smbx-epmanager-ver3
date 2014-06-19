@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
-namespace TestRun_Reading
+namespace IndexGenerator
 {
     public partial class MainForm : Form
     {
@@ -155,7 +157,7 @@ namespace TestRun_Reading
             {
                 sw.WriteLine("forumUrl=" + forumLinkText.Text);
             }
-            sw.Dispose();
+            
             //write images
             if(screenshot1.screenshot1.Image != null)
             {
@@ -205,6 +207,7 @@ namespace TestRun_Reading
                 string fileName = item.Text;
                 sw.Write(fileName + ",");
             }
+            sw.Dispose();
             sw.Close();
             MessageBox.Show("Done.");
         }
@@ -475,7 +478,12 @@ namespace TestRun_Reading
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if(pathToTryLoad != null)
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string version = fileVersionInfo.ProductVersion;
+            vLabel.Text = "Version " + version;
+
+            if(pathToTryLoad != "null")
             {
                 directoryText.Text = pathToTryLoad;
                 foreach (ListViewItem lvi in listView1.Items)

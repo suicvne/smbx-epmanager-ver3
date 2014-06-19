@@ -8,12 +8,12 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing.Imaging;
 
-namespace TestRun_Reading
+namespace IndexGenerator
 {
-    public partial class Icon : UserControl
+    public partial class Screenshot : UserControl
     {
         ViewScreenshot vs = new ViewScreenshot();
-        public Icon()
+        public Screenshot()
         {
             InitializeComponent();
         }
@@ -52,6 +52,11 @@ namespace TestRun_Reading
         private void button2_Click(object sender, EventArgs e)
         {
             screenshot1.Image = null;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

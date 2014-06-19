@@ -31,9 +31,12 @@
             this.localEpisodesListview = new System.Windows.Forms.ListView();
             this.Episode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.epInfoPanel = new System.Windows.Forms.Panel();
+            this.updateCheckSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.updateButton = new MetroFramework.Controls.MetroButton();
+            this.versionLabel = new MetroFramework.Controls.MetroLabel();
             this.iconPicture = new System.Windows.Forms.PictureBox();
             this.iconFrame = new System.Windows.Forms.PictureBox();
-            this.viewFilesButton = new MetroFramework.Controls.MetroButton();
+            this.createIndexButton = new MetroFramework.Controls.MetroButton();
             this.forumTopicButton = new MetroFramework.Controls.MetroButton();
             this.ss4 = new System.Windows.Forms.PictureBox();
             this.ss3 = new System.Windows.Forms.PictureBox();
@@ -41,11 +44,9 @@
             this.ss1 = new System.Windows.Forms.PictureBox();
             this.authorName = new MetroFramework.Controls.MetroLabel();
             this.episodeNameLabel = new MetroFramework.Controls.MetroLabel();
-            this.descriptionLabel = new MetroFramework.Controls.MetroLabel();
+            this.descLabel = new System.Windows.Forms.TextBox();
             this.checkForUpdatesBgWork = new System.ComponentModel.BackgroundWorker();
-            this.versionLabel = new MetroFramework.Controls.MetroLabel();
-            this.updateButton = new MetroFramework.Controls.MetroButton();
-            this.updateCheckSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.checkForUpdatesBgWork2 = new System.ComponentModel.BackgroundWorker();
             this.epInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconFrame)).BeginInit();
@@ -86,7 +87,7 @@
             this.epInfoPanel.Controls.Add(this.versionLabel);
             this.epInfoPanel.Controls.Add(this.iconPicture);
             this.epInfoPanel.Controls.Add(this.iconFrame);
-            this.epInfoPanel.Controls.Add(this.viewFilesButton);
+            this.epInfoPanel.Controls.Add(this.createIndexButton);
             this.epInfoPanel.Controls.Add(this.forumTopicButton);
             this.epInfoPanel.Controls.Add(this.ss4);
             this.epInfoPanel.Controls.Add(this.ss3);
@@ -94,11 +95,57 @@
             this.epInfoPanel.Controls.Add(this.ss1);
             this.epInfoPanel.Controls.Add(this.authorName);
             this.epInfoPanel.Controls.Add(this.episodeNameLabel);
-            this.epInfoPanel.Controls.Add(this.descriptionLabel);
+            this.epInfoPanel.Controls.Add(this.descLabel);
             this.epInfoPanel.Location = new System.Drawing.Point(200, 0);
             this.epInfoPanel.Name = "epInfoPanel";
             this.epInfoPanel.Size = new System.Drawing.Size(516, 466);
             this.epInfoPanel.TabIndex = 5;
+            // 
+            // updateCheckSpinner
+            // 
+            this.updateCheckSpinner.CustomBackground = false;
+            this.updateCheckSpinner.Location = new System.Drawing.Point(273, 410);
+            this.updateCheckSpinner.Maximum = 100;
+            this.updateCheckSpinner.Name = "updateCheckSpinner";
+            this.updateCheckSpinner.Size = new System.Drawing.Size(32, 32);
+            this.updateCheckSpinner.Speed = 3F;
+            this.updateCheckSpinner.Style = MetroFramework.MetroColorStyle.Purple;
+            this.updateCheckSpinner.StyleManager = null;
+            this.updateCheckSpinner.TabIndex = 17;
+            this.updateCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
+            // 
+            // updateButton
+            // 
+            this.updateButton.Enabled = false;
+            this.updateButton.Highlight = false;
+            this.updateButton.Location = new System.Drawing.Point(155, 400);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(111, 52);
+            this.updateButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.updateButton.StyleManager = null;
+            this.updateButton.TabIndex = 16;
+            this.updateButton.Text = "UPDATE";
+            this.updateButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
+            // 
+            // versionLabel
+            // 
+            this.versionLabel.AutoSize = true;
+            this.versionLabel.CustomBackground = false;
+            this.versionLabel.CustomForeColor = false;
+            this.versionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.versionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.versionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.versionLabel.Location = new System.Drawing.Point(391, 282);
+            this.versionLabel.Name = "versionLabel";
+            this.versionLabel.Size = new System.Drawing.Size(15, 19);
+            this.versionLabel.Style = MetroFramework.MetroColorStyle.Blue;
+            this.versionLabel.StyleManager = null;
+            this.versionLabel.TabIndex = 15;
+            this.versionLabel.Text = "v";
+            this.versionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.versionLabel.UseStyleColors = false;
+            this.versionLabel.Visible = false;
             // 
             // iconPicture
             // 
@@ -118,18 +165,19 @@
             this.iconFrame.TabIndex = 10;
             this.iconFrame.TabStop = false;
             // 
-            // viewFilesButton
+            // createIndexButton
             // 
-            this.viewFilesButton.Highlight = false;
-            this.viewFilesButton.Location = new System.Drawing.Point(155, 400);
-            this.viewFilesButton.Name = "viewFilesButton";
-            this.viewFilesButton.Size = new System.Drawing.Size(112, 52);
-            this.viewFilesButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.viewFilesButton.StyleManager = null;
-            this.viewFilesButton.TabIndex = 9;
-            this.viewFilesButton.Text = "VIEW FILES";
-            this.viewFilesButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.viewFilesButton.Click += new System.EventHandler(this.viewFilesButton_Click);
+            this.createIndexButton.Highlight = false;
+            this.createIndexButton.Location = new System.Drawing.Point(377, 101);
+            this.createIndexButton.Name = "createIndexButton";
+            this.createIndexButton.Size = new System.Drawing.Size(112, 43);
+            this.createIndexButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.createIndexButton.StyleManager = null;
+            this.createIndexButton.TabIndex = 9;
+            this.createIndexButton.Text = "MAKE INDEX";
+            this.createIndexButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.createIndexButton.Visible = false;
+            this.createIndexButton.Click += new System.EventHandler(this.viewFilesButton_Click);
             // 
             // forumTopicButton
             // 
@@ -197,7 +245,7 @@
             this.authorName.CustomBackground = false;
             this.authorName.CustomForeColor = false;
             this.authorName.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.authorName.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.authorName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.authorName.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.authorName.Location = new System.Drawing.Point(34, 44);
             this.authorName.Name = "authorName";
@@ -206,7 +254,6 @@
             this.authorName.StyleManager = null;
             this.authorName.TabIndex = 1;
             this.authorName.Text = "by: ";
-            this.authorName.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.authorName.Theme = MetroFramework.MetroThemeStyle.Light;
             this.authorName.UseStyleColors = false;
             // 
@@ -215,7 +262,7 @@
             this.episodeNameLabel.CustomBackground = false;
             this.episodeNameLabel.CustomForeColor = false;
             this.episodeNameLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.episodeNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.episodeNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.episodeNameLabel.ForeColor = System.Drawing.Color.Fuchsia;
             this.episodeNameLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.episodeNameLabel.Location = new System.Drawing.Point(34, 10);
@@ -225,77 +272,29 @@
             this.episodeNameLabel.StyleManager = null;
             this.episodeNameLabel.TabIndex = 0;
             this.episodeNameLabel.Text = "episodeName";
-            this.episodeNameLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.episodeNameLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.episodeNameLabel.UseStyleColors = false;
             // 
-            // descriptionLabel
+            // descLabel
             // 
-            this.descriptionLabel.CustomBackground = false;
-            this.descriptionLabel.CustomForeColor = false;
-            this.descriptionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.descriptionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.descriptionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.descriptionLabel.Location = new System.Drawing.Point(34, 73);
-            this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(466, 102);
-            this.descriptionLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.descriptionLabel.StyleManager = null;
-            this.descriptionLabel.TabIndex = 2;
-            this.descriptionLabel.Text = "desc";
-            this.descriptionLabel.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.descriptionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.descriptionLabel.UseStyleColors = false;
+            this.descLabel.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.descLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descLabel.Location = new System.Drawing.Point(34, 70);
+            this.descLabel.Multiline = true;
+            this.descLabel.Name = "descLabel";
+            this.descLabel.Size = new System.Drawing.Size(469, 87);
+            this.descLabel.TabIndex = 18;
+            this.descLabel.Text = "desc";
             // 
             // checkForUpdatesBgWork
             // 
+            this.checkForUpdatesBgWork.WorkerSupportsCancellation = true;
             this.checkForUpdatesBgWork.DoWork += new System.ComponentModel.DoWorkEventHandler(this.checkForUpdatesBgWork_DoWork);
             // 
-            // versionLabel
+            // checkForUpdatesBgWork2
             // 
-            this.versionLabel.AutoSize = true;
-            this.versionLabel.CustomBackground = false;
-            this.versionLabel.CustomForeColor = false;
-            this.versionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.versionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.versionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.versionLabel.Location = new System.Drawing.Point(391, 282);
-            this.versionLabel.Name = "versionLabel";
-            this.versionLabel.Size = new System.Drawing.Size(15, 19);
-            this.versionLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.versionLabel.StyleManager = null;
-            this.versionLabel.TabIndex = 15;
-            this.versionLabel.Text = "v";
-            this.versionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.versionLabel.UseStyleColors = false;
-            this.versionLabel.Visible = false;
-            // 
-            // updateButton
-            // 
-            this.updateButton.Enabled = false;
-            this.updateButton.Highlight = false;
-            this.updateButton.Location = new System.Drawing.Point(274, 400);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(111, 52);
-            this.updateButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.updateButton.StyleManager = null;
-            this.updateButton.TabIndex = 16;
-            this.updateButton.Text = "Update";
-            this.updateButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-            // 
-            // updateCheckSpinner
-            // 
-            this.updateCheckSpinner.CustomBackground = false;
-            this.updateCheckSpinner.Location = new System.Drawing.Point(391, 409);
-            this.updateCheckSpinner.Maximum = 100;
-            this.updateCheckSpinner.Name = "updateCheckSpinner";
-            this.updateCheckSpinner.Size = new System.Drawing.Size(32, 32);
-            this.updateCheckSpinner.Speed = 3F;
-            this.updateCheckSpinner.Style = MetroFramework.MetroColorStyle.Purple;
-            this.updateCheckSpinner.StyleManager = null;
-            this.updateCheckSpinner.TabIndex = 17;
-            this.updateCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.checkForUpdatesBgWork2.WorkerSupportsCancellation = true;
+            this.checkForUpdatesBgWork2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.checkForUpdatesBgWork2_DoWork);
             // 
             // LocalEpisodesControl
             // 
@@ -322,13 +321,12 @@
 
         private System.Windows.Forms.ColumnHeader Episode;
         public System.Windows.Forms.PictureBox iconPicture;
-        public MetroFramework.Controls.MetroButton viewFilesButton;
+        public MetroFramework.Controls.MetroButton createIndexButton;
         public MetroFramework.Controls.MetroButton forumTopicButton;
         public System.Windows.Forms.PictureBox ss4;
         public System.Windows.Forms.PictureBox ss3;
         public System.Windows.Forms.PictureBox ss2;
         public System.Windows.Forms.PictureBox ss1;
-        public MetroFramework.Controls.MetroLabel descriptionLabel;
         public MetroFramework.Controls.MetroLabel authorName;
         public MetroFramework.Controls.MetroLabel episodeNameLabel;
         public System.Windows.Forms.Panel epInfoPanel;
@@ -338,5 +336,7 @@
         private System.ComponentModel.BackgroundWorker checkForUpdatesBgWork;
         public MetroFramework.Controls.MetroProgressSpinner updateCheckSpinner;
         public MetroFramework.Controls.MetroButton updateButton;
+        public System.Windows.Forms.TextBox descLabel;
+        private System.ComponentModel.BackgroundWorker checkForUpdatesBgWork2;
     }
 }

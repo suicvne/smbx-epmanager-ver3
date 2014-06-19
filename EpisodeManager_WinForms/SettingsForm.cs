@@ -11,6 +11,7 @@ using MetroFramework.Forms;
 using Setting;
 using System.Diagnostics;
 using System.IO;
+using Microsoft.VisualBasic.Devices;
 
 namespace EpisodeManager_WinForms
 {
@@ -50,6 +51,15 @@ namespace EpisodeManager_WinForms
         }
         private void SettingsForm_Load(object sender, EventArgs e)
         {
+            try
+            {
+                checkIndexGeneratorVersion();
+            }
+            catch
+            {
+
+            }
+
             smbxPathTb.Text = Main_NEW.smbxDir;
             worldPathTb.Text = Main_NEW.smbxWorldsDir;
             execLocTb.Text = Main_NEW.smbxExeLoc;
@@ -64,6 +74,28 @@ namespace EpisodeManager_WinForms
                 smbxversionlabel.Text = "Couldn't find SMBX!";
                 smbxversionlabel.ForeColor = Color.DarkRed;
             }
+        }
+
+        private void checkIndexGeneratorVersion()
+        {
+
+            if(File.Exists(Environment.CurrentDirectory + @"\IndexGenerator.exe"))
+            {
+                string curVer = GetFileVersionInfo(Environment.CurrentDirectory + @"\IndexGenerator.exe").ToString();
+                indexGenVerLabel.Text = "Downloaded Index Generator Version: " + curVer;
+                updateIndexGen.Enabled = false;
+                updateIndexGen.Text = "Checking for updates...";
+                igVerCheckSpinner.Visible = true;
+                checkIndexGeneratorUpdates.RunWorkerAsync();
+            }
+            else
+            {
+                indexGenVerLabel.Text = "Index Generator not available!";
+                availIgVerLabel.Text = "";
+                updateIndexGen.Enabled = false;
+                igVerCheckSpinner.Visible = false;
+            }
+
         }
 
         private void metroButton3_Click_1(object sender, EventArgs e)
@@ -145,6 +177,65 @@ namespace EpisodeManager_WinForms
             {
                 smbxversionlabel.Text = "Couldn't find SMBX!";
                 smbxversionlabel.ForeColor = Color.DarkRed;
+            }
+        }
+
+        private void checkIndexGeneratorUpdates_DoWork(object sender, DoWorkEventArgs e)
+        {
+            string availVer;
+            string currentVer = GetFileVersionInfo(Environment.CurrentDirectory + @"\IndexGenerator.exe").ToString();
+            int curVerInt;
+            int availVerInt;
+            //try
+            //{
+                Computer myComputer = new Computer();
+                myComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/igver.txt", Environment.CurrentDirectory + @"\temp\igver.txt", null, null, false, 30000, true);
+                using(StreamReader sr = new StreamReader(Environment.CurrentDirectory + @"\temp\igver.txt"))
+                {
+                    availVer = sr.ReadLine().ToString();
+                    availVerInt = verStringToInt(availVer);
+                    availIgVerLabel.Text = "Available Index Generator Version: " + availVer;
+                }
+                curVerInt = verStringToInt(currentVer);
+                if(availVerInt > curVerInt)
+                {
+                    //update 
+                    updateIndexGen.Enabled = true;
+                    updateIndexGen.Text = "Update Available!";
+                    igVerCheckSpinner.Visible = false;
+                }
+                else
+                {
+                    updateIndexGen.Enabled = false;
+                    updateIndexGen.Text = "No update needed! :)";
+                    igVerCheckSpinner.Visible = false;
+                }
+
+            //}
+            //catch(Exception ex)
+            //{
+             //   MessageBox.Show(ex.Message);
+            //}
+        }
+
+        private int verStringToInt(string ver)
+        {
+            string[] split = ver.Split(new Char[] { '.' });
+            string together = split[0].ToString() + split[1].ToString() + split[2].ToString() + split[3].ToString();
+            return int.Parse(together);
+        }
+
+        private void updateIndexGen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Computer myComputer = new Computer();
+                myComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/IndexGenerator.exe", Environment.CurrentDirectory + @"\IndexGenerator.exe", null, null, true, 30000, true);
+                checkIndexGeneratorVersion();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     

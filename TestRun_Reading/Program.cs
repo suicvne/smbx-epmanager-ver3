@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace TestRun_Reading
+namespace IndexGenerator
 {
     static class Program
     {
@@ -17,21 +17,19 @@ namespace TestRun_Reading
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            foreach(string s in args)
+            if(args.Length == 0)
             {
-                if (Directory.Exists(s))
-                {
-                    Application.Run(new MainForm(s));
-                }
-                else
-                {
-                    Application.Run(new MainForm(null));
-                }
+                Application.Run(new MainForm("null"));
             }
 
-            //run this last
-            
-            //
+            for (int i = 0; i < args.Length; i++)
+            {
+                MessageBox.Show(args[0].ToString());
+                if (Directory.Exists(args[0].ToString()))
+                {
+                    Application.Run(new MainForm(args[0].ToString()));
+                }
+            }
         }
     }
 }

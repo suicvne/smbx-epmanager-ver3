@@ -1,4 +1,4 @@
-﻿namespace TestRun_Reading
+﻿namespace IndexGenerator
 {
     partial class MainForm
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.directoryText = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,11 +53,12 @@
             this.forumLinkText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.iconPic1 = new TestRun_Reading.IconPic();
-            this.screenshot4 = new TestRun_Reading.Icon();
-            this.screenshot3 = new TestRun_Reading.Icon();
-            this.screenshot2 = new TestRun_Reading.Icon();
-            this.screenshot1 = new TestRun_Reading.Icon();
+            this.screenshot1 = new IndexGenerator.Screenshot();
+            this.screenshot2 = new IndexGenerator.Screenshot();
+            this.screenshot3 = new IndexGenerator.Screenshot();
+            this.screenshot4 = new IndexGenerator.Screenshot();
+            this.iconPic1 = new IndexGenerator.IconPic();
+            this.vLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // directoryText
@@ -252,57 +254,66 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "Forum URL: ";
             // 
-            // iconPic1
+            // screenshot1
             // 
-            this.iconPic1.Location = new System.Drawing.Point(497, 166);
-            this.iconPic1.Name = "iconPic1";
-            this.iconPic1.Size = new System.Drawing.Size(129, 182);
-            this.iconPic1.TabIndex = 27;
-            // 
-            // screenshot4
-            // 
-            this.screenshot4.Location = new System.Drawing.Point(774, 228);
-            this.screenshot4.Name = "screenshot4";
-            this.screenshot4.Size = new System.Drawing.Size(134, 186);
-            this.screenshot4.TabIndex = 21;
-            // 
-            // screenshot3
-            // 
-            this.screenshot3.Location = new System.Drawing.Point(634, 228);
-            this.screenshot3.Name = "screenshot3";
-            this.screenshot3.Size = new System.Drawing.Size(134, 186);
-            this.screenshot3.TabIndex = 20;
+            this.screenshot1.Location = new System.Drawing.Point(632, 28);
+            this.screenshot1.Name = "screenshot1";
+            this.screenshot1.Size = new System.Drawing.Size(134, 186);
+            this.screenshot1.TabIndex = 27;
             // 
             // screenshot2
             // 
-            this.screenshot2.Location = new System.Drawing.Point(774, 28);
+            this.screenshot2.Location = new System.Drawing.Point(772, 28);
             this.screenshot2.Name = "screenshot2";
             this.screenshot2.Size = new System.Drawing.Size(134, 186);
-            this.screenshot2.TabIndex = 19;
+            this.screenshot2.TabIndex = 28;
             // 
-            // screenshot1
+            // screenshot3
             // 
-            this.screenshot1.Location = new System.Drawing.Point(634, 28);
-            this.screenshot1.Name = "screenshot1";
-            this.screenshot1.Size = new System.Drawing.Size(134, 186);
-            this.screenshot1.TabIndex = 18;
-            this.screenshot1.Load += new System.EventHandler(this.screenshot1_Load);
+            this.screenshot3.Location = new System.Drawing.Point(632, 220);
+            this.screenshot3.Name = "screenshot3";
+            this.screenshot3.Size = new System.Drawing.Size(134, 186);
+            this.screenshot3.TabIndex = 29;
+            // 
+            // screenshot4
+            // 
+            this.screenshot4.Location = new System.Drawing.Point(772, 220);
+            this.screenshot4.Name = "screenshot4";
+            this.screenshot4.Size = new System.Drawing.Size(134, 186);
+            this.screenshot4.TabIndex = 30;
+            // 
+            // iconPic1
+            // 
+            this.iconPic1.Location = new System.Drawing.Point(497, 177);
+            this.iconPic1.Name = "iconPic1";
+            this.iconPic1.Size = new System.Drawing.Size(129, 182);
+            this.iconPic1.TabIndex = 31;
+            // 
+            // vLabel
+            // 
+            this.vLabel.AutoSize = true;
+            this.vLabel.Location = new System.Drawing.Point(497, 439);
+            this.vLabel.Name = "vLabel";
+            this.vLabel.Size = new System.Drawing.Size(45, 13);
+            this.vLabel.TabIndex = 32;
+            this.vLabel.Text = "Version ";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(919, 464);
+            this.Controls.Add(this.vLabel);
             this.Controls.Add(this.iconPic1);
+            this.Controls.Add(this.screenshot4);
+            this.Controls.Add(this.screenshot3);
+            this.Controls.Add(this.screenshot2);
+            this.Controls.Add(this.screenshot1);
             this.Controls.Add(this.forumLinkText);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.serverLinkText);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.screenshot4);
-            this.Controls.Add(this.screenshot3);
-            this.Controls.Add(this.screenshot2);
-            this.Controls.Add(this.screenshot1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -320,6 +331,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.directoryText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Episode Index Generator";
@@ -346,10 +358,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
-        private Icon screenshot1;
-        private Icon screenshot2;
-        private Icon screenshot3;
-        private Icon screenshot4;
+        
         public System.Windows.Forms.TextBox descText;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button8;
@@ -357,8 +366,15 @@
         private System.Windows.Forms.TextBox serverLinkText;
         private System.Windows.Forms.TextBox forumLinkText;
         private System.Windows.Forms.Label label4;
-        private IconPic iconPic1;
+        
         private System.Windows.Forms.ToolTip toolTip;
+        private IndexGenerator.Screenshot screenshot1;
+        private IndexGenerator.Screenshot screenshot2;
+        private IndexGenerator.Screenshot screenshot3;
+        private IndexGenerator.Screenshot screenshot4;
+        private IndexGenerator.IconPic iconPic1;
+        private System.Windows.Forms.Label vLabel;
+        
     }
 }
 
