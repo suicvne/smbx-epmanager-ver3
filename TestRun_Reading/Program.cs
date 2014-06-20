@@ -24,7 +24,7 @@ namespace IndexGenerator
 
             for (int i = 0; i < args.Length; i++)
             {
-                MessageBox.Show(args[0].ToString());
+                //MessageBox.Show(args[0].ToString());
                 if (Directory.Exists(args[0].ToString()))
                 {
                     Application.Run(new MainForm(args[0].ToString()));

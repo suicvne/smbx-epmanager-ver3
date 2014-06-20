@@ -39,11 +39,11 @@
             this.smbxPathTb = new MetroFramework.Controls.MetroTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkIndexGeneratorUpdates = new System.ComponentModel.BackgroundWorker();
-            this.indexGenVerLabel = new MetroFramework.Controls.MetroLabel();
-            this.availIgVerLabel = new MetroFramework.Controls.MetroLabel();
-            this.updateIndexGen = new MetroFramework.Controls.MetroButton();
             this.igVerCheckSpinner = new MetroFramework.Controls.MetroProgressSpinner();
+            this.updateIndexGen = new MetroFramework.Controls.MetroButton();
+            this.availIgVerLabel = new MetroFramework.Controls.MetroLabel();
+            this.indexGenVerLabel = new MetroFramework.Controls.MetroLabel();
+            this.checkIndexGeneratorUpdates = new System.ComponentModel.BackgroundWorker();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -232,9 +232,50 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Index Generator";
             // 
-            // checkIndexGeneratorUpdates
+            // igVerCheckSpinner
             // 
-            this.checkIndexGeneratorUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.checkIndexGeneratorUpdates_DoWork);
+            this.igVerCheckSpinner.CustomBackground = false;
+            this.igVerCheckSpinner.Location = new System.Drawing.Point(158, 108);
+            this.igVerCheckSpinner.Maximum = 100;
+            this.igVerCheckSpinner.Name = "igVerCheckSpinner";
+            this.igVerCheckSpinner.Size = new System.Drawing.Size(32, 32);
+            this.igVerCheckSpinner.Speed = 3F;
+            this.igVerCheckSpinner.Style = MetroFramework.MetroColorStyle.Green;
+            this.igVerCheckSpinner.StyleManager = null;
+            this.igVerCheckSpinner.TabIndex = 3;
+            this.igVerCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.igVerCheckSpinner.Visible = false;
+            // 
+            // updateIndexGen
+            // 
+            this.updateIndexGen.Enabled = false;
+            this.updateIndexGen.Highlight = false;
+            this.updateIndexGen.Location = new System.Drawing.Point(33, 100);
+            this.updateIndexGen.Name = "updateIndexGen";
+            this.updateIndexGen.Size = new System.Drawing.Size(119, 49);
+            this.updateIndexGen.Style = MetroFramework.MetroColorStyle.Blue;
+            this.updateIndexGen.StyleManager = null;
+            this.updateIndexGen.TabIndex = 2;
+            this.updateIndexGen.Text = "UPDATE";
+            this.updateIndexGen.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.updateIndexGen.Click += new System.EventHandler(this.updateIndexGen_Click);
+            // 
+            // availIgVerLabel
+            // 
+            this.availIgVerLabel.AutoSize = true;
+            this.availIgVerLabel.CustomBackground = false;
+            this.availIgVerLabel.CustomForeColor = false;
+            this.availIgVerLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
+            this.availIgVerLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
+            this.availIgVerLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
+            this.availIgVerLabel.Location = new System.Drawing.Point(33, 78);
+            this.availIgVerLabel.Name = "availIgVerLabel";
+            this.availIgVerLabel.Size = new System.Drawing.Size(0, 0);
+            this.availIgVerLabel.Style = MetroFramework.MetroColorStyle.Blue;
+            this.availIgVerLabel.StyleManager = null;
+            this.availIgVerLabel.TabIndex = 1;
+            this.availIgVerLabel.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.availIgVerLabel.UseStyleColors = false;
             // 
             // indexGenVerLabel
             // 
@@ -254,50 +295,9 @@
             this.indexGenVerLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.indexGenVerLabel.UseStyleColors = false;
             // 
-            // availIgVerLabel
+            // checkIndexGeneratorUpdates
             // 
-            this.availIgVerLabel.AutoSize = true;
-            this.availIgVerLabel.CustomBackground = false;
-            this.availIgVerLabel.CustomForeColor = false;
-            this.availIgVerLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.availIgVerLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.availIgVerLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.availIgVerLabel.Location = new System.Drawing.Point(33, 78);
-            this.availIgVerLabel.Name = "availIgVerLabel";
-            this.availIgVerLabel.Size = new System.Drawing.Size(0, 0);
-            this.availIgVerLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.availIgVerLabel.StyleManager = null;
-            this.availIgVerLabel.TabIndex = 1;
-            this.availIgVerLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.availIgVerLabel.UseStyleColors = false;
-            // 
-            // updateIndexGen
-            // 
-            this.updateIndexGen.Enabled = false;
-            this.updateIndexGen.Highlight = false;
-            this.updateIndexGen.Location = new System.Drawing.Point(33, 100);
-            this.updateIndexGen.Name = "updateIndexGen";
-            this.updateIndexGen.Size = new System.Drawing.Size(119, 49);
-            this.updateIndexGen.Style = MetroFramework.MetroColorStyle.Blue;
-            this.updateIndexGen.StyleManager = null;
-            this.updateIndexGen.TabIndex = 2;
-            this.updateIndexGen.Text = "UPDATE";
-            this.updateIndexGen.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.updateIndexGen.Click += new System.EventHandler(this.updateIndexGen_Click);
-            // 
-            // igVerCheckSpinner
-            // 
-            this.igVerCheckSpinner.CustomBackground = false;
-            this.igVerCheckSpinner.Location = new System.Drawing.Point(158, 108);
-            this.igVerCheckSpinner.Maximum = 100;
-            this.igVerCheckSpinner.Name = "igVerCheckSpinner";
-            this.igVerCheckSpinner.Size = new System.Drawing.Size(32, 32);
-            this.igVerCheckSpinner.Speed = 3F;
-            this.igVerCheckSpinner.Style = MetroFramework.MetroColorStyle.Green;
-            this.igVerCheckSpinner.StyleManager = null;
-            this.igVerCheckSpinner.TabIndex = 3;
-            this.igVerCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.igVerCheckSpinner.Visible = false;
+            this.checkIndexGeneratorUpdates.DoWork += new System.ComponentModel.DoWorkEventHandler(this.checkIndexGeneratorUpdates_DoWork);
             // 
             // SettingsForm
             // 

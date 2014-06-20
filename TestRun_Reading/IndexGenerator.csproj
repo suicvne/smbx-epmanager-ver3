@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -88,11 +89,23 @@
     <EmbeddedResource Include="EnterVersion.resx">
       <DependentUpon>EnterVersion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="IconPic.pt.resx">
+      <DependentUpon>IconPic.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IconPic.resx">
       <DependentUpon>IconPic.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.pt-BR.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.pt.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screenshot.pt.resx">
+      <DependentUpon>Screenshot.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TextEditor.resx">
       <DependentUpon>TextEditor.cs</DependentUpon>

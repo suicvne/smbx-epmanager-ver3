@@ -73,8 +73,9 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroProgressBar);
             this.Location = new System.Drawing.Point(0, 0);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "DeletingEpisode";
-            this.Opacity = 0.75D;
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;

@@ -26,6 +26,14 @@ namespace EpisodeManager_WinForms
         {
             BackgroundWorker worker = new BackgroundWorker();
             worker.DoWork += worker_DoWork;
+            worker.RunWorkerCompleted += worker_RunWorkerCompleted;
+            worker.RunWorkerAsync();
+
+        }
+
+        void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Close();
         }
 
         void worker_DoWork(object sender, DoWorkEventArgs e)
@@ -33,8 +41,8 @@ namespace EpisodeManager_WinForms
             try
             {
                 Directory.Delete(epToDelete, true);
-                MessageBox.Show("Episode deleted successfully!");
                 mf.populateListView();
+                MessageBox.Show("Episode deleted successfully!");
             }
             catch (Exception ex)
             {

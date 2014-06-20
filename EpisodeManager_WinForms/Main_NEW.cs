@@ -144,7 +144,9 @@ namespace EpisodeManager_WinForms
 
         private void deleteEpisode()
         {
-            
+            DeletingEpisode de = new DeletingEpisode(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName, this);
+            de.ShowDialog();
+            //MessageBox.Show("Episode deleted!");
         }
 
         private void episodesMoreButton_Click_1(object sender, EventArgs e)

@@ -53,103 +53,75 @@
             this.forumLinkText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.screenshot1 = new IndexGenerator.Screenshot();
-            this.screenshot2 = new IndexGenerator.Screenshot();
-            this.screenshot3 = new IndexGenerator.Screenshot();
-            this.screenshot4 = new IndexGenerator.Screenshot();
-            this.iconPic1 = new IndexGenerator.IconPic();
             this.vLabel = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.languageComboBox = new System.Windows.Forms.ComboBox();
+            this.selectLanguageButton = new System.Windows.Forms.Button();
+            this.iconPic1 = new IndexGenerator.IconPic();
+            this.screenshot4 = new IndexGenerator.Screenshot();
+            this.screenshot3 = new IndexGenerator.Screenshot();
+            this.screenshot2 = new IndexGenerator.Screenshot();
+            this.screenshot1 = new IndexGenerator.Screenshot();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // directoryText
             // 
-            this.directoryText.Location = new System.Drawing.Point(12, 28);
+            resources.ApplyResources(this.directoryText, "directoryText");
             this.directoryText.Name = "directoryText";
-            this.directoryText.Size = new System.Drawing.Size(393, 20);
-            this.directoryText.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(460, 28);
+            resources.ApplyResources(this.button1, "button1");
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 20);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "...";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 9);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Episode Directory";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 303);
+            resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Episode Name: ";
             // 
             // epNameText
             // 
-            this.epNameText.Location = new System.Drawing.Point(101, 300);
+            resources.ApplyResources(this.epNameText, "epNameText");
             this.epNameText.Name = "epNameText";
-            this.epNameText.Size = new System.Drawing.Size(389, 20);
-            this.epNameText.TabIndex = 5;
             // 
             // authorText
             // 
-            this.authorText.Location = new System.Drawing.Point(101, 326);
+            resources.ApplyResources(this.authorText, "authorText");
             this.authorText.Name = "authorText";
-            this.authorText.Size = new System.Drawing.Size(389, 20);
-            this.authorText.TabIndex = 7;
             // 
             // Author
             // 
-            this.Author.AutoSize = true;
-            this.Author.Location = new System.Drawing.Point(54, 329);
+            resources.ApplyResources(this.Author, "Author");
             this.Author.Name = "Author";
-            this.Author.Size = new System.Drawing.Size(41, 13);
-            this.Author.TabIndex = 6;
-            this.Author.Text = "Author:";
             // 
             // descText
             // 
-            this.descText.Location = new System.Drawing.Point(101, 352);
+            resources.ApplyResources(this.descText, "descText");
             this.descText.Name = "descText";
-            this.descText.Size = new System.Drawing.Size(389, 20);
-            this.descText.TabIndex = 9;
             // 
             // Description
             // 
-            this.Description.AutoSize = true;
-            this.Description.Location = new System.Drawing.Point(32, 355);
+            resources.ApplyResources(this.Description, "Description");
             this.Description.Name = "Description";
-            this.Description.Size = new System.Drawing.Size(63, 13);
-            this.Description.TabIndex = 8;
-            this.Description.Text = "Description:";
             // 
             // verText
             // 
-            this.verText.Location = new System.Drawing.Point(101, 378);
+            resources.ApplyResources(this.verText, "verText");
             this.verText.Name = "verText";
-            this.verText.Size = new System.Drawing.Size(389, 20);
-            this.verText.TabIndex = 11;
             // 
             // Version
             // 
-            this.Version.AutoSize = true;
-            this.Version.Location = new System.Drawing.Point(50, 381);
+            resources.ApplyResources(this.Version, "Version");
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(45, 13);
-            this.Version.TabIndex = 10;
-            this.Version.Text = "Version:";
             // 
             // listView1
             // 
@@ -158,151 +130,138 @@
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(12, 55);
-            this.listView1.MultiSelect = false;
+            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(478, 239);
-            this.listView1.TabIndex = 13;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "File Name";
-            this.columnHeader1.Width = 468;
+            resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(411, 28);
+            resources.ApplyResources(this.button4, "button4");
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(43, 20);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Load";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(497, 55);
+            resources.ApplyResources(this.button5, "button5");
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(129, 23);
-            this.button5.TabIndex = 16;
-            this.button5.Text = "Save Project";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(497, 84);
+            resources.ApplyResources(this.button6, "button6");
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(129, 23);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Load from Index";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(497, 28);
+            resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Refresh Dir";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(496, 114);
+            resources.ApplyResources(this.button8, "button8");
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(130, 22);
-            this.button8.TabIndex = 23;
-            this.button8.Text = "Generate Changes";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(50, 408);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 13);
-            this.label3.TabIndex = 24;
-            this.label3.Text = "Server: ";
             // 
             // serverLinkText
             // 
-            this.serverLinkText.Location = new System.Drawing.Point(101, 405);
+            resources.ApplyResources(this.serverLinkText, "serverLinkText");
             this.serverLinkText.Name = "serverLinkText";
-            this.serverLinkText.Size = new System.Drawing.Size(389, 20);
-            this.serverLinkText.TabIndex = 12;
-            this.toolTip.SetToolTip(this.serverLinkText, "Be sure to end the URL with a \"/\"!");
+            this.toolTip.SetToolTip(this.serverLinkText, resources.GetString("serverLinkText.ToolTip"));
             // 
             // forumLinkText
             // 
-            this.forumLinkText.Location = new System.Drawing.Point(101, 431);
+            resources.ApplyResources(this.forumLinkText, "forumLinkText");
             this.forumLinkText.Name = "forumLinkText";
-            this.forumLinkText.Size = new System.Drawing.Size(389, 20);
-            this.forumLinkText.TabIndex = 13;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 434);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
-            this.label4.TabIndex = 26;
-            this.label4.Text = "Forum URL: ";
-            // 
-            // screenshot1
-            // 
-            this.screenshot1.Location = new System.Drawing.Point(632, 28);
-            this.screenshot1.Name = "screenshot1";
-            this.screenshot1.Size = new System.Drawing.Size(134, 186);
-            this.screenshot1.TabIndex = 27;
-            // 
-            // screenshot2
-            // 
-            this.screenshot2.Location = new System.Drawing.Point(772, 28);
-            this.screenshot2.Name = "screenshot2";
-            this.screenshot2.Size = new System.Drawing.Size(134, 186);
-            this.screenshot2.TabIndex = 28;
-            // 
-            // screenshot3
-            // 
-            this.screenshot3.Location = new System.Drawing.Point(632, 220);
-            this.screenshot3.Name = "screenshot3";
-            this.screenshot3.Size = new System.Drawing.Size(134, 186);
-            this.screenshot3.TabIndex = 29;
-            // 
-            // screenshot4
-            // 
-            this.screenshot4.Location = new System.Drawing.Point(772, 220);
-            this.screenshot4.Name = "screenshot4";
-            this.screenshot4.Size = new System.Drawing.Size(134, 186);
-            this.screenshot4.TabIndex = 30;
-            // 
-            // iconPic1
-            // 
-            this.iconPic1.Location = new System.Drawing.Point(497, 177);
-            this.iconPic1.Name = "iconPic1";
-            this.iconPic1.Size = new System.Drawing.Size(129, 182);
-            this.iconPic1.TabIndex = 31;
             // 
             // vLabel
             // 
-            this.vLabel.AutoSize = true;
-            this.vLabel.Location = new System.Drawing.Point(497, 439);
+            resources.ApplyResources(this.vLabel, "vLabel");
             this.vLabel.Name = "vLabel";
-            this.vLabel.Size = new System.Drawing.Size(45, 13);
-            this.vLabel.TabIndex = 32;
-            this.vLabel.Text = "Version ";
+            // 
+            // button3
+            // 
+            resources.ApplyResources(this.button3, "button3");
+            this.button3.Name = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.selectLanguageButton);
+            this.groupBox1.Controls.Add(this.languageComboBox);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // languageComboBox
+            // 
+            this.languageComboBox.FormattingEnabled = true;
+            this.languageComboBox.Items.AddRange(new object[] {
+            resources.GetString("languageComboBox.Items"),
+            resources.GetString("languageComboBox.Items1")});
+            resources.ApplyResources(this.languageComboBox, "languageComboBox");
+            this.languageComboBox.Name = "languageComboBox";
+            // 
+            // selectLanguageButton
+            // 
+            resources.ApplyResources(this.selectLanguageButton, "selectLanguageButton");
+            this.selectLanguageButton.Name = "selectLanguageButton";
+            this.selectLanguageButton.UseVisualStyleBackColor = true;
+            this.selectLanguageButton.Click += new System.EventHandler(this.selectLanguageButton_Click);
+            // 
+            // iconPic1
+            // 
+            resources.ApplyResources(this.iconPic1, "iconPic1");
+            this.iconPic1.Name = "iconPic1";
+            // 
+            // screenshot4
+            // 
+            resources.ApplyResources(this.screenshot4, "screenshot4");
+            this.screenshot4.Name = "screenshot4";
+            // 
+            // screenshot3
+            // 
+            resources.ApplyResources(this.screenshot3, "screenshot3");
+            this.screenshot3.Name = "screenshot3";
+            // 
+            // screenshot2
+            // 
+            resources.ApplyResources(this.screenshot2, "screenshot2");
+            this.screenshot2.Name = "screenshot2";
+            // 
+            // screenshot1
+            // 
+            resources.ApplyResources(this.screenshot1, "screenshot1");
+            this.screenshot1.Name = "screenshot1";
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 464);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.vLabel);
             this.Controls.Add(this.iconPic1);
             this.Controls.Add(this.screenshot4);
@@ -331,11 +290,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.directoryText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.Text = "Episode Index Generator";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,6 +332,10 @@
         private IndexGenerator.Screenshot screenshot4;
         private IndexGenerator.IconPic iconPic1;
         private System.Windows.Forms.Label vLabel;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button selectLanguageButton;
+        private System.Windows.Forms.ComboBox languageComboBox;
         
     }
 }

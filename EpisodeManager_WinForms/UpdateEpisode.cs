@@ -75,6 +75,10 @@ namespace EpisodeManager_WinForms
                                     {
                                         lvi.SubItems.Add("WAV Music File");
                                     }
+                                    else if(item.Contains(".txt"))
+                                    {
+                                        lvi.SubItems.Add("NPC Code File");
+                                    }
                                     lvi.SubItems.Add("Queued");
                                     changesListView.Items.Add(lvi);
                                 }
@@ -159,12 +163,22 @@ namespace EpisodeManager_WinForms
             }
             using(StreamWriter sw = new StreamWriter(indexToRead))
             {
+                /*
                 sw.WriteLine("episodeName=" + epName);
                 sw.WriteLine("description=" + descrip);
                 sw.WriteLine(version);
                 sw.WriteLine("server=" + serv);
                 sw.WriteLine("forumUrl=" + forumUrl);
-                sw.WriteLine("filesList=" + fileList);
+                sw.WriteLine("filesList=" + fileList);*/
+                Computer myComputer = new Computer();
+                try
+                {
+                    myComputer.Network.DownloadFile(Main_NEW.serverUrl + "/project.index", indexToRead, null, null, true, 10000, true);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
 
         }
