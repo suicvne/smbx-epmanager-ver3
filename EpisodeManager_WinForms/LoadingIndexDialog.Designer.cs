@@ -1,6 +1,6 @@
 ﻿namespace EpisodeManager_WinForms
 {
-    partial class LoadingIndex
+    partial class LoadingIndexDialog
     {
         /// <summary>
         /// Required designer variable.
@@ -28,24 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroProgressBar = new MetroFramework.Controls.MetroProgressBar();
+            this.metroProgressBar1 = new MetroFramework.Controls.MetroProgressBar();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
-            // metroProgressBar
+            // metroProgressBar1
             // 
-            this.metroProgressBar.FontSize = MetroFramework.MetroProgressBarSize.Medium;
-            this.metroProgressBar.FontWeight = MetroFramework.MetroProgressBarWeight.Light;
-            this.metroProgressBar.HideProgressText = true;
-            this.metroProgressBar.Location = new System.Drawing.Point(23, 106);
-            this.metroProgressBar.Name = "metroProgressBar";
-            this.metroProgressBar.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.metroProgressBar.Size = new System.Drawing.Size(432, 35);
-            this.metroProgressBar.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroProgressBar.StyleManager = null;
-            this.metroProgressBar.TabIndex = 0;
-            this.metroProgressBar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroProgressBar.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroProgressBar1.FontSize = MetroFramework.MetroProgressBarSize.Medium;
+            this.metroProgressBar1.FontWeight = MetroFramework.MetroProgressBarWeight.Light;
+            this.metroProgressBar1.HideProgressText = true;
+            this.metroProgressBar1.Location = new System.Drawing.Point(23, 114);
+            this.metroProgressBar1.Name = "metroProgressBar1";
+            this.metroProgressBar1.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.metroProgressBar1.Size = new System.Drawing.Size(512, 36);
+            this.metroProgressBar1.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroProgressBar1.StyleManager = null;
+            this.metroProgressBar1.TabIndex = 1;
+            this.metroProgressBar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroProgressBar1.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // metroLabel1
             // 
@@ -55,36 +55,34 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Medium;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Light;
             this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
-            this.metroLabel1.Location = new System.Drawing.Point(23, 84);
+            this.metroLabel1.Location = new System.Drawing.Point(23, 89);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(150, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroLabel1.StyleManager = null;
-            this.metroLabel1.TabIndex = 1;
-            this.metroLabel1.Text = "Deleting \'\'...";
+            this.metroLabel1.TabIndex = 2;
+            this.metroLabel1.Text = "Loading Episode Index...";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroLabel1.UseStyleColors = false;
             // 
-            // DeletingEpisode
+            // LoadingIndexDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 159);
+            this.ClientSize = new System.Drawing.Size(558, 166);
             this.Controls.Add(this.metroLabel1);
-            this.Controls.Add(this.metroProgressBar);
+            this.Controls.Add(this.metroProgressBar1);
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DeletingEpisode";
+            this.Name = "LoadingIndexDialog";
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Text = "Deleting...";
-            this.Load += new System.EventHandler(this.DeletingEpisode_Load);
+            this.Text = "Loading";
+            this.Load += new System.EventHandler(this.LoadingIndexDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -92,7 +90,7 @@
 
         #endregion
 
-        private MetroFramework.Controls.MetroProgressBar metroProgressBar;
+        private MetroFramework.Controls.MetroProgressBar metroProgressBar1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

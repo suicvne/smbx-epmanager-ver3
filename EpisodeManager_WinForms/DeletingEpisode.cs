@@ -12,10 +12,10 @@ using System.Windows.Forms;
 
 namespace EpisodeManager_WinForms
 {
-    public partial class DeletingEpisode : MetroForm
+    public partial class LoadingIndex : MetroForm
     {
         string epToDelete;
-        public DeletingEpisode(string episodeToDelete, Main_NEW _Main_NEW)
+        public LoadingIndex(string episodeToDelete, Main_NEW _Main_NEW)
         {
             mf = _Main_NEW;
             epToDelete = episodeToDelete;

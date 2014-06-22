@@ -78,6 +78,12 @@
       <DependentUpon>DeletingEpisode.cs</DependentUpon>
     </Compile>
     <Compile Include="IndexReaderClass.cs" />
+    <Compile Include="LoadingIndexDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadingIndexDialog.Designer.cs">
+      <DependentUpon>LoadingIndexDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocalEpisodesControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeletingEpisode.resx">
       <DependentUpon>DeletingEpisode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadingIndexDialog.resx">
+      <DependentUpon>LoadingIndexDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LocalEpisodesControl.resx">
       <DependentUpon>LocalEpisodesControl.cs</DependentUpon>
@@ -215,6 +224,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon_SMB3_ICO.ico" />
+    <None Include="Resources\loading.GIF" />
     <None Include="Resources\more-32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

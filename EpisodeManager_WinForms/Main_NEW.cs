@@ -144,7 +144,7 @@ namespace EpisodeManager_WinForms
 
         private void deleteEpisode()
         {
-            DeletingEpisode de = new DeletingEpisode(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName, this);
+            LoadingIndex de = new LoadingIndex(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName, this);
             de.ShowDialog();
             //MessageBox.Show("Episode deleted!");
         }
@@ -152,6 +152,16 @@ namespace EpisodeManager_WinForms
         private void episodesMoreButton_Click_1(object sender, EventArgs e)
         {
             episodeContext.Show(episodesMoreButton, new System.Drawing.Point(0, 40));
+        }
+
+        private void metroTabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //0 for main, 1 for available
+        }
+
+        private void AvailableEpisodes_Load(object sender, EventArgs e)
+        {
+              
         }
 
     }
