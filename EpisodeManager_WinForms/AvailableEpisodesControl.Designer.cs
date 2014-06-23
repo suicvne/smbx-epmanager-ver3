@@ -32,6 +32,7 @@
             this.availEpisodesListview = new System.Windows.Forms.ListView();
             this.Episode = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.loadingInfoBgWorker = new System.ComponentModel.BackgroundWorker();
             this.authorName = new MetroFramework.Controls.MetroLabel();
             this.episodeNameLabel = new MetroFramework.Controls.MetroLabel();
@@ -57,10 +58,11 @@
             this.availEpisodesListview.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.availEpisodesListview.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.Episode,
-            this.columnHeader1});
+            this.columnHeader1,
+            this.columnHeader2});
             this.availEpisodesListview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.availEpisodesListview.FullRowSelect = true;
-            this.availEpisodesListview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.availEpisodesListview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.availEpisodesListview.Location = new System.Drawing.Point(0, 0);
             this.availEpisodesListview.MultiSelect = false;
             this.availEpisodesListview.Name = "availEpisodesListview";
@@ -78,6 +80,10 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Server";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Download URL";
             // 
             // authorName
             // 
@@ -226,6 +232,7 @@
             this.installEpisodeButton.TabIndex = 29;
             this.installEpisodeButton.Text = "INSTALL EPISODE";
             this.installEpisodeButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.installEpisodeButton.Click += new System.EventHandler(this.installEpisodeButton_Click);
             // 
             // AvailableEpisodesControl
             // 
@@ -261,9 +268,6 @@
         #endregion
 
         public System.Windows.Forms.ListView availEpisodesListview;
-        private System.Windows.Forms.ColumnHeader Episode;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.ComponentModel.BackgroundWorker loadingInfoBgWorker;
         public System.Windows.Forms.PictureBox iconPicture;
         public System.Windows.Forms.PictureBox iconFrame;
         public System.Windows.Forms.PictureBox ss4;
@@ -273,7 +277,11 @@
         public MetroFramework.Controls.MetroLabel authorName;
         public MetroFramework.Controls.MetroLabel episodeNameLabel;
         public System.Windows.Forms.TextBox descLabel;
-        private MetroFramework.Controls.MetroProgressBar loadingProg;
-        private MetroFramework.Controls.MetroButton installEpisodeButton;
+        public System.Windows.Forms.ColumnHeader Episode;
+        public System.Windows.Forms.ColumnHeader columnHeader1;
+        public System.ComponentModel.BackgroundWorker loadingInfoBgWorker;
+        public MetroFramework.Controls.MetroProgressBar loadingProg;
+        public MetroFramework.Controls.MetroButton installEpisodeButton;
+        public System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

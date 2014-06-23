@@ -17,7 +17,10 @@ namespace EpisodeManager_WinForms
 {
     public partial class AvailableEpisodesControl : UserControl
     {
-        public static string availServerUrl;
+        public static string avail_ServerUrl;
+        public static string avail_DownloadUrl;
+
+        public Main_NEW parentForm { get; set; }
 
         public AvailableEpisodesControl()
         {
@@ -26,28 +29,44 @@ namespace EpisodeManager_WinForms
 
         private void AvailableEpisodesControl_Load(object sender, EventArgs e)
         {
-            Control.CheckForIllegalCrossThreadCalls = false;
-            ss1.Image = null;
-            ss2.Image = null;
-            ss3.Image = null;
-            ss4.Image = null;
-            iconFrame.Visible = false;
-            iconPicture.Visible = false;
-            episodeNameLabel.Text = "";
-            authorName.Text = "";
-            descLabel.Text = "";
-            this.BackColor = Color.White;
+            if(this.DesignMode != true)
+            {
+                loadTimeEvents();
+            }
+           
+        }
+
+        private void loadTimeEvents()
+        {
             try
             {
-                XDocument docu = XDocument.Load("https://dl.dropboxusercontent.com/u/62304851/index.xml");
-                queryData(docu);
+                Control.CheckForIllegalCrossThreadCalls = false;
+                ss1.Image = null;
+                ss2.Image = null;
+                ss3.Image = null;
+                ss4.Image = null;
+                iconFrame.Visible = false;
+                iconPicture.Visible = false;
+                episodeNameLabel.Text = "";
+                authorName.Text = "";
+                descLabel.Text = "";
+                this.BackColor = Color.White;
+                try
+                {
+                    XDocument docu = XDocument.Load("https://dl.dropboxusercontent.com/u/62304851/index.xml");
+                    queryData(docu);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                availEpisodesListview.Items[0].Selected = true;
+                availEpisodesListview.Focus();
             }
-            catch (Exception ex)
+            catch(Exception exc)
             {
-                MessageBox.Show(ex.Message);
+                Console.WriteLine(exc.Message);
             }
-            availEpisodesListview.Items[0].Selected = true;
-            availEpisodesListview.Focus();
         }
 
         public void queryData(XDocument doc)
@@ -56,7 +75,8 @@ namespace EpisodeManager_WinForms
                        select new
                        {
                            episodeName = item.Element("episodeName").Value,
-                           serverUrl = item.Element("serverUrl").Value
+                           serverUrl = item.Element("serverUrl").Value,
+                           downloadUrl = item.Element("downloadUrl").Value
                        };
             ListViewItem lvi;
             foreach (var info in data)
@@ -64,18 +84,20 @@ namespace EpisodeManager_WinForms
                 lvi = new ListViewItem();
                 lvi.Text = info.episodeName.ToString();
                 lvi.SubItems.Add(info.serverUrl.ToString());
+                lvi.SubItems.Add(info.downloadUrl.ToString());
                 availEpisodesListview.Items.Add(lvi);
             }
         }
 
         private void availEpisodesListview_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Main_NEW mf = new Main_NEW();
             if (availEpisodesListview.SelectedItems.Count == 1)
             {
-                availServerUrl = availEpisodesListview.SelectedItems[0].SubItems[1].Text;
+                avail_ServerUrl = availEpisodesListview.SelectedItems[0].SubItems[1].Text;
+                avail_DownloadUrl = availEpisodesListview.SelectedItems[0].SubItems[2].Text;
                 //MessageBox.Show(availServerUrl);
                 loadingProg.Visible = true;
-
                 
                 ThreadStart threadDelegate = new ThreadStart(loadInformation);
                 Thread t = new Thread(threadDelegate);
@@ -83,10 +105,27 @@ namespace EpisodeManager_WinForms
             }
             else
             {
-                availServerUrl = null;
+                avail_ServerUrl = null;
             }
-            
+            foreach (ListViewItem lvi in mf.localEpisodes.localEpisodesListview.Items)
+            {
+                compareStrings(lvi);
+            }
+                
         }
+
+        void compareStrings(ListViewItem lviii)
+        {
+            if (string.Equals(lviii.Text, availEpisodesListview.SelectedItems[0].Text, StringComparison.CurrentCultureIgnoreCase) == true)
+            {
+                installEpisodeButton.Text = "INSTALLED";
+            }
+            else
+            {
+                installEpisodeButton.Text = "INSTALL EPISODE";
+            }
+        }
+
         void loadInformation()
         {
             installEpisodeButton.Enabled = false;
@@ -110,13 +149,13 @@ namespace EpisodeManager_WinForms
             }
             try
             {
-                wc.DownloadFile(availServerUrl + "project.index", tempPath + @"\project.index");
+                wc.DownloadFile(avail_ServerUrl + "project.index", tempPath + @"\project.index");
 
-                ss1.ImageLocation = availServerUrl + "image1.png";
-                ss2.ImageLocation = availServerUrl + "image2.png";
-                ss3.ImageLocation = availServerUrl + "image3.png";
-                ss4.ImageLocation = availServerUrl + "image4.png";
-                iconPicture.ImageLocation = availServerUrl + "icon.png";
+                ss1.ImageLocation = avail_ServerUrl + "image1.png";
+                ss2.ImageLocation = avail_ServerUrl + "image2.png";
+                ss3.ImageLocation = avail_ServerUrl + "image3.png";
+                ss4.ImageLocation = avail_ServerUrl + "image4.png";
+                iconPicture.ImageLocation = avail_ServerUrl + "icon.png";
                 iconFrame.Visible = true;
                 iconPicture.Visible = true;
             }
@@ -130,7 +169,14 @@ namespace EpisodeManager_WinForms
             authorName.Text = "by " + inReader.authorName(tempPath + @"\project.index");
             descLabel.Text = inReader.descriptionText(tempPath + @"\project.index");
 
-            installEpisodeButton.Enabled = true;
+            if (installEpisodeButton.Text == "INSTALLED")
+            {
+                installEpisodeButton.Enabled = false;
+            }
+            else
+            { 
+                installEpisodeButton.Enabled = true; 
+            }
             loadingProg.Visible = false;
             availEpisodesListview.Enabled = true;
         }
@@ -173,6 +219,12 @@ namespace EpisodeManager_WinForms
                 sv.BackgroundImage = ss4.Image;
                 sv.ShowDialog();
             }
+        }
+
+        private void installEpisodeButton_Click(object sender, EventArgs e)
+        {
+            LoadingIndexDialog li = new LoadingIndexDialog(parentForm);
+            li.ShowDialog();
         }
     }
 }

@@ -168,7 +168,7 @@
             // createIndexButton
             // 
             this.createIndexButton.Highlight = false;
-            this.createIndexButton.Location = new System.Drawing.Point(377, 101);
+            this.createIndexButton.Location = new System.Drawing.Point(34, 99);
             this.createIndexButton.Name = "createIndexButton";
             this.createIndexButton.Size = new System.Drawing.Size(112, 43);
             this.createIndexButton.Style = MetroFramework.MetroColorStyle.Blue;

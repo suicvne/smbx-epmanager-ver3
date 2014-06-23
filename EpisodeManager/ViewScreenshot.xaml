@@ -1,5 +1,0 @@
-﻿<Window x:Name="ScreenshotView" x:Class="EpisodeManager.ViewScreenshot"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Height="600" Width="800" WindowStyle="None" Visibility="Visible" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
-    <Image x:Name="ss_view" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="800" MouseLeftButtonDown="ss_view_MouseLeftButtonDown"/>
-</Window>

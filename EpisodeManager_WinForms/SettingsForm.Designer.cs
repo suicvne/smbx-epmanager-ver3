@@ -313,7 +313,6 @@
             this.Resizable = false;
             this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Settings";

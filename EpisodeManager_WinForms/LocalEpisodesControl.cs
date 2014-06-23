@@ -123,7 +123,24 @@ namespace EpisodeManager_WinForms
         {
             try
             {
-                Process.Start(Main_NEW.forumLink);
+                string url = Main_NEW.forumLink;
+                if(url.Contains("supermariobrosx") != true)
+                {
+                    DialogResult dr = MessageBox.Show("The topic isn't an official forum topic!\nWould you like to continue anyway (we take no responsibility for anything bad)", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    switch(dr)
+                    {
+                        case(DialogResult.Yes):
+                            Process.Start(url);
+                            break;
+                        case(DialogResult.No):
+                            break;
+                    }
+                }
+                else
+                {
+                    Process.Start(url);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -195,6 +212,14 @@ namespace EpisodeManager_WinForms
                 descLabel.Text = inReader.descriptionText(indexToLoad);
                 Main_NEW.forumLink = inReader.forumLink(indexToLoad);
                 Main_NEW.serverUrl = inReader.serverUrl(indexToLoad);
+                if (inReader.forumLink(indexToLoad) != "")
+                {
+                    forumTopicButton.Enabled = true;
+                }
+                else
+                {
+                    forumTopicButton.Enabled = false;
+                }
                 try
                 {
                     Image art = Image.FromFile(pathToLoad + @"\image1.png");
@@ -254,8 +279,10 @@ namespace EpisodeManager_WinForms
                     serverStatusOffPb.Visible = true;
                 }*/
                 createIndexButton.Enabled = true;
-                forumTopicButton.Enabled = true;
+                
                 createIndexButton.Visible = false;
+                forumTopicButton.Visible = true;
+                updateButton.Visible = true;
                 if (inReader.versionNumber(indexToLoad) != null)
                 {
                     versionLabel.Visible = true;

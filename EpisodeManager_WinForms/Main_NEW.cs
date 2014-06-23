@@ -4,9 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,6 +37,10 @@ namespace EpisodeManager_WinForms
 
         private void Main_NEW_Load(object sender, EventArgs e)
         {
+            this.Size = new System.Drawing.Size(771, 586);
+            
+            this.AvailableEpisodes.parentForm = this;
+
             metroTabControl1.SelectedTab = metroTabPage1;
             
             Control.CheckForIllegalCrossThreadCalls = false;
@@ -58,9 +65,82 @@ namespace EpisodeManager_WinForms
             //settingspanelloading
             populateListView();
             localEpisodes.localEpisodesListview.Focus();
-            localEpisodes.localEpisodesListview.Items[0].Selected = true;
+            try
+            {
+                localEpisodes.localEpisodesListview.Items[0].Selected = true;
+            }
+            catch
+            {
+
+            }
+            checkForUpdates();
         }
         
+        private void checkForUpdates()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            string newestVersion;
+            string currentVersion = fileVersionInfo.ProductVersion;
+            int newestVersionInt;
+            int currentVersionInt;
+
+
+            Console.WriteLine("Checking for updates..");
+            Console.WriteLine("Current version: " + currentVersion);
+
+            try
+            {
+                WebClient wc = new WebClient();
+                wc.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/version.txt", Environment.CurrentDirectory + @"\temp\version.txt");
+                using(StreamReader sr = new StreamReader(Environment.CurrentDirectory + @"\temp\version.txt"))
+                {
+                    newestVersion = sr.ReadLine();
+                    Console.WriteLine("Newest Version: " + newestVersion);
+                    newestVersionInt = verStringToInt(newestVersion);
+                    currentVersionInt = verStringToInt(currentVersion);
+                    if(newestVersionInt > currentVersionInt)
+                    {
+                        /*
+                         * WebClient wc = new WebClient();
+            updateConfirmLabel.Text = "Downloading updater..";
+            wc.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/SMBXUpdater_Latest.exe", Environment.CurrentDirectory + @"\Updater.exe");
+            Process.Start(Environment.CurrentDirectory + @"\Updater.exe");
+            Environment.Exit(0);*/
+                        DialogResult dr = new Changelog(currentVersion, newestVersion).ShowDialog();
+                        switch(dr)
+                        {
+                            case DialogResult.Yes:
+                                //WebClient wcs = new WebClient();
+                                wc.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/SMBXUpdater_Latest.exe", Environment.CurrentDirectory + @"\Updater.exe");
+                                Process.Start(Environment.CurrentDirectory + @"\Updater.exe");
+                                Environment.Exit(0);
+                                break;
+                            case DialogResult.No:
+                                break;
+                        }
+                        updatedLabel.Text = "Update Available: " + newestVersion;
+                    }
+                    else
+                    {
+                        Console.WriteLine("No updates available!");
+                        updatedLabel.Text = "Up to date: " + currentVersion;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
+        private int verStringToInt(string ver)
+        {
+            string[] split = ver.Split(new Char[] { '.' });
+            string together = split[0].ToString() + split[1].ToString() + split[2].ToString() + split[3].ToString();
+            return int.Parse(together);
+        }
+
         private void writeInitialIni()
         {
             if (File.Exists(Environment.CurrentDirectory + @"\settings.ini") != true)
@@ -105,15 +185,15 @@ namespace EpisodeManager_WinForms
                     "Error!", 
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
-                
-
+            }
+            if(localEpisodes.localEpisodesListview.Items.Count == 0)
+            {
+                localEpisodes.episodeNameLabel.Text = "No episodes found! :(";
+                localEpisodes.authorName.Text = "Install some manually or by going to the 'Available Episodes' tab";
+                localEpisodes.forumTopicButton.Visible = false;
+                localEpisodes.updateButton.Visible = false;
             }
             
-        }
-
-        private void localEpisodes_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void settingsButton_Click(object sender, EventArgs e)
@@ -151,7 +231,40 @@ namespace EpisodeManager_WinForms
 
         private void episodesMoreButton_Click_1(object sender, EventArgs e)
         {
+            string dir = Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName;
+            if(File.Exists(dir + @"\save1.sav"))
+            {
+                deleteSave1Menu.Enabled = true;
+            }
+            if (File.Exists(dir + @"\save2.sav"))
+            {
+                deleteSave2Menu.Enabled = true;
+            }
+            if (File.Exists(dir + @"\save3.sav"))
+            {
+                deleteSave3Menu.Enabled = true;
+            }
+            if(File.Exists(smbxExeLoc))
+            {
+                launchSMBXMenu.Enabled = true;
+                launchSMBXMenu.Text = "Launch SMBX " + GetFileVersionInfo(smbxExeLoc);
+            }
             episodeContext.Show(episodesMoreButton, new System.Drawing.Point(0, 40));
+        }
+
+        public string GetFileVersionInfo(string fileName)
+        {
+            if (File.Exists(fileName))
+            {
+                var versionInfo = FileVersionInfo.GetVersionInfo(fileName);
+                string version = versionInfo.ProductVersion;
+
+                return version;
+            }
+            else
+            {
+                return "null";
+            }
         }
 
         private void metroTabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -161,8 +274,51 @@ namespace EpisodeManager_WinForms
 
         private void AvailableEpisodes_Load(object sender, EventArgs e)
         {
-              
+
         }
 
+        private void menuItem3_Click(object sender, EventArgs e)
+        {
+            populateListView();
+        }
+
+        private void deleteSave1Menu_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you'd like to delete 'save1.sav' for episode '" + Main_NEW.selectedFolderName + "'?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch(dr)
+            {
+                case DialogResult.Yes:
+                    File.Delete(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName + @"\save1.sav");
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+        }
+
+        private void deleteSave2Menu_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you'd like to delete 'save2.sav' for episode '" + Main_NEW.selectedFolderName + "'?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    File.Delete(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName + @"\save2.sav");
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+        }
+
+        private void deleteSave3Menu_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you'd like to delete 'save3.sav' for episode '" + Main_NEW.selectedFolderName + "'?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    File.Delete(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName + @"\save3.sav");
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+        }
     }
 }
