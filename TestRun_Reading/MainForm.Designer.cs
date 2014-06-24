@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.directoryText = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.changeDirButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.epNameText = new System.Windows.Forms.TextBox();
@@ -43,21 +43,28 @@
             this.Version = new System.Windows.Forms.Label();
             this.listView1 = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.loadDirButton = new System.Windows.Forms.Button();
+            this.refreshDirButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.serverLinkText = new System.Windows.Forms.TextBox();
             this.forumLinkText = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.vLabel = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.checkAllButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.languageComboBox = new System.Windows.Forms.ComboBox();
             this.selectLanguageButton = new System.Windows.Forms.Button();
+            this.languageComboBox = new System.Windows.Forms.ComboBox();
+            this.mainMenu1 = new System.Windows.Forms.MainMenu(this.components);
+            this.menuItem1 = new System.Windows.Forms.MenuItem();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.menuItem7 = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.uncheckAllButton = new System.Windows.Forms.Button();
             this.iconPic1 = new IndexGenerator.IconPic();
             this.screenshot4 = new IndexGenerator.Screenshot();
             this.screenshot3 = new IndexGenerator.Screenshot();
@@ -71,12 +78,12 @@
             resources.ApplyResources(this.directoryText, "directoryText");
             this.directoryText.Name = "directoryText";
             // 
-            // button1
+            // changeDirButton
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.changeDirButton, "changeDirButton");
+            this.changeDirButton.Name = "changeDirButton";
+            this.changeDirButton.UseVisualStyleBackColor = true;
+            this.changeDirButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -126,11 +133,11 @@
             // listView1
             // 
             this.listView1.AllowColumnReorder = true;
+            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.CheckBoxes = true;
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.listView1.FullRowSelect = true;
-            resources.ApplyResources(this.listView1, "listView1");
             this.listView1.Name = "listView1";
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -139,40 +146,19 @@
             // 
             resources.ApplyResources(this.columnHeader1, "columnHeader1");
             // 
-            // button4
+            // loadDirButton
             // 
-            resources.ApplyResources(this.button4, "button4");
-            this.button4.Name = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            resources.ApplyResources(this.loadDirButton, "loadDirButton");
+            this.loadDirButton.Name = "loadDirButton";
+            this.loadDirButton.UseVisualStyleBackColor = true;
+            this.loadDirButton.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // refreshDirButton
             // 
-            resources.ApplyResources(this.button5, "button5");
-            this.button5.Name = "button5";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button6
-            // 
-            resources.ApplyResources(this.button6, "button6");
-            this.button6.Name = "button6";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button8
-            // 
-            resources.ApplyResources(this.button8, "button8");
-            this.button8.Name = "button8";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            resources.ApplyResources(this.refreshDirButton, "refreshDirButton");
+            this.refreshDirButton.Name = "refreshDirButton";
+            this.refreshDirButton.UseVisualStyleBackColor = true;
+            this.refreshDirButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // label3
             // 
@@ -200,20 +186,27 @@
             resources.ApplyResources(this.vLabel, "vLabel");
             this.vLabel.Name = "vLabel";
             // 
-            // button3
+            // checkAllButton
             // 
-            resources.ApplyResources(this.button3, "button3");
-            this.button3.Name = "button3";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            resources.ApplyResources(this.checkAllButton, "checkAllButton");
+            this.checkAllButton.Name = "checkAllButton";
+            this.checkAllButton.UseVisualStyleBackColor = true;
+            this.checkAllButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.selectLanguageButton);
             this.groupBox1.Controls.Add(this.languageComboBox);
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
+            // 
+            // selectLanguageButton
+            // 
+            resources.ApplyResources(this.selectLanguageButton, "selectLanguageButton");
+            this.selectLanguageButton.Name = "selectLanguageButton";
+            this.selectLanguageButton.UseVisualStyleBackColor = true;
+            this.selectLanguageButton.Click += new System.EventHandler(this.selectLanguageButton_Click);
             // 
             // languageComboBox
             // 
@@ -224,12 +217,72 @@
             resources.ApplyResources(this.languageComboBox, "languageComboBox");
             this.languageComboBox.Name = "languageComboBox";
             // 
-            // selectLanguageButton
+            // mainMenu1
             // 
-            resources.ApplyResources(this.selectLanguageButton, "selectLanguageButton");
-            this.selectLanguageButton.Name = "selectLanguageButton";
-            this.selectLanguageButton.UseVisualStyleBackColor = true;
-            this.selectLanguageButton.Click += new System.EventHandler(this.selectLanguageButton_Click);
+            this.mainMenu1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem1,
+            this.menuItem6});
+            // 
+            // menuItem1
+            // 
+            this.menuItem1.Index = 0;
+            this.menuItem1.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem2,
+            this.menuItem3,
+            this.menuItem4,
+            this.menuItem5});
+            resources.ApplyResources(this.menuItem1, "menuItem1");
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Index = 0;
+            resources.ApplyResources(this.menuItem2, "menuItem2");
+            this.menuItem2.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Index = 1;
+            resources.ApplyResources(this.menuItem3, "menuItem3");
+            this.menuItem3.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 2;
+            resources.ApplyResources(this.menuItem4, "menuItem4");
+            this.menuItem4.Click += new System.EventHandler(this.button8_Click);
+            // 
+            // menuItem5
+            // 
+            this.menuItem5.Index = 3;
+            resources.ApplyResources(this.menuItem5, "menuItem5");
+            this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
+            // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 1;
+            this.menuItem6.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem7,
+            this.menuItem8});
+            resources.ApplyResources(this.menuItem6, "menuItem6");
+            // 
+            // menuItem7
+            // 
+            this.menuItem7.Index = 0;
+            resources.ApplyResources(this.menuItem7, "menuItem7");
+            this.menuItem7.Click += new System.EventHandler(this.menuItem7_Click);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 1;
+            resources.ApplyResources(this.menuItem8, "menuItem8");
+            this.menuItem8.Click += new System.EventHandler(this.menuItem8_Click);
+            // 
+            // uncheckAllButton
+            // 
+            resources.ApplyResources(this.uncheckAllButton, "uncheckAllButton");
+            this.uncheckAllButton.Name = "uncheckAllButton";
+            this.uncheckAllButton.UseVisualStyleBackColor = true;
+            this.uncheckAllButton.Click += new System.EventHandler(this.uncheckAllButton_Click);
             // 
             // iconPic1
             // 
@@ -260,8 +313,10 @@
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.uncheckAllButton);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.checkAllButton);
             this.Controls.Add(this.vLabel);
             this.Controls.Add(this.iconPic1);
             this.Controls.Add(this.screenshot4);
@@ -272,12 +327,9 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.serverLinkText);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.loadDirButton);
             this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.refreshDirButton);
             this.Controls.Add(this.verText);
             this.Controls.Add(this.Version);
             this.Controls.Add(this.descText);
@@ -287,10 +339,9 @@
             this.Controls.Add(this.epNameText);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.changeDirButton);
             this.Controls.Add(this.directoryText);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
+            this.Menu = this.mainMenu1;
             this.Name = "MainForm";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -302,7 +353,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox directoryText;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button changeDirButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox epNameText;
@@ -313,13 +364,10 @@
         private System.Windows.Forms.Label Version;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button loadDirButton;
         
         public System.Windows.Forms.TextBox descText;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button refreshDirButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox serverLinkText;
         private System.Windows.Forms.TextBox forumLinkText;
@@ -332,10 +380,20 @@
         private IndexGenerator.Screenshot screenshot4;
         private IndexGenerator.IconPic iconPic1;
         private System.Windows.Forms.Label vLabel;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button checkAllButton;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button selectLanguageButton;
         private System.Windows.Forms.ComboBox languageComboBox;
+        private System.Windows.Forms.MainMenu mainMenu1;
+        private System.Windows.Forms.MenuItem menuItem1;
+        private System.Windows.Forms.MenuItem menuItem2;
+        private System.Windows.Forms.MenuItem menuItem3;
+        private System.Windows.Forms.MenuItem menuItem4;
+        private System.Windows.Forms.MenuItem menuItem5;
+        private System.Windows.Forms.MenuItem menuItem6;
+        private System.Windows.Forms.MenuItem menuItem7;
+        private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.Button uncheckAllButton;
         
     }
 }

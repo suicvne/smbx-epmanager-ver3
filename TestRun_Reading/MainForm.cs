@@ -48,16 +48,19 @@ namespace IndexGenerator
         //lvl
         public void addLvl(string path)
         {
-            ListViewItem lvi = new ListViewItem();
-            //lvl files first
-            DirectoryInfo dinfo = new DirectoryInfo(path);
-            FileInfo[] Files = dinfo.GetFiles("*.lvl", SearchOption.AllDirectories);
-            foreach (FileInfo file in Files)
-            {
-                lvi = new ListViewItem();
-                lvi.Text = file.Name.ToString();
-                listView1.Items.Add(lvi);
-            }
+            
+                ListViewItem lvi = new ListViewItem();
+                //lvl files first
+                DirectoryInfo dinfo = new DirectoryInfo(path);
+                FileInfo[] Files = dinfo.GetFiles("*.lvl", SearchOption.AllDirectories);
+                foreach (FileInfo file in Files)
+                {
+                    lvi = new ListViewItem();
+                    lvi.Text = file.Name.ToString();
+                    listView1.Items.Add(lvi);
+                }
+            
+            
         }
         //wld
         public void addWld(string path)
@@ -448,23 +451,32 @@ namespace IndexGenerator
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach(ListViewItem lvi in listView1.Items)
+            if(directoryText.Text == "")
             {
-                lvi.Remove();
+                MessageBox.Show("No directory has been input!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            try
+            else
             {
-                addLvl(directoryText.Text);
-                addWld(directoryText.Text);
-                addGif(directoryText.Text);
-                addTxt(directoryText.Text);
-                addMp3(directoryText.Text);
+                if(Directory.Exists(directoryText.Text))
+                {
+                    foreach (ListViewItem lvi in listView1.Items)
+                    {
+                        lvi.Remove();
+                    }
+                    try
+                    {
+                        addLvl(directoryText.Text);
+                        addWld(directoryText.Text);
+                        addGif(directoryText.Text);
+                        addTxt(directoryText.Text);
+                        addMp3(directoryText.Text);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
-            catch (DirectoryNotFoundException ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -727,6 +739,38 @@ namespace IndexGenerator
             ctrl.ResumeLayout(false);
         }
         #endregion
+
+        private void menuItem5_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Are you sure you want to quit?", "Index Generator", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            switch(dr)
+            {
+                case DialogResult.Yes:
+                    Environment.Exit(0);
+                    break;
+                case DialogResult.No:
+                    break;
+            }
+        }
+
+        private void menuItem8_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://www.supermariobrosx.org/forums/viewtopic.php?f=69&t=455#p3247");
+        }
+
+        private void uncheckAllButton_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem lvi in listView1.Items)
+            {
+                lvi.Checked = false;
+            }
+        }
+
+        private void menuItem7_Click(object sender, EventArgs e)
+        {
+            AboutBox ab = new AboutBox();
+            ab.ShowDialog();
+        }
         /*
         private void button3_Click(object sender, EventArgs e)
         {
