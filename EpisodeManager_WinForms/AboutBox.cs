@@ -52,5 +52,10 @@ namespace EpisodeManager_WinForms
         {
             Process.Start("http://twitter.com/basedcoregod");
         }
+
+        private void metroTile6_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://smbxepmanager.tumblr.com/");
+        }
     }
 }

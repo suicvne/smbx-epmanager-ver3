@@ -9,6 +9,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -43,6 +44,22 @@ namespace EpisodeManager_WinForms
             
 
         }
+
+        string isValidPathName(string path)
+        {
+            string badChars = System.IO.Path.GetInvalidPathChars().ToString();
+            string regexSearch = ":";
+            Regex r = new Regex(string.Format("[{0}]", Regex.Escape(regexSearch)));
+
+            if (r.IsMatch(path))
+            {
+                path = r.Replace(path, "");
+                return path;
+            }
+
+            return path;
+        }
+
         void extractFile(string file)
         {
             this.Text = "Extracting..";
@@ -57,8 +74,11 @@ namespace EpisodeManager_WinForms
                 {
                     if(entry.Name != "")
                     {
+                        string folderName = isValidPathName(mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text);
+
                         string extractionPath = Main_NEW.smbxWorldsDir + @"\"
-                            + mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text;
+                            + folderName;
+
                             var split = entry.FullName.Split(new char[] { '/' }, 2);
                         if(entry.FullName.Contains("/") == true)
                         {

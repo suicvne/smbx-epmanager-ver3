@@ -32,7 +32,9 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.episodesMoreButton = new System.Windows.Forms.Button();
+            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl();
             this.aboutButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -45,8 +47,10 @@
             this.deleteSave3Menu = new System.Windows.Forms.MenuItem();
             this.launchSMBXMenu = new System.Windows.Forms.MenuItem();
             this.updatedLabel = new MetroFramework.Controls.MetroLabel();
-            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
-            this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl();
+            this.availEpisodesOverflow = new System.Windows.Forms.Button();
+            this.availContext = new System.Windows.Forms.ContextMenu();
+            this.menuItem4 = new System.Windows.Forms.MenuItem();
+            this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -63,7 +67,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Light;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(731, 506);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTabControl1.StyleManager = null;
@@ -112,8 +116,16 @@
             this.episodesMoreButton.UseVisualStyleBackColor = false;
             this.episodesMoreButton.Click += new System.EventHandler(this.episodesMoreButton_Click_1);
             // 
+            // localEpisodes
+            // 
+            this.localEpisodes.Location = new System.Drawing.Point(0, 0);
+            this.localEpisodes.Name = "localEpisodes";
+            this.localEpisodes.Size = new System.Drawing.Size(718, 466);
+            this.localEpisodes.TabIndex = 2;
+            // 
             // metroTabPage2
             // 
+            this.metroTabPage2.Controls.Add(this.availEpisodesOverflow);
             this.metroTabPage2.Controls.Add(this.AvailableEpisodes);
             this.metroTabPage2.CustomBackground = false;
             this.metroTabPage2.HorizontalScrollbar = false;
@@ -132,6 +144,16 @@
             this.metroTabPage2.VerticalScrollbarBarColor = true;
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
+            // 
+            // AvailableEpisodes
+            // 
+            this.AvailableEpisodes.BackColor = System.Drawing.SystemColors.Control;
+            this.AvailableEpisodes.Location = new System.Drawing.Point(0, 0);
+            this.AvailableEpisodes.Name = "AvailableEpisodes";
+            this.AvailableEpisodes.parentForm = null;
+            this.AvailableEpisodes.Size = new System.Drawing.Size(720, 472);
+            this.AvailableEpisodes.TabIndex = 2;
+            this.AvailableEpisodes.Load += new System.EventHandler(this.AvailableEpisodes_Load);
             // 
             // aboutButton
             // 
@@ -248,22 +270,39 @@
             this.updatedLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.updatedLabel.UseStyleColors = false;
             // 
-            // localEpisodes
+            // availEpisodesOverflow
             // 
-            this.localEpisodes.Location = new System.Drawing.Point(0, 0);
-            this.localEpisodes.Name = "localEpisodes";
-            this.localEpisodes.Size = new System.Drawing.Size(718, 466);
-            this.localEpisodes.TabIndex = 2;
+            this.availEpisodesOverflow.AutoSize = true;
+            this.availEpisodesOverflow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.availEpisodesOverflow.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
+            this.availEpisodesOverflow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.availEpisodesOverflow.FlatAppearance.BorderSize = 0;
+            this.availEpisodesOverflow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.availEpisodesOverflow.ForeColor = System.Drawing.Color.White;
+            this.availEpisodesOverflow.Location = new System.Drawing.Point(672, 3);
+            this.availEpisodesOverflow.Name = "availEpisodesOverflow";
+            this.availEpisodesOverflow.Size = new System.Drawing.Size(41, 37);
+            this.availEpisodesOverflow.TabIndex = 6;
+            this.availEpisodesOverflow.UseVisualStyleBackColor = false;
+            this.availEpisodesOverflow.Click += new System.EventHandler(this.availEpisodesOverflow_Click);
             // 
-            // AvailableEpisodes
+            // availContext
             // 
-            this.AvailableEpisodes.BackColor = System.Drawing.SystemColors.Control;
-            this.AvailableEpisodes.Location = new System.Drawing.Point(0, 0);
-            this.AvailableEpisodes.Name = "AvailableEpisodes";
-            this.AvailableEpisodes.parentForm = null;
-            this.AvailableEpisodes.Size = new System.Drawing.Size(720, 472);
-            this.AvailableEpisodes.TabIndex = 2;
-            this.AvailableEpisodes.Load += new System.EventHandler(this.AvailableEpisodes_Load);
+            this.availContext.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
+            this.menuItem4,
+            this.menuItem5});
+            // 
+            // menuItem4
+            // 
+            this.menuItem4.Index = 0;
+            this.menuItem4.Text = "Refresh Index";
+            this.menuItem4.Click += new System.EventHandler(this.menuItem4_Click);
+            // 
+            // menuItem5
+            // 
+            this.menuItem5.Index = 1;
+            this.menuItem5.Text = "Download Index + Image Files Only";
+            this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
             // 
             // Main_NEW
             // 
@@ -289,6 +328,7 @@
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -315,6 +355,10 @@
         private System.Windows.Forms.MenuItem deleteSave3Menu;
         private System.Windows.Forms.MenuItem launchSMBXMenu;
         private MetroFramework.Controls.MetroLabel updatedLabel;
+        private System.Windows.Forms.Button availEpisodesOverflow;
+        private System.Windows.Forms.ContextMenu availContext;
+        private System.Windows.Forms.MenuItem menuItem4;
+        private System.Windows.Forms.MenuItem menuItem5;
         
         
         

@@ -62,7 +62,7 @@
             this.columnHeader2});
             this.availEpisodesListview.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.availEpisodesListview.FullRowSelect = true;
-            this.availEpisodesListview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.availEpisodesListview.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.availEpisodesListview.Location = new System.Drawing.Point(0, 0);
             this.availEpisodesListview.MultiSelect = false;
             this.availEpisodesListview.Name = "availEpisodesListview";
@@ -75,15 +75,17 @@
             // Episode
             // 
             this.Episode.Text = "Episode";
-            this.Episode.Width = 159;
+            this.Episode.Width = 219;
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Server";
+            this.columnHeader1.Width = 0;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "Download URL";
+            this.columnHeader2.Width = 0;
             // 
             // authorName
             // 

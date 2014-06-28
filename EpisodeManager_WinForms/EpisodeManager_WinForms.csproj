@@ -129,6 +129,12 @@
     <Compile Include="UpdateEpisode.Designer.cs">
       <DependentUpon>UpdateEpisode.cs</DependentUpon>
     </Compile>
+    <Compile Include="WhichEpisode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhichEpisode.Designer.cs">
+      <DependentUpon>WhichEpisode.cs</DependentUpon>
+    </Compile>
     <Compile Include="ZipReading.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -172,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateEpisode.resx">
       <DependentUpon>UpdateEpisode.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhichEpisode.resx">
+      <DependentUpon>WhichEpisode.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Fody.targets" />
     <None Include="packages.config" />
@@ -236,6 +245,7 @@
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Icon_SMB3_ICO.ico" />
+    <None Include="Resources\tumblr-32.png" />
     <None Include="Resources\loading.GIF" />
     <None Include="Resources\more-32.png" />
   </ItemGroup>

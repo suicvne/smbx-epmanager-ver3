@@ -74,6 +74,20 @@ namespace EpisodeManager_WinForms
 
             }
             checkForUpdates();
+            //
+            try
+            {
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp");
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp\Server");
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp\Server\Cache");
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp\ZipReading");
+                Directory.CreateDirectory(Environment.CurrentDirectory + @"\temp\Update");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            //
         }
         
         private void checkForUpdates()
@@ -274,7 +288,7 @@ namespace EpisodeManager_WinForms
 
         private void AvailableEpisodes_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void menuItem3_Click(object sender, EventArgs e)
@@ -319,6 +333,26 @@ namespace EpisodeManager_WinForms
                 case DialogResult.No:
                     break;
             }
+        }
+
+        private void availEpisodesOverflow_Click(object sender, EventArgs e)
+        {
+            availContext.Show(availEpisodesOverflow, new System.Drawing.Point(0, 40));
+        }
+
+        private void menuItem4_Click(object sender, EventArgs e)
+        {
+            if (sender == AvailableEpisodes)
+            {
+                AvailableEpisodesControl av = this.AvailableEpisodes;
+                av.loadTimeEvents();
+            }
+        }
+
+        private void menuItem5_Click(object sender, EventArgs e)
+        {
+            WhichEpisode we = new WhichEpisode(localEpisodes, AvailableEpisodes.availEpisodesListview.SelectedItems[0].SubItems[1].Text);
+            we.ShowDialog();
         }
     }
 }
