@@ -28,6 +28,7 @@ namespace EpisodeManager_WinForms
         public static string smbxDir;
         public static string smbxExeLoc;
         public static string smbxWorldsDir;
+        static bool validData;
 
 
         public Main_NEW()
@@ -353,6 +354,68 @@ namespace EpisodeManager_WinForms
         {
             WhichEpisode we = new WhichEpisode(localEpisodes, AvailableEpisodes.availEpisodesListview.SelectedItems[0].SubItems[1].Text);
             we.ShowDialog();
+        }
+
+        private void Main_NEW_DragEnter(object sender, DragEventArgs e)
+        {
+            string filename;
+            validData = GetFilename(out filename, e);
+            if(validData)
+            {
+                //EpisodeManager_WinForms.Properties.Resources.DropZipOverlay
+                e.Effect = DragDropEffects.Link;
+                //771, 586
+                overlayPb.Visible = true;
+                overlayPb.Location = new System.Drawing.Point(0, 0);
+                overlayPb.Size = new System.Drawing.Size(771, 586);
+            }
+            else
+            {
+                overlayPb.Visible = false;
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        void drawImage(PaintEventArgs e)
+        {
+            Bitmap overlay = new Bitmap(EpisodeManager_WinForms.Properties.Resources.DropZipOverlay);
+            e.Graphics.DrawImage(overlay, 0, 0);
+        }
+
+        protected bool GetFilename(out string filename, DragEventArgs e)
+        {
+            bool ret = false;
+            filename = String.Empty;
+
+            if ((e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
+            {
+                Array data = ((IDataObject)e.Data).GetData("FileName") as Array;
+                if (data != null)
+                {
+                    if ((data.Length == 1) && (data.GetValue(0) is String))
+                    {
+                        filename = ((string[])data)[0];
+                        string ext = Path.GetExtension(filename).ToLower();
+                        if ((ext == ".zip"))
+                        {
+                            ret = true;
+                        }
+                    }
+                }
+            }
+            return ret;
+        }
+
+        private void Main_NEW_DragDrop(object sender, DragEventArgs e)
+        {
+            overlayPb.Visible = false;
+            string filename;
+            validData = GetFilename(out filename, e);
+            if(validData)
+            {
+                //read
+                MessageBox.Show(filename);
+            }
         }
     }
 }

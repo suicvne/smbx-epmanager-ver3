@@ -120,4 +120,13 @@
   <metadata name="checkIndexGeneratorUpdates.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="aboutCacheLabel.Text" xml:space="preserve">
+    <value>About the Cache
+
+I'm currently working on a system to cache available episodes
+resources. Such as the index, icon, pictures, etc. All of these are stored
+in your installation directory and will help speed up the acquisition of
+such resources. Clearing/deleting the cache folder will cause it to be
+recreated/resources redownloaded.</value>
+  </data>
 </root>

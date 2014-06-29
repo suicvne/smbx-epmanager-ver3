@@ -245,6 +245,7 @@
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Icon_SMB3_ICO.ico" />
+    <None Include="Resources\DropZipOverlay.png" />
     <None Include="Resources\tumblr-32.png" />
     <None Include="Resources\loading.GIF" />
     <None Include="Resources\more-32.png" />

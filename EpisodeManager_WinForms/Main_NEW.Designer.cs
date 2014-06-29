@@ -34,10 +34,8 @@
             this.episodesMoreButton = new System.Windows.Forms.Button();
             this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.availEpisodesOverflow = new System.Windows.Forms.Button();
             this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl();
-            this.aboutButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.episodeContext = new System.Windows.Forms.ContextMenu();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
@@ -47,14 +45,18 @@
             this.deleteSave3Menu = new System.Windows.Forms.MenuItem();
             this.launchSMBXMenu = new System.Windows.Forms.MenuItem();
             this.updatedLabel = new MetroFramework.Controls.MetroLabel();
-            this.availEpisodesOverflow = new System.Windows.Forms.Button();
             this.availContext = new System.Windows.Forms.ContextMenu();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.aboutButton = new System.Windows.Forms.Button();
+            this.settingsButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.overlayPb = new System.Windows.Forms.PictureBox();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overlayPb)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -67,7 +69,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Light;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(731, 506);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTabControl1.StyleManager = null;
@@ -145,6 +147,22 @@
             this.metroTabPage2.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.VerticalScrollbarSize = 10;
             // 
+            // availEpisodesOverflow
+            // 
+            this.availEpisodesOverflow.AutoSize = true;
+            this.availEpisodesOverflow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.availEpisodesOverflow.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
+            this.availEpisodesOverflow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.availEpisodesOverflow.FlatAppearance.BorderSize = 0;
+            this.availEpisodesOverflow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.availEpisodesOverflow.ForeColor = System.Drawing.Color.White;
+            this.availEpisodesOverflow.Location = new System.Drawing.Point(672, 3);
+            this.availEpisodesOverflow.Name = "availEpisodesOverflow";
+            this.availEpisodesOverflow.Size = new System.Drawing.Size(41, 37);
+            this.availEpisodesOverflow.TabIndex = 6;
+            this.availEpisodesOverflow.UseVisualStyleBackColor = false;
+            this.availEpisodesOverflow.Click += new System.EventHandler(this.availEpisodesOverflow_Click);
+            // 
             // AvailableEpisodes
             // 
             this.AvailableEpisodes.BackColor = System.Drawing.SystemColors.Control;
@@ -154,46 +172,6 @@
             this.AvailableEpisodes.Size = new System.Drawing.Size(720, 472);
             this.AvailableEpisodes.TabIndex = 2;
             this.AvailableEpisodes.Load += new System.EventHandler(this.AvailableEpisodes_Load);
-            // 
-            // aboutButton
-            // 
-            this.aboutButton.AutoSize = true;
-            this.aboutButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.info_32;
-            this.aboutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.aboutButton.FlatAppearance.BorderSize = 0;
-            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.aboutButton.ForeColor = System.Drawing.Color.Transparent;
-            this.aboutButton.Location = new System.Drawing.Point(659, 46);
-            this.aboutButton.Name = "aboutButton";
-            this.aboutButton.Size = new System.Drawing.Size(41, 43);
-            this.aboutButton.TabIndex = 4;
-            this.aboutButton.UseVisualStyleBackColor = true;
-            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.AutoSize = true;
-            this.settingsButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.settings_filled_32;
-            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.settingsButton.FlatAppearance.BorderSize = 0;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.ForeColor = System.Drawing.Color.Transparent;
-            this.settingsButton.Location = new System.Drawing.Point(700, 46);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(41, 43);
-            this.settingsButton.TabIndex = 3;
-            this.settingsButton.UseVisualStyleBackColor = true;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.Icon_Gray;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(274, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
             // 
             // episodeContext
             // 
@@ -270,22 +248,6 @@
             this.updatedLabel.Theme = MetroFramework.MetroThemeStyle.Light;
             this.updatedLabel.UseStyleColors = false;
             // 
-            // availEpisodesOverflow
-            // 
-            this.availEpisodesOverflow.AutoSize = true;
-            this.availEpisodesOverflow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.availEpisodesOverflow.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
-            this.availEpisodesOverflow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.availEpisodesOverflow.FlatAppearance.BorderSize = 0;
-            this.availEpisodesOverflow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.availEpisodesOverflow.ForeColor = System.Drawing.Color.White;
-            this.availEpisodesOverflow.Location = new System.Drawing.Point(672, 3);
-            this.availEpisodesOverflow.Name = "availEpisodesOverflow";
-            this.availEpisodesOverflow.Size = new System.Drawing.Size(41, 37);
-            this.availEpisodesOverflow.TabIndex = 6;
-            this.availEpisodesOverflow.UseVisualStyleBackColor = false;
-            this.availEpisodesOverflow.Click += new System.EventHandler(this.availEpisodesOverflow_Click);
-            // 
             // availContext
             // 
             this.availContext.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
@@ -304,11 +266,63 @@
             this.menuItem5.Text = "Download Index + Image Files Only";
             this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
             // 
+            // aboutButton
+            // 
+            this.aboutButton.AutoSize = true;
+            this.aboutButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.info_32;
+            this.aboutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.aboutButton.FlatAppearance.BorderSize = 0;
+            this.aboutButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.aboutButton.ForeColor = System.Drawing.Color.Transparent;
+            this.aboutButton.Location = new System.Drawing.Point(659, 46);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(41, 43);
+            this.aboutButton.TabIndex = 4;
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
+            // settingsButton
+            // 
+            this.settingsButton.AutoSize = true;
+            this.settingsButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.settings_filled_32;
+            this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.settingsButton.FlatAppearance.BorderSize = 0;
+            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settingsButton.ForeColor = System.Drawing.Color.Transparent;
+            this.settingsButton.Location = new System.Drawing.Point(700, 46);
+            this.settingsButton.Name = "settingsButton";
+            this.settingsButton.Size = new System.Drawing.Size(41, 43);
+            this.settingsButton.TabIndex = 3;
+            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.Icon_Gray;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox1.Location = new System.Drawing.Point(274, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // overlayPb
+            // 
+            this.overlayPb.BackColor = System.Drawing.Color.Transparent;
+            this.overlayPb.Image = global::EpisodeManager_WinForms.Properties.Resources.DropZipOverlay;
+            this.overlayPb.Location = new System.Drawing.Point(553, 39);
+            this.overlayPb.Name = "overlayPb";
+            this.overlayPb.Size = new System.Drawing.Size(100, 50);
+            this.overlayPb.TabIndex = 6;
+            this.overlayPb.TabStop = false;
+            this.overlayPb.Visible = false;
+            // 
             // Main_NEW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 586);
+            this.Controls.Add(this.overlayPb);
             this.Controls.Add(this.updatedLabel);
             this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.settingsButton);
@@ -324,12 +338,15 @@
             this.Style = MetroFramework.MetroColorStyle.Purple;
             this.Text = "SMBX Episode Manager";
             this.Load += new System.EventHandler(this.Main_NEW_Load);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Main_NEW_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Main_NEW_DragEnter);
             this.metroTabControl1.ResumeLayout(false);
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overlayPb)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,6 +376,7 @@
         private System.Windows.Forms.ContextMenu availContext;
         private System.Windows.Forms.MenuItem menuItem4;
         private System.Windows.Forms.MenuItem menuItem5;
+        private System.Windows.Forms.PictureBox overlayPb;
         
         
         

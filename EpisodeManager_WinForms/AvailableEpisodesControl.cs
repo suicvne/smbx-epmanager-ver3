@@ -21,6 +21,7 @@ namespace EpisodeManager_WinForms
     {
         public static string avail_ServerUrl;
         public static string avail_DownloadUrl;
+        static bool runRedownload;
 
         public Main_NEW parentForm { get; set; }
 
@@ -151,21 +152,26 @@ namespace EpisodeManager_WinForms
                 Directory.CreateDirectory(tempPath);
             }
 
-            compareCaches();
-
             //
-            try{ss1.Image = Image.FromFile(tempPath + @"\image1.png");}
-            catch {ss1.Image = null;}
-            try { ss2.Image = Image.FromFile(tempPath + @"\image2.png"); }
-            catch { ss2.Image = null; }
-            try { ss3.Image = Image.FromFile(tempPath + @"\image3.png"); }
-            catch { ss3.Image = null; }
-            try { ss4.Image = Image.FromFile(tempPath + @"\image4.png"); }
-            catch { ss4.Image = null; }
-            try { iconPicture.Image = Image.FromFile(tempPath + @"\icon.png"); iconFrame.Visible = true; iconPicture.Visible = true; }
-            catch { iconPicture.Image = null; iconFrame.Visible = false; iconPicture.Visible = false; }
+            loadImages(tempPath);
+            loadingProg.Visible = false;
+            availEpisodesListview.Enabled = true;
             //
-
+            if(runRedownload == true)
+            {
+                loadingProg.Visible = true;
+                availEpisodesListview.Enabled = false;
+                compareCaches();
+                loadImages(tempPath);
+                loadingProg.Visible = false;
+                availEpisodesListview.Enabled = true;
+            }
+            else
+            {
+                compareCaches();
+            }
+            
+            //
             IndexReaderClass inReader = new IndexReaderClass();
             try
             {
@@ -185,8 +191,21 @@ namespace EpisodeManager_WinForms
             {
                 installEpisodeButton.Enabled = true;
             }
-            loadingProg.Visible = false;
-            availEpisodesListview.Enabled = true;
+            
+        }
+
+        private void loadImages(string tempPath)
+        {
+            try { ss1.Image = Image.FromFile(tempPath + @"\image1.png"); }
+            catch { ss1.Image = null; runRedownload = true; }
+            try { ss2.Image = Image.FromFile(tempPath + @"\image2.png"); }
+            catch { ss2.Image = null; runRedownload = true; }
+            try { ss3.Image = Image.FromFile(tempPath + @"\image3.png"); }
+            catch { ss3.Image = null; runRedownload = true; }
+            try { ss4.Image = Image.FromFile(tempPath + @"\image4.png"); }
+            catch { ss4.Image = null; runRedownload = true; }
+            try { iconPicture.Image = Image.FromFile(tempPath + @"\icon.png"); iconFrame.Visible = true; iconPicture.Visible = true; }
+            catch { iconPicture.Image = null; iconFrame.Visible = false; iconPicture.Visible = false; runRedownload = true; }
         }
 
         void compareCaches()
@@ -207,6 +226,10 @@ namespace EpisodeManager_WinForms
                     File.Delete(tempPath + @"\project.index");
                     File.Move(tempPath + @"\_project.index", tempPath + @"\project.index");
                 }
+                else
+                {
+                    File.Delete(tempPath + @"\_project.index");
+                }
             }
             if (File.Exists(tempPath + @"\image1.png") != true)
             {
@@ -219,7 +242,10 @@ namespace EpisodeManager_WinForms
                 {
                     File.Delete(tempPath + @"\image1.png");
                     File.Move(tempPath + @"\_image1.png", tempPath + @"\image1.png");
-                    
+                }
+                else
+                {
+                    File.Delete(tempPath + @"\_image1.png");
                 }
             }
             if (File.Exists(tempPath + @"\image2.png") != true)
@@ -234,7 +260,10 @@ namespace EpisodeManager_WinForms
                 {
                     File.Delete(tempPath + @"\image2.png");
                     File.Move(tempPath + @"\_image2.png", tempPath + @"\image2.png");
-                    
+                }
+                else
+                {
+                    File.Delete(tempPath + @"\_image2.png");
                 }
             }
             if (File.Exists(tempPath + @"\image3.png") != true)
@@ -248,8 +277,11 @@ namespace EpisodeManager_WinForms
                 if (compareIndex(tempPath + @"\image3.png", tempPath + @"\_image3.png") == false)
                 {
                     File.Delete(tempPath + @"\image3.png");
-                    File.Move(tempPath + @"\_image3.png", tempPath + @"\image3.png");
-                   
+                    File.Move(tempPath + @"\_image3.png", tempPath + @"\image3.png");  
+                }
+                else
+                {
+                    File.Delete(tempPath + @"\_image3.png");
                 }
             }
             if (File.Exists(tempPath + @"\image4.png") != true)
@@ -265,7 +297,10 @@ namespace EpisodeManager_WinForms
                     File.Delete(tempPath + @"\image4.png");
                     File.Move(tempPath + @"\_image4.png", tempPath + @"\image4.png");
                 }
-                
+                else
+                {
+                    File.Delete(tempPath + @"\_image4.png");
+                }
             }
             if (File.Exists(tempPath + @"\icon.png") != true)
             {
@@ -279,7 +314,10 @@ namespace EpisodeManager_WinForms
                 {
                     File.Delete(tempPath + @"\icon.png");
                     File.Move(tempPath + @"\_icon.png", tempPath + @"\icon.png");
-                    
+                }
+                else
+                {
+                    File.Delete(tempPath + @"\_icon.png");
                 }
             }
         }

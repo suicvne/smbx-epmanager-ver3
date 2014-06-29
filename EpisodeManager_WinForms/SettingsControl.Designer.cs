@@ -205,6 +205,7 @@
             this.Controls.Add(this.smbxPathTb);
             this.Name = "SettingsControl";
             this.Size = new System.Drawing.Size(628, 167);
+            this.Load += new System.EventHandler(this.SettingsControl_Load_1);
             this.ResumeLayout(false);
             this.PerformLayout();
 

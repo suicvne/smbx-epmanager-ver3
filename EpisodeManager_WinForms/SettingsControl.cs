@@ -90,5 +90,10 @@ namespace EpisodeManager_WinForms
             //populateListView
             MessageBox.Show("Settings saved sucessfully!");
         }
+
+        private void SettingsControl_Load_1(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+        }
     }
 }

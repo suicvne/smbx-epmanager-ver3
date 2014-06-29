@@ -12,6 +12,7 @@ using Setting;
 using System.Diagnostics;
 using System.IO;
 using Microsoft.VisualBasic.Devices;
+using System.Threading;
 
 namespace EpisodeManager_WinForms
 {
@@ -22,7 +23,7 @@ namespace EpisodeManager_WinForms
             mf = _Main_NEW;
             InitializeComponent();
         }
-
+        static bool hasIndexGenerator;
         Main_NEW mf { get; set; }
         private void writeInitialIni()
         {
@@ -51,6 +52,11 @@ namespace EpisodeManager_WinForms
         }
         private void SettingsForm_Load(object sender, EventArgs e)
         {
+            indexGeneratorGb.BackColor = Color.White;
+            smbxSettingsGb.BackColor = Color.White;
+            cacheManagerGb.BackColor = Color.White;
+            metroTabControl1.SelectedIndex = 0;
+
             try
             {
                 checkIndexGeneratorVersion();
@@ -74,6 +80,34 @@ namespace EpisodeManager_WinForms
                 smbxversionlabel.Text = "Couldn't find SMBX!";
                 smbxversionlabel.ForeColor = Color.DarkRed;
             }
+            //
+            totalCacheLabel.Text = "Calculating...";
+            Thread t = new Thread(calculateSize);
+            t.Start();
+            
+        }
+
+        private void calculateSize()
+        {
+            DirectoryInfo dInfo = new DirectoryInfo(Environment.CurrentDirectory + @"\temp\Server\Cache");
+            long sizeOfDir = DirectorySize(dInfo, true);
+            totalCacheLabel.Text = string.Format("Total Cache Size: {0}MB", Math.Round(((double)sizeOfDir) / (1024 * 1024), 2));
+        }
+
+        static long DirectorySize(DirectoryInfo dInfo, bool includeSubDir)
+        {
+            // Enumerate all the files
+            long totalSize = dInfo.EnumerateFiles()
+                         .Sum(file => file.Length);
+
+            // If Subdirectories are to be included
+            if (includeSubDir)
+            {
+                // Enumerate all sub-directories
+                totalSize += dInfo.EnumerateDirectories()
+                         .Sum(dir => DirectorySize(dir, true));
+            }
+            return totalSize;
         }
 
         private void checkIndexGeneratorVersion()
@@ -92,8 +126,10 @@ namespace EpisodeManager_WinForms
             {
                 indexGenVerLabel.Text = "Index Generator not available!";
                 availIgVerLabel.Text = "";
-                updateIndexGen.Enabled = false;
+                updateIndexGen.Text = "DOWNLOAD NOW";
+                updateIndexGen.Enabled = true;
                 igVerCheckSpinner.Visible = false;
+                hasIndexGenerator = false;
             }
 
         }
@@ -201,14 +237,17 @@ namespace EpisodeManager_WinForms
                 {
                     //update 
                     updateIndexGen.Enabled = true;
-                    updateIndexGen.Text = "Update Available!";
+                    updateIndexGen.Text = "UPDATE AVAILABLE!";
                     igVerCheckSpinner.Visible = false;
+                    hasIndexGenerator = true;
+                    metroTabPage2.Text = "Index Generator +1";
                 }
                 else
                 {
                     updateIndexGen.Enabled = false;
                     updateIndexGen.Text = "No update needed! :)";
                     igVerCheckSpinner.Visible = false;
+                    hasIndexGenerator = true;
                 }
 
             //}
@@ -236,6 +275,61 @@ namespace EpisodeManager_WinForms
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void clearCacheButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Directory.Delete(Environment.CurrentDirectory + @"\temp\Server\Cache", true);
+                MessageBox.Show("Cache deleted successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Error when trying to delete cache!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void showCacheButton_Click(object sender, EventArgs e)
+        {
+            PopulateTree(Environment.CurrentDirectory + @"\temp\Server\Cache", cacheTreeView.Nodes.Add("Cache"));
+            showCacheButton.Enabled = false;
+        }
+
+        public void PopulateTree(string dir, TreeNode node)
+        {
+            DirectoryInfo directory = new DirectoryInfo(dir);
+            foreach (DirectoryInfo d in directory.GetDirectories())
+            {
+                TreeNode t = new TreeNode(d.Name);
+                PopulateTree(d.FullName, t);
+                node.Nodes.Add(t);
+            }
+            foreach (FileInfo f in directory.GetFiles())
+            {
+                if(f.ToString().Contains(".db") != true)
+                {
+                    TreeNode t = new TreeNode(f.Name);
+                    if(t.Text.Contains(".png"))
+                    {
+                        t.ToolTipText = "PNG Image";
+                    }
+                    else if(t.Text.Contains(".index"))
+                    {
+                        t.ToolTipText = "Index File";
+                    }
+                    else
+                    {
+                        t.ToolTipText = "Other";
+                    }
+                    node.Nodes.Add(t);
+                }
             }
         }
     
