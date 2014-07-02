@@ -52,6 +52,10 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overlayPb = new System.Windows.Forms.PictureBox();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.launchIgAvail_menu = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.launchIgEpisodes_menu = new System.Windows.Forms.MenuItem();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -179,7 +183,9 @@
             this.menuItem1,
             this.menuItem3,
             this.menuItem2,
-            this.launchSMBXMenu});
+            this.launchSMBXMenu,
+            this.menuItem8,
+            this.launchIgEpisodes_menu});
             // 
             // menuItem1
             // 
@@ -229,6 +235,7 @@
             this.launchSMBXMenu.Enabled = false;
             this.launchSMBXMenu.Index = 3;
             this.launchSMBXMenu.Text = "Launch SMBX";
+            this.launchSMBXMenu.Click += new System.EventHandler(this.launchSMBXMenu_Click);
             // 
             // updatedLabel
             // 
@@ -252,7 +259,9 @@
             // 
             this.availContext.MenuItems.AddRange(new System.Windows.Forms.MenuItem[] {
             this.menuItem4,
-            this.menuItem5});
+            this.menuItem5,
+            this.menuItem6,
+            this.launchIgAvail_menu});
             // 
             // menuItem4
             // 
@@ -317,6 +326,30 @@
             this.overlayPb.TabStop = false;
             this.overlayPb.Visible = false;
             // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 2;
+            this.menuItem6.Text = "---";
+            // 
+            // launchIgAvail_menu
+            // 
+            this.launchIgAvail_menu.Enabled = false;
+            this.launchIgAvail_menu.Index = 3;
+            this.launchIgAvail_menu.Text = "Launch Index Generator";
+            this.launchIgAvail_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
+            // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 4;
+            this.menuItem8.Text = "---";
+            // 
+            // launchIgEpisodes_menu
+            // 
+            this.launchIgEpisodes_menu.Enabled = false;
+            this.launchIgEpisodes_menu.Index = 5;
+            this.launchIgEpisodes_menu.Text = "Launch Index Generator";
+            this.launchIgEpisodes_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
+            // 
             // Main_NEW
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,6 +410,10 @@
         private System.Windows.Forms.MenuItem menuItem4;
         private System.Windows.Forms.MenuItem menuItem5;
         private System.Windows.Forms.PictureBox overlayPb;
+        private System.Windows.Forms.MenuItem menuItem8;
+        private System.Windows.Forms.MenuItem launchIgEpisodes_menu;
+        private System.Windows.Forms.MenuItem menuItem6;
+        private System.Windows.Forms.MenuItem launchIgAvail_menu;
         
         
         

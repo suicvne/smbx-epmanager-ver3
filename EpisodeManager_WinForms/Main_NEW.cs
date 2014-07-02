@@ -264,6 +264,20 @@ namespace EpisodeManager_WinForms
                 launchSMBXMenu.Enabled = true;
                 launchSMBXMenu.Text = "Launch SMBX " + GetFileVersionInfo(smbxExeLoc);
             }
+            if (File.Exists(Environment.CurrentDirectory + @"\IndexGenerator.exe"))
+            {
+                launchIgEpisodes_menu.Enabled = true;
+                launchIgAvail_menu.Enabled = true;
+                launchIgEpisodes_menu.Text = "Launch Index Generator " + GetFileVersionInfo(Environment.CurrentDirectory + @"\IndexGenerator.exe");
+                launchIgAvail_menu.Text = "Launch Index Generator " + GetFileVersionInfo(Environment.CurrentDirectory + @"\IndexGenerator.exe");
+            }
+            else
+            {
+                launchIgEpisodes_menu.Enabled = false;
+                launchIgAvail_menu.Enabled = false;
+                launchIgEpisodes_menu.Text = "Install Index Generator from Settings";
+                launchIgAvail_menu.Text = "Install Index Generator from Settings";
+            }
             episodeContext.Show(episodesMoreButton, new System.Drawing.Point(0, 40));
         }
 
@@ -415,6 +429,22 @@ namespace EpisodeManager_WinForms
             {
                 //read
                 MessageBox.Show(filename);
+            }
+        }
+
+        private void launchSMBXMenu_Click(object sender, EventArgs e)
+        {
+            if(File.Exists(smbxExeLoc))
+            {
+                Process.Start(smbxExeLoc);
+            }
+        }
+
+        private void launchIgEpisodes_menu_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Environment.CurrentDirectory + @"\IndexGenerator.exe"))
+            {
+                Process.Start(Environment.CurrentDirectory + @"\IndexGenerator.exe");
             }
         }
     }

@@ -65,49 +65,64 @@ namespace EpisodeManager_WinForms
             this.Text = "Extracting..";
             statusLabel.Text = "Extracting...";
             Stream zipFile = new FileStream(Environment.CurrentDirectory + @"\temp\Server\download.zip", FileMode.OpenOrCreate);
-            using(var archive = new ZipArchive(zipFile))
+            try
             {
-                metroProgressBar1.Value = 0;
-                metroProgressBar1.Maximum = archive.Entries.Count();
-                
-                foreach(ZipArchiveEntry entry in archive.Entries)
+                using (var archive = new ZipArchive(zipFile))
                 {
-                    if(entry.Name != "")
-                    {
-                        string folderName = isValidPathName(mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text);
+                    metroProgressBar1.Value = 0;
+                    metroProgressBar1.Maximum = archive.Entries.Count();
 
-                        string extractionPath = Main_NEW.smbxWorldsDir + @"\"
-                            + folderName;
+                    foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        if (entry.Name != "")
+                        {
+                            string folderName = isValidPathName(mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text);
+
+                            string extractionPath = Main_NEW.smbxWorldsDir + @"\"
+                                + folderName;
 
                             var split = entry.FullName.Split(new char[] { '/' }, 2);
-                        if(entry.FullName.Contains("/") == true)
-                        {
-                            
-                            try
+                            if (entry.FullName.Contains("/") == true)
                             {
-                                Directory.CreateDirectory(extractionPath + @"\" + split[0].ToString());
-                                //MessageBox.Show(extractionPath + @"\" + split[0].ToString() + @"\" + split[1].ToString());
-                                entry.ExtractToFile(extractionPath + @"\" + split[0].ToString() + @"\" + split[1].ToString());
-                            }
-                            catch
-                            {
-                                Console.WriteLine("Needed directory already exists (" + split[0].ToString() + ")");
-                            }
-                        }
-                        else
-                        {
-                            //MessageBox.Show(Path.Combine(extractionPath, entry.Name));
-                            entry.ExtractToFile(Path.Combine(extractionPath, entry.Name), true);
-                        }
 
-                        
-                        metroProgressBar1.Value += 1;
-                        Console.WriteLine("Extracted " + entry.FullName + " to " + Path.Combine(Main_NEW.smbxWorldsDir + @"\" + mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text));
+                                try
+                                {
+                                    Directory.CreateDirectory(extractionPath + @"\" + split[0].ToString());
+                                    //MessageBox.Show(extractionPath + @"\" + split[0].ToString() + @"\" + split[1].ToString());
+                                    entry.ExtractToFile(extractionPath + @"\" + split[0].ToString() + @"\" + split[1].ToString());
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Needed directory already exists (" + split[0].ToString() + ")");
+                                }
+                            }
+                            else
+                            {
+                                //MessageBox.Show(Path.Combine(extractionPath, entry.Name));
+                                entry.ExtractToFile(Path.Combine(extractionPath, entry.Name), true);
+                            }
+
+
+                            metroProgressBar1.Value += 1;
+                            Console.WriteLine("Extracted " + entry.FullName + " to " + Path.Combine(Main_NEW.smbxWorldsDir + @"\" + mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text));
+                        }
                     }
                 }
+                MessageBox.Show("Episode installed sucessfully!");
+                mf.populateListView();
+                this.Close();
             }
-            MessageBox.Show("Episode installed sucessfully!");
-            mf.populateListView();
+            catch(Exception ex)
+            {
+                if (ex.Message == "Central Directory corrupt.")
+                {
+                    MessageBox.Show("Episode is being uploaded; try again later!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while processing the zip file!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             this.Close();
         }
     }
