@@ -40,7 +40,7 @@ namespace EpisodeManager_WinForms
         {
             this.Size = new System.Drawing.Size(771, 586);
             
-            this.AvailableEpisodes.parentForm = this;
+            //this.AvailableEpisodes.parentForm = this;
 
             metroTabControl1.SelectedTab = metroTabPage1;
             

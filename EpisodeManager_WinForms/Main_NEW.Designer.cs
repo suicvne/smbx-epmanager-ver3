@@ -35,7 +35,7 @@
             this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.availEpisodesOverflow = new System.Windows.Forms.Button();
-            this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl();
+            this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl(this);
             this.episodeContext = new System.Windows.Forms.ContextMenu();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
@@ -172,7 +172,7 @@
             this.AvailableEpisodes.BackColor = System.Drawing.SystemColors.Control;
             this.AvailableEpisodes.Location = new System.Drawing.Point(0, 0);
             this.AvailableEpisodes.Name = "AvailableEpisodes";
-            this.AvailableEpisodes.parentForm = null;
+            //this.AvailableEpisodes.parentForm = null;
             this.AvailableEpisodes.Size = new System.Drawing.Size(720, 472);
             this.AvailableEpisodes.TabIndex = 2;
             this.AvailableEpisodes.Load += new System.EventHandler(this.AvailableEpisodes_Load);

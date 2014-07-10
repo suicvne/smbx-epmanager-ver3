@@ -289,6 +289,7 @@ namespace EpisodeManager_WinForms
             {
                 Directory.Delete(Environment.CurrentDirectory + @"\temp\Server\Cache", true);
                 MessageBox.Show("Cache deleted successfully", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                totalCacheLabel.Text = "0.00 MB";
             }
             catch(Exception ex)
             {
@@ -304,33 +305,41 @@ namespace EpisodeManager_WinForms
 
         public void PopulateTree(string dir, TreeNode node)
         {
-            DirectoryInfo directory = new DirectoryInfo(dir);
-            foreach (DirectoryInfo d in directory.GetDirectories())
+            try
             {
-                TreeNode t = new TreeNode(d.Name);
-                PopulateTree(d.FullName, t);
-                node.Nodes.Add(t);
-            }
-            foreach (FileInfo f in directory.GetFiles())
-            {
-                if(f.ToString().Contains(".db") != true)
+                DirectoryInfo directory = new DirectoryInfo(dir);
+                foreach (DirectoryInfo d in directory.GetDirectories())
                 {
-                    TreeNode t = new TreeNode(f.Name);
-                    if(t.Text.Contains(".png"))
-                    {
-                        t.ToolTipText = "PNG Image";
-                    }
-                    else if(t.Text.Contains(".index"))
-                    {
-                        t.ToolTipText = "Index File";
-                    }
-                    else
-                    {
-                        t.ToolTipText = "Other";
-                    }
+                    TreeNode t = new TreeNode(d.Name);
+                    PopulateTree(d.FullName, t);
                     node.Nodes.Add(t);
                 }
+                foreach (FileInfo f in directory.GetFiles())
+                {
+                    if (f.ToString().Contains(".db") != true)
+                    {
+                        TreeNode t = new TreeNode(f.Name);
+                        if (t.Text.Contains(".png"))
+                        {
+                            t.ToolTipText = "PNG Image";
+                        }
+                        else if (t.Text.Contains(".index"))
+                        {
+                            t.ToolTipText = "Index File";
+                        }
+                        else
+                        {
+                            t.ToolTipText = "Other";
+                        }
+                        node.Nodes.Add(t);
+                    }
+                }
             }
+            catch
+            {
+                MessageBox.Show("Cache doesn't exist!");
+            }
+            
         }
     
     }

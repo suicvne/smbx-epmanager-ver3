@@ -23,10 +23,11 @@ namespace EpisodeManager_WinForms
         public static string avail_DownloadUrl;
         static bool runRedownload;
 
-        public Main_NEW parentForm { get; set; }
+        public Main_NEW mf { get; set; }
 
-        public AvailableEpisodesControl()
+        public AvailableEpisodesControl(Main_NEW _Main_NEW)
         {
+            mf = _Main_NEW;
             InitializeComponent();
         }
 
@@ -94,7 +95,8 @@ namespace EpisodeManager_WinForms
 
         private void availEpisodesListview_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Main_NEW mf = new Main_NEW();
+            //Main_NEW mf = new Main_NEW();
+            //Main_NEW mf = parentForm();
             if (availEpisodesListview.SelectedItems.Count == 1)
             {
                 avail_ServerUrl = availEpisodesListview.SelectedItems[0].SubItems[1].Text;
@@ -110,22 +112,22 @@ namespace EpisodeManager_WinForms
             {
                 avail_ServerUrl = null;
             }
-            foreach (ListViewItem lvi in mf.localEpisodes.localEpisodesListview.Items)
-            {
-                compareStrings(lvi);
-            }
+            
                 
         }
 
         void compareStrings(ListViewItem lviii)
         {
-            if (string.Equals(lviii.Text, availEpisodesListview.SelectedItems[0].Text, StringComparison.CurrentCultureIgnoreCase) == true)
+            if (availEpisodesListview.SelectedItems.Count > 0)
             {
-                installEpisodeButton.Text = "INSTALLED";
-            }
-            else
-            {
-                installEpisodeButton.Text = "INSTALL EPISODE";
+                if (string.Equals(lviii.Text, availEpisodesListview.SelectedItems[0].Text, StringComparison.CurrentCultureIgnoreCase) == true)
+                {
+                    installEpisodeButton.Text = "INSTALLED";
+                }
+                else
+                {
+                    installEpisodeButton.Text = "INSTALL EPISODE";
+                }
             }
         }
 
@@ -183,6 +185,13 @@ namespace EpisodeManager_WinForms
             {
                 Console.WriteLine(ex.Message);
             }
+            foreach (ListViewItem lvi in mf.localEpisodes.localEpisodesListview.Items)
+            {
+                if(installEpisodeButton.Text != "INSTALLED")
+                {
+                    compareStrings(lvi);
+                }
+            }
             if (installEpisodeButton.Text == "INSTALLED")
             {
                 installEpisodeButton.Enabled = false;
@@ -196,15 +205,79 @@ namespace EpisodeManager_WinForms
 
         private void loadImages(string tempPath)
         {
-            try { ss1.Image = Image.FromFile(tempPath + @"\image1.png"); }
+            try 
+            {
+                using (Image sourceImg = Image.FromFile(tempPath + @"\image1.png"))
+                {
+                    Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                    using (var copy = Graphics.FromImage(clonedImg))
+                    {
+                        copy.DrawImage(sourceImg, 0, 0);
+                    }
+                    ss1.InitialImage = null;
+                    ss1.Image = clonedImg;
+                }
+                //ss1.Image = Image.FromFile(tempPath + @"\image1.png"); 
+            }
             catch { ss1.Image = null; runRedownload = true; }
-            try { ss2.Image = Image.FromFile(tempPath + @"\image2.png"); }
+            try 
+            {
+                using (Image sourceImg = Image.FromFile(tempPath + @"\image2.png"))
+                {
+                    Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                    using (var copy = Graphics.FromImage(clonedImg))
+                    {
+                        copy.DrawImage(sourceImg, 0, 0);
+                    }
+                    ss2.InitialImage = null;
+                    ss2.Image = clonedImg;
+                }
+            }
             catch { ss2.Image = null; runRedownload = true; }
-            try { ss3.Image = Image.FromFile(tempPath + @"\image3.png"); }
+            try 
+            {
+                using (Image sourceImg = Image.FromFile(tempPath + @"\image3.png"))
+                {
+                    Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                    using (var copy = Graphics.FromImage(clonedImg))
+                    {
+                        copy.DrawImage(sourceImg, 0, 0);
+                    }
+                    ss3.InitialImage = null;
+                    ss3.Image = clonedImg;
+                }
+            }
             catch { ss3.Image = null; runRedownload = true; }
-            try { ss4.Image = Image.FromFile(tempPath + @"\image4.png"); }
+            try 
+            {
+                using (Image sourceImg = Image.FromFile(tempPath + @"\image4.png"))
+                {
+                    Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                    using (var copy = Graphics.FromImage(clonedImg))
+                    {
+                        copy.DrawImage(sourceImg, 0, 0);
+                    }
+                    ss4.InitialImage = null;
+                    ss4.Image = clonedImg;
+                }
+            }
             catch { ss4.Image = null; runRedownload = true; }
-            try { iconPicture.Image = Image.FromFile(tempPath + @"\icon.png"); iconFrame.Visible = true; iconPicture.Visible = true; }
+            try 
+            {
+                using (Image sourceImg = Image.FromFile(tempPath + @"\icon.png"))
+                {
+                    Image clonedImg = new Bitmap(sourceImg.Width, sourceImg.Height, PixelFormat.Format32bppArgb);
+                    using (var copy = Graphics.FromImage(clonedImg))
+                    {
+                        copy.DrawImage(sourceImg, 0, 0);
+                    }
+                    iconPicture.InitialImage = null;
+                    iconPicture.Image = clonedImg;
+                    iconFrame.Visible = true;
+                    iconPicture.Visible = true;
+                }
+                //iconPicture.Image = Image.FromFile(tempPath + @"\icon.png"); iconFrame.Visible = true; iconPicture.Visible = true; 
+            }
             catch { iconPicture.Image = null; iconFrame.Visible = false; iconPicture.Visible = false; runRedownload = true; }
         }
 
@@ -497,7 +570,7 @@ namespace EpisodeManager_WinForms
 
         private void installEpisodeButton_Click(object sender, EventArgs e)
         {
-            LoadingIndexDialog li = new LoadingIndexDialog(parentForm);
+            LoadingIndexDialog li = new LoadingIndexDialog(mf);
             li.ShowDialog();
         }
     }

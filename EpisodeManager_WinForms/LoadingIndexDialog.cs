@@ -80,7 +80,10 @@ namespace EpisodeManager_WinForms
 
                             string extractionPath = Main_NEW.smbxWorldsDir + @"\"
                                 + folderName;
-
+                            if(Directory.Exists(extractionPath) != true)
+                            {
+                                Directory.CreateDirectory(extractionPath);
+                            }
                             var split = entry.FullName.Split(new char[] { '/' }, 2);
                             if (entry.FullName.Contains("/") == true)
                             {
