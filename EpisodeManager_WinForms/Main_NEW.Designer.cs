@@ -32,10 +32,8 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.episodesMoreButton = new System.Windows.Forms.Button();
-            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.availEpisodesOverflow = new System.Windows.Forms.Button();
-            this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl(this);
             this.episodeContext = new System.Windows.Forms.ContextMenu();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
@@ -44,18 +42,20 @@
             this.deleteSave2Menu = new System.Windows.Forms.MenuItem();
             this.deleteSave3Menu = new System.Windows.Forms.MenuItem();
             this.launchSMBXMenu = new System.Windows.Forms.MenuItem();
+            this.menuItem8 = new System.Windows.Forms.MenuItem();
+            this.launchIgEpisodes_menu = new System.Windows.Forms.MenuItem();
             this.updatedLabel = new MetroFramework.Controls.MetroLabel();
             this.availContext = new System.Windows.Forms.ContextMenu();
             this.menuItem4 = new System.Windows.Forms.MenuItem();
             this.menuItem5 = new System.Windows.Forms.MenuItem();
+            this.menuItem6 = new System.Windows.Forms.MenuItem();
+            this.launchIgAvail_menu = new System.Windows.Forms.MenuItem();
             this.aboutButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overlayPb = new System.Windows.Forms.PictureBox();
-            this.menuItem6 = new System.Windows.Forms.MenuItem();
-            this.launchIgAvail_menu = new System.Windows.Forms.MenuItem();
-            this.menuItem8 = new System.Windows.Forms.MenuItem();
-            this.launchIgEpisodes_menu = new System.Windows.Forms.MenuItem();
+            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
+            //this.availEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl(this);
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -73,7 +73,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Light;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(731, 506);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTabControl1.StyleManager = null;
@@ -86,8 +86,8 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
-            this.metroTabPage1.Controls.Add(this.episodesMoreButton);
             this.metroTabPage1.Controls.Add(this.localEpisodes);
+            this.metroTabPage1.Controls.Add(this.episodesMoreButton);
             this.metroTabPage1.CustomBackground = false;
             this.metroTabPage1.HorizontalScrollbar = false;
             this.metroTabPage1.HorizontalScrollbarBarColor = false;
@@ -122,17 +122,10 @@
             this.episodesMoreButton.UseVisualStyleBackColor = false;
             this.episodesMoreButton.Click += new System.EventHandler(this.episodesMoreButton_Click_1);
             // 
-            // localEpisodes
-            // 
-            this.localEpisodes.Location = new System.Drawing.Point(0, 0);
-            this.localEpisodes.Name = "localEpisodes";
-            this.localEpisodes.Size = new System.Drawing.Size(718, 466);
-            this.localEpisodes.TabIndex = 2;
-            // 
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.availEpisodesOverflow);
-            this.metroTabPage2.Controls.Add(this.AvailableEpisodes);
+            //this.metroTabPage1.Controls.Add(this.localEpisodes);
             this.metroTabPage2.CustomBackground = false;
             this.metroTabPage2.HorizontalScrollbar = false;
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
@@ -166,16 +159,6 @@
             this.availEpisodesOverflow.TabIndex = 6;
             this.availEpisodesOverflow.UseVisualStyleBackColor = false;
             this.availEpisodesOverflow.Click += new System.EventHandler(this.availEpisodesOverflow_Click);
-            // 
-            // AvailableEpisodes
-            // 
-            this.AvailableEpisodes.BackColor = System.Drawing.SystemColors.Control;
-            this.AvailableEpisodes.Location = new System.Drawing.Point(0, 0);
-            this.AvailableEpisodes.Name = "AvailableEpisodes";
-            //this.AvailableEpisodes.parentForm = null;
-            this.AvailableEpisodes.Size = new System.Drawing.Size(720, 472);
-            this.AvailableEpisodes.TabIndex = 2;
-            this.AvailableEpisodes.Load += new System.EventHandler(this.AvailableEpisodes_Load);
             // 
             // episodeContext
             // 
@@ -237,6 +220,18 @@
             this.launchSMBXMenu.Text = "Launch SMBX";
             this.launchSMBXMenu.Click += new System.EventHandler(this.launchSMBXMenu_Click);
             // 
+            // menuItem8
+            // 
+            this.menuItem8.Index = 4;
+            this.menuItem8.Text = "---";
+            // 
+            // launchIgEpisodes_menu
+            // 
+            this.launchIgEpisodes_menu.Enabled = false;
+            this.launchIgEpisodes_menu.Index = 5;
+            this.launchIgEpisodes_menu.Text = "Launch Index Generator";
+            this.launchIgEpisodes_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
+            // 
             // updatedLabel
             // 
             this.updatedLabel.AutoSize = true;
@@ -274,6 +269,18 @@
             this.menuItem5.Index = 1;
             this.menuItem5.Text = "Download Index + Image Files Only";
             this.menuItem5.Click += new System.EventHandler(this.menuItem5_Click);
+            // 
+            // menuItem6
+            // 
+            this.menuItem6.Index = 2;
+            this.menuItem6.Text = "---";
+            // 
+            // launchIgAvail_menu
+            // 
+            this.launchIgAvail_menu.Enabled = false;
+            this.launchIgAvail_menu.Index = 3;
+            this.launchIgAvail_menu.Text = "Launch Index Generator";
+            this.launchIgAvail_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
             // 
             // aboutButton
             // 
@@ -326,29 +333,19 @@
             this.overlayPb.TabStop = false;
             this.overlayPb.Visible = false;
             // 
-            // menuItem6
+            // localEpisodesl1
             // 
-            this.menuItem6.Index = 2;
-            this.menuItem6.Text = "---";
+            this.localEpisodes.Location = new System.Drawing.Point(1, 0);
+            this.localEpisodes.Name = "localEpisodesl";
+            this.localEpisodes.Size = new System.Drawing.Size(716, 466);
+            this.localEpisodes.TabIndex = 6;
             // 
-            // launchIgAvail_menu
+            // availEpisodes
             // 
-            this.launchIgAvail_menu.Enabled = false;
-            this.launchIgAvail_menu.Index = 3;
-            this.launchIgAvail_menu.Text = "Launch Index Generator";
-            this.launchIgAvail_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
-            // 
-            // menuItem8
-            // 
-            this.menuItem8.Index = 4;
-            this.menuItem8.Text = "---";
-            // 
-            // launchIgEpisodes_menu
-            // 
-            this.launchIgEpisodes_menu.Enabled = false;
-            this.launchIgEpisodes_menu.Index = 5;
-            this.launchIgEpisodes_menu.Text = "Launch Index Generator";
-            this.launchIgEpisodes_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
+            //this.availEpisodes.Location = new System.Drawing.Point(1, 0);
+            //this.availEpisodes.Name = "availEpisodes";
+            //this.availEpisodes.Size = new System.Drawing.Size(716, 466);
+            //this.availEpisodes.TabIndex = 6;
             // 
             // Main_NEW
             // 
@@ -392,12 +389,12 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button settingsButton;
-        public LocalEpisodesControl localEpisodes;
+        //public LocalEpisodesControl localEpisodes;
         private System.Windows.Forms.Button aboutButton;
         private System.Windows.Forms.Button episodesMoreButton;
         private System.Windows.Forms.ContextMenu episodeContext;
         private System.Windows.Forms.MenuItem menuItem1;
-        public AvailableEpisodesControl AvailableEpisodes;
+        //public AvailableEpisodesControl AvailableEpisodes;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.MenuItem menuItem3;
         private System.Windows.Forms.MenuItem deleteSave1Menu;
@@ -414,7 +411,8 @@
         private System.Windows.Forms.MenuItem launchIgEpisodes_menu;
         private System.Windows.Forms.MenuItem menuItem6;
         private System.Windows.Forms.MenuItem launchIgAvail_menu;
-        
+        public LocalEpisodesControl localEpisodes;
+        public AvailableEpisodesControl availEpisodes;
         
         
        

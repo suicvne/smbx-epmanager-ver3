@@ -28,6 +28,7 @@ namespace EpisodeManager_WinForms
         public static string smbxDir;
         public static string smbxExeLoc;
         public static string smbxWorldsDir;
+        public AvailableEpisodesControl AvailableEpisodes;
         static bool validData;
 
 
@@ -38,6 +39,13 @@ namespace EpisodeManager_WinForms
 
         private void Main_NEW_Load(object sender, EventArgs e)
         {
+            //Draw the availableEpisodes control
+            this.AvailableEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl(this);
+            this.metroTabPage2.Controls.Add(AvailableEpisodes);
+            this.AvailableEpisodes.Size = new System.Drawing.Size(716, 466);
+            this.AvailableEpisodes.Name = "AvailableEpisodes";
+            this.AvailableEpisodes.Location = new System.Drawing.Point(1, 0);
+            //
             this.Size = new System.Drawing.Size(771, 586);
             
             //this.AvailableEpisodes.parentForm = this;
