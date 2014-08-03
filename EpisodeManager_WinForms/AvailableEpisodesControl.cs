@@ -185,21 +185,28 @@ namespace EpisodeManager_WinForms
             {
                 Console.WriteLine(ex.Message);
             }
-            foreach (ListViewItem lvi in mf.localEpisodes.localEpisodesListview.Items)
+            
+            if(availEpisodesListview.SelectedItems.Count > 0)
+            {
+                if(Directory.Exists(Main_NEW.smbxWorldsDir + @"\" + availEpisodesListview.SelectedItems[0].Text))
+                {
+                    installEpisodeButton.Text = "INSTALLED";
+                    installEpisodeButton.Enabled = false;
+                }
+                else
+                {
+                    installEpisodeButton.Text = "INSTALL EPISODE";
+                    installEpisodeButton.Enabled = true;
+                }
+            }
+            /*foreach (ListViewItem lvi in mf.localEpisodes.localEpisodesListview.Items)
             {
                 if(installEpisodeButton.Text != "INSTALLED")
                 {
                     compareStrings(lvi);
                 }
-            }
-            if (installEpisodeButton.Text == "INSTALLED")
-            {
-                installEpisodeButton.Enabled = false;
-            }
-            else
-            {
-                installEpisodeButton.Enabled = true;
-            }
+            }*/
+            
             
         }
 

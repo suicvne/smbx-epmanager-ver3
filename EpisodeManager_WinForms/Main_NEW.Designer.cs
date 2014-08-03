@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_NEW));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.episodesMoreButton = new System.Windows.Forms.Button();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.availEpisodesOverflow = new System.Windows.Forms.Button();
@@ -54,8 +55,6 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overlayPb = new System.Windows.Forms.PictureBox();
-            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
-            //this.availEpisodes = new EpisodeManager_WinForms.AvailableEpisodesControl(this);
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -73,7 +72,7 @@
             this.metroTabControl1.FontWeight = MetroFramework.MetroTabControlWeight.Light;
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(731, 506);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTabControl1.StyleManager = null;
@@ -86,8 +85,8 @@
             // metroTabPage1
             // 
             this.metroTabPage1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
-            this.metroTabPage1.Controls.Add(this.localEpisodes);
             this.metroTabPage1.Controls.Add(this.episodesMoreButton);
+            this.metroTabPage1.Controls.Add(this.localEpisodes);
             this.metroTabPage1.CustomBackground = false;
             this.metroTabPage1.HorizontalScrollbar = false;
             this.metroTabPage1.HorizontalScrollbarBarColor = false;
@@ -105,6 +104,13 @@
             this.metroTabPage1.VerticalScrollbarBarColor = false;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
+            // 
+            // localEpisodes
+            // 
+            this.localEpisodes.Location = new System.Drawing.Point(1, 0);
+            this.localEpisodes.Name = "localEpisodes";
+            this.localEpisodes.Size = new System.Drawing.Size(716, 466);
+            this.localEpisodes.TabIndex = 6;
             // 
             // episodesMoreButton
             // 
@@ -125,7 +131,6 @@
             // metroTabPage2
             // 
             this.metroTabPage2.Controls.Add(this.availEpisodesOverflow);
-            //this.metroTabPage1.Controls.Add(this.localEpisodes);
             this.metroTabPage2.CustomBackground = false;
             this.metroTabPage2.HorizontalScrollbar = false;
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
@@ -332,20 +337,6 @@
             this.overlayPb.TabIndex = 6;
             this.overlayPb.TabStop = false;
             this.overlayPb.Visible = false;
-            // 
-            // localEpisodesl1
-            // 
-            this.localEpisodes.Location = new System.Drawing.Point(1, 0);
-            this.localEpisodes.Name = "localEpisodesl";
-            this.localEpisodes.Size = new System.Drawing.Size(716, 466);
-            this.localEpisodes.TabIndex = 6;
-            // 
-            // availEpisodes
-            // 
-            //this.availEpisodes.Location = new System.Drawing.Point(1, 0);
-            //this.availEpisodes.Name = "availEpisodes";
-            //this.availEpisodes.Size = new System.Drawing.Size(716, 466);
-            //this.availEpisodes.TabIndex = 6;
             // 
             // Main_NEW
             // 
