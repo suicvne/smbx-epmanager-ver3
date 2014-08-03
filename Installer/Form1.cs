@@ -39,9 +39,9 @@ namespace Installer
             string final = split[0].ToString() + "." + split[1].ToString();
             decimal finall = decimal.Parse(final);
             Console.WriteLine(string.Format("OS Version is {0}", finall.ToString()));
-            if(finall > new decimal(5.2) != true)
+            if(finall > new decimal(5.0) != true)
             {
-                MessageBox.Show("This software is not compatible with you current OS version.\nPlease upgrade to Windows Vista or above.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("This software is not compatible with you current OS version.\nPlease upgrade to Windows XP or above.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
             }
         }

@@ -73,6 +73,20 @@ namespace Installer
                 MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/IndexGenerator.exe", textBox2.Text + @"\IndexGenerator.exe", null, null, true, 10000, true);
             }
             textBox1.Text = textBox1.Text + "\nWriting shortcut to desktop..\n";
+            string ver = MyComputer.Info.OSVersion;
+            string[] split = ver.Split(new char[] { '.' });
+            string final = split[0].ToString() + "." + split[1].ToString();
+            decimal finall = decimal.Parse(final);
+            if(finall == new decimal(5.1) || finall == new decimal(5.2))
+            {
+                textBox1.Text = textBox1.Text + "\nInstalling XP specific fonts...\n";
+                MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/Open_Sans.ttf", textBox2.Text + @"\Open_Sans.ttf", null, null, true, 10000, true);
+                System.IO.File.Move(textBox2.Text + @"\Open_Sans.ttf", @"C:\WINDOWS\Fonts\Open_Sans.ttf");
+                MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/Open_Sans_Light.ttf", textBox2.Text + @"\Open_Sans_Light.ttf", null, null, true, 10000, true);
+                System.IO.File.Move(textBox2.Text + @"\Open_Sans.ttf", @"C:\WINDOWS\Fonts\Open_Sans_Light.ttf");
+                MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/Open_Sans_Bold.ttf", textBox2.Text + @"\Open_Sans_Bold.ttf", null, null, true, 10000, true);
+                System.IO.File.Move(textBox2.Text + @"\Open_Sans.ttf", @"C:\WINDOWS\Fonts\Open_Sans_Bold.ttf");
+            }
             CreateShortcut();
             MessageBox.Show("Installer completed successfully!");
             Environment.Exit(0);

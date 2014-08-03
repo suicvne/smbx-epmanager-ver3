@@ -14,6 +14,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Ionic.Zip;
 
 namespace EpisodeManager_WinForms
 {
@@ -62,7 +63,44 @@ namespace EpisodeManager_WinForms
 
         void extractFile(string file)
         {
-            this.Text = "Extracting..";
+            this.Text = "Extracting...";
+            statusLabel.Text = "Extracting...";
+            try
+            {
+                string folderName = isValidPathName(mf.AvailableEpisodes.availEpisodesListview.SelectedItems[0].Text);
+                string extractionPath = Main_NEW.smbxWorldsDir + @"\" + folderName;
+                if(!Directory.Exists(extractionPath))
+                {
+                    Directory.CreateDirectory(extractionPath);
+                }
+                using(ZipFile zipzip = ZipFile.Read(file))
+                {
+                    foreach(ZipEntry entry in zipzip)
+                    {
+                        entry.Extract(extractionPath, ExtractExistingFileAction.OverwriteSilently);
+                    }
+                }
+                MessageBox.Show("Episode installed sucessfully!");
+                mf.populateListView();
+                this.Close();
+            }
+            catch(Exception ex)
+            {
+                if (ex.Message == "Central Directory corrupt.")
+                {
+                    MessageBox.Show("Episode is being uploaded; try again later!", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("An error occurred while processing the zip file!\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            this.Close();
+        }
+
+        /*void extractFile(string file)
+        {
+            /*this.Text = "Extracting..";
             statusLabel.Text = "Extracting...";
             Stream zipFile = new FileStream(Environment.CurrentDirectory + @"\temp\Server\download.zip", FileMode.OpenOrCreate);
             try
@@ -127,6 +165,6 @@ namespace EpisodeManager_WinForms
                 }
             }
             this.Close();
-        }
+        }*/
     }
 }

@@ -46,7 +46,6 @@
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(95, 23);
             this.metroButton3.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroButton3.StyleManager = null;
             this.metroButton3.TabIndex = 19;
             this.metroButton3.Text = "Save Settings";
             this.metroButton3.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -65,7 +64,6 @@
             this.smbxversionlabel.Name = "smbxversionlabel";
             this.smbxversionlabel.Size = new System.Drawing.Size(95, 19);
             this.smbxversionlabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.smbxversionlabel.StyleManager = null;
             this.smbxversionlabel.TabIndex = 18;
             this.smbxversionlabel.Text = "SMBX Found: ";
             this.smbxversionlabel.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -83,7 +81,6 @@
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(119, 19);
             this.metroLabel3.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel3.StyleManager = null;
             this.metroLabel3.TabIndex = 17;
             this.metroLabel3.Text = "smbx.exe Location:";
             this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -101,7 +98,6 @@
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(106, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel2.StyleManager = null;
             this.metroLabel2.TabIndex = 16;
             this.metroLabel2.Text = "Worlds Location:";
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -119,7 +115,6 @@
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(80, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel1.StyleManager = null;
             this.metroLabel1.TabIndex = 15;
             this.metroLabel1.Text = "SMBX Path: ";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -132,7 +127,6 @@
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(31, 23);
             this.metroButton2.Style = MetroFramework.MetroColorStyle.Purple;
-            this.metroButton2.StyleManager = null;
             this.metroButton2.TabIndex = 14;
             this.metroButton2.Text = "...";
             this.metroButton2.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -150,7 +144,6 @@
             this.execLocTb.SelectedText = "";
             this.execLocTb.Size = new System.Drawing.Size(423, 23);
             this.execLocTb.Style = MetroFramework.MetroColorStyle.Purple;
-            this.execLocTb.StyleManager = null;
             this.execLocTb.TabIndex = 13;
             this.execLocTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.execLocTb.UseStyleColors = true;
@@ -167,7 +160,6 @@
             this.worldPathTb.SelectedText = "";
             this.worldPathTb.Size = new System.Drawing.Size(423, 23);
             this.worldPathTb.Style = MetroFramework.MetroColorStyle.Purple;
-            this.worldPathTb.StyleManager = null;
             this.worldPathTb.TabIndex = 12;
             this.worldPathTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.worldPathTb.UseStyleColors = true;
@@ -184,7 +176,6 @@
             this.smbxPathTb.SelectedText = "";
             this.smbxPathTb.Size = new System.Drawing.Size(423, 23);
             this.smbxPathTb.Style = MetroFramework.MetroColorStyle.Purple;
-            this.smbxPathTb.StyleManager = null;
             this.smbxPathTb.TabIndex = 11;
             this.smbxPathTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.smbxPathTb.UseStyleColors = true;

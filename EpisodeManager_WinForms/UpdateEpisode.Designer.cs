@@ -117,7 +117,6 @@
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(76, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel1.StyleManager = null;
             this.metroLabel1.TabIndex = 14;
             this.metroLabel1.Text = "Is this okay?";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -152,7 +151,6 @@
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(205, 44);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel2.StyleManager = null;
             this.metroLabel2.TabIndex = 7;
             this.metroLabel2.Text = "The following changes will be \r\ndownloaded:\r\n";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,7 +169,6 @@
             this.updatingToLabel.Name = "updatingToLabel";
             this.updatingToLabel.Size = new System.Drawing.Size(155, 19);
             this.updatingToLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.updatingToLabel.StyleManager = null;
             this.updatingToLabel.TabIndex = 6;
             this.updatingToLabel.Text = "Updating to Version 1000";
             this.updatingToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -228,14 +225,12 @@
             this.MinimizeBox = false;
             this.Name = "UpdateEpisode";
             this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Update Episode";
-            this.TextAlign = MetroFramework.Forms.TextAlign.Center;
             this.Load += new System.EventHandler(this.UpdateEpisode_Load);
             this.InitialCheckGroup.ResumeLayout(false);
             this.InitialCheckGroup.PerformLayout();

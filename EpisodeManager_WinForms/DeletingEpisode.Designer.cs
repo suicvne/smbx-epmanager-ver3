@@ -42,7 +42,6 @@
             this.metroProgressBar.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.metroProgressBar.Size = new System.Drawing.Size(432, 35);
             this.metroProgressBar.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroProgressBar.StyleManager = null;
             this.metroProgressBar.TabIndex = 0;
             this.metroProgressBar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroProgressBar.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -59,7 +58,6 @@
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(76, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel1.StyleManager = null;
             this.metroLabel1.TabIndex = 1;
             this.metroLabel1.Text = "Deleting \'\'...";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -77,7 +75,6 @@
             this.MinimizeBox = false;
             this.Name = "DeletingEpisode";
             this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

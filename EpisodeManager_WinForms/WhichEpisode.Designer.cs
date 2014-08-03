@@ -46,7 +46,6 @@
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(358, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroLabel1.StyleManager = null;
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Which episode would you like to download project files for?";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -78,7 +77,6 @@
             this.lockInButton.Name = "lockInButton";
             this.lockInButton.Size = new System.Drawing.Size(103, 43);
             this.lockInButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.lockInButton.StyleManager = null;
             this.lockInButton.TabIndex = 2;
             this.lockInButton.Text = "Lock In";
             this.lockInButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -99,7 +97,6 @@
             this.Name = "WhichEpisode";
             this.Padding = new System.Windows.Forms.Padding(23, 69, 23, 23);
             this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Green;

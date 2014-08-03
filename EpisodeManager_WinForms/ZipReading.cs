@@ -10,6 +10,7 @@ namespace EpisodeManager_WinForms
 {
     class ZipReading
     {
+        /*
         /// <summary>
         /// This is where we read the information of the zipfile that's being dropped into the program.
         /// </summary>
@@ -60,7 +61,7 @@ namespace EpisodeManager_WinForms
                     }
                 }
             }
-        }
+        }*/
 
 
     }

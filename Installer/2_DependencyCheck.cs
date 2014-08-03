@@ -65,50 +65,81 @@ namespace Installer
 
         void checkNetVersion()
         {
-            using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine,
-                    RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\"))
+            /*try
             {
-                int releaseKey = (int)ndpKey.GetValue("Release");
+                using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine,
+                        RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\"))
                 {
-                    if (releaseKey == 378389)
+                    int releaseKey = (int)ndpKey.GetValue("Release");
                     {
-                        Console.WriteLine("The .NET Framework version 4.5 is installed");
-                        label2.Text = ".NET Framework Version 4.5 Installed. Please Update";
-                        label2.ForeColor = Color.DarkRed;
-                        linkLabel1.Visible = true;
-                    }
-                    else if (releaseKey == 378758)
-                    {
-                        Console.WriteLine("The .NET Framework version 4.5.1  is installed");
-                        label2.Text = ".NET Framework 4.5.1 Installed";
-                        netInstalled.Checked = true;
-                        newestNet = true;
-                    }
-                    else if (releaseKey == 378675)
-                    {
-                        Console.WriteLine("The .NET Framework version 4.5.1  is installed");
-                        label2.Text = ".NET Framework 4.5.1 Installed";
-                        netInstalled.Checked = true;
-                        newestNet = true;
-                    }
-                    else if (releaseKey == 379893)
-                    {
-                        Console.WriteLine(".NET Framework version 4.5.2+ is installed");
-                        label2.Text = ".NET Framework 4.5.2 Installed";
-                        netInstalled.Checked = true;
-                        newestNet = true;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Unknown version");
-                        label2.Text = "Please install .NET Framwork 4.5.1 or higher.";
-                        label2.ForeColor = Color.DarkRed;
-                        linkLabel1.Visible = true;
+                        if (releaseKey == 378389)
+                        {
+                            Console.WriteLine("The .NET Framework version 4.5 is installed");
+                            label2.Text = ".NET Framework Version 4.5 Installed. Please Update";
+                            label2.ForeColor = Color.DarkRed;
+                            linkLabel1.Visible = true;
+                        }
+                        else if (releaseKey == 378758)
+                        {
+                            Console.WriteLine("The .NET Framework version 4.5.1  is installed");
+                            label2.Text = ".NET Framework 4.5.1 Installed";
+                            netInstalled.Checked = true;
+                            newestNet = true;
+                        }
+                        else if (releaseKey == 378675)
+                        {
+                            Console.WriteLine("The .NET Framework version 4.5.1  is installed");
+                            label2.Text = ".NET Framework 4.5.1 Installed";
+                            netInstalled.Checked = true;
+                            newestNet = true;
+                        }
+                        else if (releaseKey == 379893)
+                        {
+                            Console.WriteLine(".NET Framework version 4.5.2+ is installed");
+                            label2.Text = ".NET Framework 4.5.2 Installed";
+                            netInstalled.Checked = true;
+                            newestNet = true;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Unknown version");
+                            label2.Text = "Please install .NET Framwork 4.5.1 or higher.";
+                            label2.ForeColor = Color.DarkRed;
+                            linkLabel1.Visible = true;
+                        }
                     }
                 }
             }
+            catch(Exception ex)
+            {
 
-           
+            }*/
+            earlier();
+        }
+
+        void earlier()
+        {
+            using (RegistryKey ndpKey =
+            RegistryKey.OpenRemoteBaseKey(RegistryHive.LocalMachine, "").
+            OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\"))
+            {
+                // As an alternative, if you know the computers you will query are running .NET Framework 4.5  
+                // or later, you can use: 
+                // using (RegistryKey ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine,  
+                // RegistryView.Registry32).OpenSubKey(@"SOFTWARE\Microsoft\NET Framework Setup\NDP\"))
+                foreach (string versionKeyName in ndpKey.GetSubKeyNames())
+                {
+                    if (versionKeyName.StartsWith("v"))
+                    {
+                        if(versionKeyName == ("v4"))
+                        {
+                            Console.WriteLine("v4 installed!");
+                            netInstalled.Checked = true;
+                            newestNet = true;
+                        }
+                    }
+                }
+            }
         }
 
         public static bool CheckForInternetConnection()
@@ -149,7 +180,7 @@ namespace Installer
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("http://www.microsoft.com/en-us/download/details.aspx?id=40773");
+            System.Diagnostics.Process.Start("http://www.microsoft.com/en-us/download/details.aspx?id=17851");
         }
     }
 }

@@ -89,38 +89,25 @@
             // 
             // authorName
             // 
-            this.authorName.CustomBackground = false;
-            this.authorName.CustomForeColor = false;
-            this.authorName.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.authorName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.authorName.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.authorName.Location = new System.Drawing.Point(235, 50);
             this.authorName.Name = "authorName";
             this.authorName.Size = new System.Drawing.Size(466, 20);
             this.authorName.Style = MetroFramework.MetroColorStyle.Blue;
-            this.authorName.StyleManager = null;
             this.authorName.TabIndex = 20;
             this.authorName.Text = "by: ";
             this.authorName.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.authorName.UseStyleColors = false;
             // 
             // episodeNameLabel
             // 
-            this.episodeNameLabel.CustomBackground = false;
-            this.episodeNameLabel.CustomForeColor = false;
             this.episodeNameLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.episodeNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.episodeNameLabel.ForeColor = System.Drawing.Color.Fuchsia;
-            this.episodeNameLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.episodeNameLabel.Location = new System.Drawing.Point(235, 16);
             this.episodeNameLabel.Name = "episodeNameLabel";
             this.episodeNameLabel.Size = new System.Drawing.Size(469, 25);
             this.episodeNameLabel.Style = MetroFramework.MetroColorStyle.Purple;
-            this.episodeNameLabel.StyleManager = null;
             this.episodeNameLabel.TabIndex = 19;
             this.episodeNameLabel.Text = "episodeName";
             this.episodeNameLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.episodeNameLabel.UseStyleColors = false;
             // 
             // descLabel
             // 
@@ -209,28 +196,21 @@
             // 
             // loadingProg
             // 
-            this.loadingProg.FontSize = MetroFramework.MetroProgressBarSize.Medium;
-            this.loadingProg.FontWeight = MetroFramework.MetroProgressBarWeight.Light;
-            this.loadingProg.HideProgressText = true;
             this.loadingProg.Location = new System.Drawing.Point(238, 226);
             this.loadingProg.Name = "loadingProg";
             this.loadingProg.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.loadingProg.Size = new System.Drawing.Size(466, 32);
             this.loadingProg.Style = MetroFramework.MetroColorStyle.Purple;
-            this.loadingProg.StyleManager = null;
             this.loadingProg.TabIndex = 28;
-            this.loadingProg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.loadingProg.Theme = MetroFramework.MetroThemeStyle.Light;
             this.loadingProg.Visible = false;
             // 
             // installEpisodeButton
             // 
-            this.installEpisodeButton.Highlight = false;
             this.installEpisodeButton.Location = new System.Drawing.Point(413, 406);
             this.installEpisodeButton.Name = "installEpisodeButton";
             this.installEpisodeButton.Size = new System.Drawing.Size(120, 46);
             this.installEpisodeButton.Style = MetroFramework.MetroColorStyle.Purple;
-            this.installEpisodeButton.StyleManager = null;
             this.installEpisodeButton.TabIndex = 29;
             this.installEpisodeButton.Text = "INSTALL EPISODE";
             this.installEpisodeButton.Theme = MetroFramework.MetroThemeStyle.Light;

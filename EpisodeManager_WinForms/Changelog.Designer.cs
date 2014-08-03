@@ -48,7 +48,6 @@
             this.availableVersionLabel.Name = "availableVersionLabel";
             this.availableVersionLabel.Size = new System.Drawing.Size(81, 19);
             this.availableVersionLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.availableVersionLabel.StyleManager = null;
             this.availableVersionLabel.TabIndex = 1;
             this.availableVersionLabel.Text = "metroLabel1";
             this.availableVersionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -66,7 +65,6 @@
             this.currentVersionLabel.Name = "currentVersionLabel";
             this.currentVersionLabel.Size = new System.Drawing.Size(83, 19);
             this.currentVersionLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.currentVersionLabel.StyleManager = null;
             this.currentVersionLabel.TabIndex = 2;
             this.currentVersionLabel.Text = "metroLabel2";
             this.currentVersionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -84,7 +82,6 @@
             this.updateConfirmLabel.Name = "updateConfirmLabel";
             this.updateConfirmLabel.Size = new System.Drawing.Size(162, 19);
             this.updateConfirmLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.updateConfirmLabel.StyleManager = null;
             this.updateConfirmLabel.TabIndex = 3;
             this.updateConfirmLabel.Text = "Would you like to update?";
             this.updateConfirmLabel.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -98,7 +95,6 @@
             this.yesButton.Name = "yesButton";
             this.yesButton.Size = new System.Drawing.Size(75, 36);
             this.yesButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.yesButton.StyleManager = null;
             this.yesButton.TabIndex = 4;
             this.yesButton.Text = "YES";
             this.yesButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -112,7 +108,6 @@
             this.noButton.Name = "noButton";
             this.noButton.Size = new System.Drawing.Size(75, 36);
             this.noButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.noButton.StyleManager = null;
             this.noButton.TabIndex = 5;
             this.noButton.Text = "NO";
             this.noButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -143,12 +138,10 @@
             this.MinimizeBox = false;
             this.Name = "Changelog";
             this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Update Available!";
-            this.TextAlign = MetroFramework.Forms.TextAlign.Center;
             this.Load += new System.EventHandler(this.Changelog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

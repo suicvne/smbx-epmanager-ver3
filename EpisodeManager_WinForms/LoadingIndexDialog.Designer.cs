@@ -42,7 +42,6 @@
             this.metroProgressBar1.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.metroProgressBar1.Size = new System.Drawing.Size(512, 36);
             this.metroProgressBar1.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroProgressBar1.StyleManager = null;
             this.metroProgressBar1.TabIndex = 1;
             this.metroProgressBar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroProgressBar1.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -59,7 +58,6 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(86, 19);
             this.statusLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.statusLabel.StyleManager = null;
             this.statusLabel.TabIndex = 2;
             this.statusLabel.Text = "Downloading";
             this.statusLabel.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -77,7 +75,6 @@
             this.MinimizeBox = false;
             this.Name = "LoadingIndexDialog";
             this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.ShadowType.DropShadow;
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Style = MetroFramework.MetroColorStyle.Green;

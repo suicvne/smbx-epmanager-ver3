@@ -103,26 +103,21 @@
             // 
             // updateCheckSpinner
             // 
-            this.updateCheckSpinner.CustomBackground = false;
             this.updateCheckSpinner.Location = new System.Drawing.Point(273, 410);
             this.updateCheckSpinner.Maximum = 100;
             this.updateCheckSpinner.Name = "updateCheckSpinner";
             this.updateCheckSpinner.Size = new System.Drawing.Size(32, 32);
             this.updateCheckSpinner.Speed = 3F;
             this.updateCheckSpinner.Style = MetroFramework.MetroColorStyle.Purple;
-            this.updateCheckSpinner.StyleManager = null;
             this.updateCheckSpinner.TabIndex = 17;
             this.updateCheckSpinner.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // updateButton
             // 
             this.updateButton.Enabled = false;
-            this.updateButton.Highlight = false;
             this.updateButton.Location = new System.Drawing.Point(155, 400);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(111, 52);
-            this.updateButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.updateButton.StyleManager = null;
             this.updateButton.TabIndex = 16;
             this.updateButton.Text = "UPDATE";
             this.updateButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -131,20 +126,13 @@
             // versionLabel
             // 
             this.versionLabel.AutoSize = true;
-            this.versionLabel.CustomBackground = false;
-            this.versionLabel.CustomForeColor = false;
-            this.versionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.versionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.versionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.versionLabel.Location = new System.Drawing.Point(391, 282);
             this.versionLabel.Name = "versionLabel";
             this.versionLabel.Size = new System.Drawing.Size(15, 19);
             this.versionLabel.Style = MetroFramework.MetroColorStyle.Blue;
-            this.versionLabel.StyleManager = null;
             this.versionLabel.TabIndex = 15;
             this.versionLabel.Text = "v";
             this.versionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.versionLabel.UseStyleColors = false;
             this.versionLabel.Visible = false;
             // 
             // iconPicture
@@ -167,12 +155,10 @@
             // 
             // createIndexButton
             // 
-            this.createIndexButton.Highlight = false;
             this.createIndexButton.Location = new System.Drawing.Point(34, 99);
             this.createIndexButton.Name = "createIndexButton";
             this.createIndexButton.Size = new System.Drawing.Size(112, 43);
             this.createIndexButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.createIndexButton.StyleManager = null;
             this.createIndexButton.TabIndex = 9;
             this.createIndexButton.Text = "MAKE INDEX";
             this.createIndexButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -181,12 +167,10 @@
             // 
             // forumTopicButton
             // 
-            this.forumTopicButton.Highlight = false;
             this.forumTopicButton.Location = new System.Drawing.Point(37, 400);
             this.forumTopicButton.Name = "forumTopicButton";
             this.forumTopicButton.Size = new System.Drawing.Size(112, 52);
             this.forumTopicButton.Style = MetroFramework.MetroColorStyle.Purple;
-            this.forumTopicButton.StyleManager = null;
             this.forumTopicButton.TabIndex = 7;
             this.forumTopicButton.Text = "VISIT FORUM TOPIC";
             this.forumTopicButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -242,38 +226,25 @@
             // 
             // authorName
             // 
-            this.authorName.CustomBackground = false;
-            this.authorName.CustomForeColor = false;
-            this.authorName.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.authorName.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.authorName.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.authorName.Location = new System.Drawing.Point(34, 44);
             this.authorName.Name = "authorName";
             this.authorName.Size = new System.Drawing.Size(466, 20);
             this.authorName.Style = MetroFramework.MetroColorStyle.Blue;
-            this.authorName.StyleManager = null;
             this.authorName.TabIndex = 1;
             this.authorName.Text = "by: ";
             this.authorName.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.authorName.UseStyleColors = false;
             // 
             // episodeNameLabel
             // 
-            this.episodeNameLabel.CustomBackground = false;
-            this.episodeNameLabel.CustomForeColor = false;
             this.episodeNameLabel.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.episodeNameLabel.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.episodeNameLabel.ForeColor = System.Drawing.Color.Fuchsia;
-            this.episodeNameLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.episodeNameLabel.Location = new System.Drawing.Point(34, 10);
             this.episodeNameLabel.Name = "episodeNameLabel";
             this.episodeNameLabel.Size = new System.Drawing.Size(469, 25);
             this.episodeNameLabel.Style = MetroFramework.MetroColorStyle.Purple;
-            this.episodeNameLabel.StyleManager = null;
             this.episodeNameLabel.TabIndex = 0;
             this.episodeNameLabel.Text = "episodeName";
             this.episodeNameLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.episodeNameLabel.UseStyleColors = false;
             // 
             // descLabel
             // 
