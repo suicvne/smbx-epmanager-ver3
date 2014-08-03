@@ -30,7 +30,7 @@ namespace EpisodeManager_WinForms
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            Process.Start("http://supermariobrosx.org/forums/");
+            Process.Start("http://luigifan2010.prophpbb.com/");
         }
 
         private void metroTile2_Click(object sender, EventArgs e)

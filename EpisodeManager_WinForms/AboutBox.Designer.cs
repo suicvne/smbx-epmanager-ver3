@@ -64,7 +64,7 @@
             this.metroTile1.Style = MetroFramework.MetroColorStyle.Silver;
             this.metroTile1.StyleManager = null;
             this.metroTile1.TabIndex = 1;
-            this.metroTile1.Text = "SMBX Forums";
+            this.metroTile1.Text = "Official Forums";
             this.metroTile1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTile1.TileCount = 0;
             this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);

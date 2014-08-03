@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_NEW));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.episodesMoreButton = new System.Windows.Forms.Button();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
             this.availEpisodesOverflow = new System.Windows.Forms.Button();
@@ -55,6 +54,7 @@
             this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.overlayPb = new System.Windows.Forms.PictureBox();
+            this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabPage2.SuspendLayout();
@@ -104,13 +104,6 @@
             this.metroTabPage1.VerticalScrollbarBarColor = false;
             this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage1.VerticalScrollbarSize = 10;
-            // 
-            // localEpisodes
-            // 
-            this.localEpisodes.Location = new System.Drawing.Point(1, 0);
-            this.localEpisodes.Name = "localEpisodes";
-            this.localEpisodes.Size = new System.Drawing.Size(716, 466);
-            this.localEpisodes.TabIndex = 6;
             // 
             // episodesMoreButton
             // 
@@ -290,6 +283,7 @@
             // aboutButton
             // 
             this.aboutButton.AutoSize = true;
+            this.aboutButton.BackColor = System.Drawing.Color.Transparent;
             this.aboutButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.info_32;
             this.aboutButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.aboutButton.FlatAppearance.BorderSize = 0;
@@ -299,12 +293,13 @@
             this.aboutButton.Name = "aboutButton";
             this.aboutButton.Size = new System.Drawing.Size(41, 43);
             this.aboutButton.TabIndex = 4;
-            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.UseVisualStyleBackColor = false;
             this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
             // 
             // settingsButton
             // 
             this.settingsButton.AutoSize = true;
+            this.settingsButton.BackColor = System.Drawing.Color.Transparent;
             this.settingsButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.settings_filled_32;
             this.settingsButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.settingsButton.FlatAppearance.BorderSize = 0;
@@ -314,7 +309,7 @@
             this.settingsButton.Name = "settingsButton";
             this.settingsButton.Size = new System.Drawing.Size(41, 43);
             this.settingsButton.TabIndex = 3;
-            this.settingsButton.UseVisualStyleBackColor = true;
+            this.settingsButton.UseVisualStyleBackColor = false;
             this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // pictureBox1
@@ -337,6 +332,13 @@
             this.overlayPb.TabIndex = 6;
             this.overlayPb.TabStop = false;
             this.overlayPb.Visible = false;
+            // 
+            // localEpisodes
+            // 
+            this.localEpisodes.Location = new System.Drawing.Point(1, 0);
+            this.localEpisodes.Name = "localEpisodes";
+            this.localEpisodes.Size = new System.Drawing.Size(716, 466);
+            this.localEpisodes.TabIndex = 6;
             // 
             // Main_NEW
             // 

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("EpisodeManager_WinForms")]
 [assembly: AssemblyDescription("Episode Manager and downloader for SMBX")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Mike Santiago Inc")]
+[assembly: AssemblyCompany("Luigicorp")]
 [assembly: AssemblyProduct("SMBXEpisodeManager")]
-[assembly: AssemblyCopyright("Copyright © Mike Santiago 2014")]
+[assembly: AssemblyCopyright("Copyright © Luigicorp 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
