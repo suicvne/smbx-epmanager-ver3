@@ -47,8 +47,6 @@ namespace EpisodeManager_WinForms
             this.AvailableEpisodes.Location = new System.Drawing.Point(1, 0);
             //
             this.Size = new System.Drawing.Size(771, 586);
-            
-            //this.AvailableEpisodes.parentForm = this;
 
             metroTabControl1.SelectedTab = metroTabPage1;
             
@@ -124,17 +122,10 @@ namespace EpisodeManager_WinForms
                     currentVersionInt = verStringToInt(currentVersion);
                     if(newestVersionInt > currentVersionInt)
                     {
-                        /*
-                         * WebClient wc = new WebClient();
-            updateConfirmLabel.Text = "Downloading updater..";
-            wc.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/SMBXUpdater_Latest.exe", Environment.CurrentDirectory + @"\Updater.exe");
-            Process.Start(Environment.CurrentDirectory + @"\Updater.exe");
-            Environment.Exit(0);*/
                         DialogResult dr = new Changelog(currentVersion, newestVersion).ShowDialog();
                         switch(dr)
                         {
                             case DialogResult.Yes:
-                                //WebClient wcs = new WebClient();
                                 wc.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/SMBXUpdater_Latest.exe", Environment.CurrentDirectory + @"\Updater.exe");
                                 Process.Start(Environment.CurrentDirectory + @"\Updater.exe");
                                 Environment.Exit(0);
@@ -233,7 +224,6 @@ namespace EpisodeManager_WinForms
 
         private void menuItem1_Click(object sender, EventArgs e)
         {
-            //delete
             DialogResult dr = MessageBox.Show("Are you sure you'd like to delete '" + Main_NEW.selectedFolderName + "'?", "Question", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             switch (dr)
             {
@@ -249,7 +239,6 @@ namespace EpisodeManager_WinForms
         {
             LoadingIndex de = new LoadingIndex(Main_NEW.smbxWorldsDir + @"\" + Main_NEW.selectedFolderName, this);
             de.ShowDialog();
-            //MessageBox.Show("Episode deleted!");
         }
 
         private void episodesMoreButton_Click_1(object sender, EventArgs e)
@@ -270,7 +259,14 @@ namespace EpisodeManager_WinForms
             if(File.Exists(smbxExeLoc))
             {
                 launchSMBXMenu.Enabled = true;
-                launchSMBXMenu.Text = "Launch SMBX " + GetFileVersionInfo(smbxExeLoc);
+                if (GetFileVersionInfo(smbxExeLoc) == "1.03")
+                {
+                    launchSMBXMenu.Text = "Launch SMBX 1.3";
+                }
+                else
+                {
+                    launchSMBXMenu.Text = "Launch SMBX " + GetFileVersionInfo(smbxExeLoc);
+                }
             }
             if (File.Exists(Environment.CurrentDirectory + @"\IndexGenerator.exe"))
             {
@@ -365,11 +361,12 @@ namespace EpisodeManager_WinForms
 
         private void menuItem4_Click(object sender, EventArgs e)
         {
-            if (sender == AvailableEpisodes)
+            AvailableEpisodesControl av = this.AvailableEpisodes;
+            foreach(ListViewItem lvi in av.availEpisodesListview.Items)
             {
-                AvailableEpisodesControl av = this.AvailableEpisodes;
-                av.loadTimeEvents();
+                lvi.Remove();
             }
+            av.loadTimeEvents();
         }
 
         private void menuItem5_Click(object sender, EventArgs e)
@@ -387,13 +384,10 @@ namespace EpisodeManager_WinForms
                 //EpisodeManager_WinForms.Properties.Resources.DropZipOverlay
                 e.Effect = DragDropEffects.Link;
                 //771, 586
-                overlayPb.Visible = true;
-                overlayPb.Location = new System.Drawing.Point(0, 0);
-                overlayPb.Size = new System.Drawing.Size(771, 586);
+                
             }
             else
             {
-                overlayPb.Visible = false;
                 e.Effect = DragDropEffects.None;
             }
         }
@@ -430,7 +424,6 @@ namespace EpisodeManager_WinForms
 
         private void Main_NEW_DragDrop(object sender, DragEventArgs e)
         {
-            overlayPb.Visible = false;
             string filename;
             validData = GetFilename(out filename, e);
             if(validData)

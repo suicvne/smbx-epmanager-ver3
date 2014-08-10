@@ -61,7 +61,7 @@ namespace Installer
                 Console.WriteLine("No files needed to delete");
             }
             
-            textBox1.Text = "Downloading latest SMBX Episode Manager...\n";
+            textBox1.Text = "Downloading latest SMBX Episode Manager...\n" + Environment.NewLine;
             if(Directory.Exists(textBox2.Text) != true)
             {
                 Directory.CreateDirectory(textBox2.Text);
@@ -69,15 +69,12 @@ namespace Installer
             MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/SMBXEpisodeManager_Latest.exe", textBox2.Text + @"\SMBXEpisodeManager.exe", null, null, true, 1000, true);
             if(addIndexGenerator.Checked == true)
             {
-                textBox1.Text = textBox1.Text + "\nDownloading Index Generator...\n";
+                textBox1.Text = textBox1.Text + "\nDownloading Index Generator...\n" + Environment.NewLine; 
                 MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/IndexGenerator.exe", textBox2.Text + @"\IndexGenerator.exe", null, null, true, 10000, true);
             }
-            textBox1.Text = textBox1.Text + "\nWriting shortcut to desktop..\n";
-            string ver = MyComputer.Info.OSVersion;
-            string[] split = ver.Split(new char[] { '.' });
-            string final = split[0].ToString() + "." + split[1].ToString();
-            decimal finall = decimal.Parse(final);
-            if(finall == new decimal(5.1) || finall == new decimal(5.2))
+            textBox1.Text = textBox1.Text + "\nWriting shortcut to desktop..\n" + Environment.NewLine; 
+            
+            /*if(finall == new decimal(5.1) || finall == new decimal(5.2))
             {
                 textBox1.Text = textBox1.Text + "\nInstalling XP specific fonts...\n";
                 MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/Open_Sans.ttf", textBox2.Text + @"\Open_Sans.ttf", null, null, true, 10000, true);
@@ -86,7 +83,7 @@ namespace Installer
                 System.IO.File.Move(textBox2.Text + @"\Open_Sans.ttf", @"C:\WINDOWS\Fonts\Open_Sans_Light.ttf");
                 MyComputer.Network.DownloadFile("http://mrmiketheripper.x10.mx/epmanager3/Open_Sans_Bold.ttf", textBox2.Text + @"\Open_Sans_Bold.ttf", null, null, true, 10000, true);
                 System.IO.File.Move(textBox2.Text + @"\Open_Sans.ttf", @"C:\WINDOWS\Fonts\Open_Sans_Bold.ttf");
-            }
+            }*/
             CreateShortcut();
             MessageBox.Show("Installer completed successfully!");
             Environment.Exit(0);

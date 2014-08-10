@@ -30,7 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_NEW));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.episodesMoreButton = new System.Windows.Forms.Button();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
+            this.availEpisodesOverflow = new System.Windows.Forms.Button();
             this.episodeContext = new System.Windows.Forms.ContextMenu();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.menuItem3 = new System.Windows.Forms.MenuItem();
@@ -47,19 +50,14 @@
             this.menuItem5 = new System.Windows.Forms.MenuItem();
             this.menuItem6 = new System.Windows.Forms.MenuItem();
             this.launchIgAvail_menu = new System.Windows.Forms.MenuItem();
-            this.overlayPb = new System.Windows.Forms.PictureBox();
             this.aboutButton = new System.Windows.Forms.Button();
             this.settingsButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
-            this.episodesMoreButton = new System.Windows.Forms.Button();
-            this.availEpisodesOverflow = new System.Windows.Forms.Button();
             this.localEpisodes = new EpisodeManager_WinForms.LocalEpisodesControl();
             this.metroTabControl1.SuspendLayout();
-            this.metroTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.overlayPb)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.metroTabPage1.SuspendLayout();
+            this.metroTabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -70,12 +68,43 @@
             this.metroTabControl1.Location = new System.Drawing.Point(20, 60);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(731, 506);
+            this.metroTabControl1.Size = new System.Drawing.Size(731, 495);
             this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabControl1.UseStyleColors = true;
             this.metroTabControl1.SelectedIndexChanged += new System.EventHandler(this.metroTabControl1_SelectedIndexChanged);
+            // 
+            // metroTabPage1
+            // 
+            this.metroTabPage1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
+            this.metroTabPage1.Controls.Add(this.episodesMoreButton);
+            this.metroTabPage1.Controls.Add(this.localEpisodes);
+            this.metroTabPage1.HorizontalScrollbarBarColor = true;
+            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
+            this.metroTabPage1.Name = "metroTabPage1";
+            this.metroTabPage1.Size = new System.Drawing.Size(723, 456);
+            this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTabPage1.TabIndex = 0;
+            this.metroTabPage1.Text = "Local Episodes";
+            this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTabPage1.VerticalScrollbarBarColor = true;
+            // 
+            // episodesMoreButton
+            // 
+            this.episodesMoreButton.AutoSize = true;
+            this.episodesMoreButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.episodesMoreButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
+            this.episodesMoreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.episodesMoreButton.FlatAppearance.BorderSize = 0;
+            this.episodesMoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.episodesMoreButton.ForeColor = System.Drawing.Color.White;
+            this.episodesMoreButton.Location = new System.Drawing.Point(672, 3);
+            this.episodesMoreButton.Name = "episodesMoreButton";
+            this.episodesMoreButton.Size = new System.Drawing.Size(41, 37);
+            this.episodesMoreButton.TabIndex = 5;
+            this.episodesMoreButton.UseVisualStyleBackColor = false;
+            this.episodesMoreButton.Click += new System.EventHandler(this.episodesMoreButton_Click_1);
             // 
             // metroTabPage2
             // 
@@ -83,12 +112,28 @@
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(723, 467);
+            this.metroTabPage2.Size = new System.Drawing.Size(723, 341);
             this.metroTabPage2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Available Episodes";
             this.metroTabPage2.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabPage2.VerticalScrollbarBarColor = true;
+            // 
+            // availEpisodesOverflow
+            // 
+            this.availEpisodesOverflow.AutoSize = true;
+            this.availEpisodesOverflow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.availEpisodesOverflow.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
+            this.availEpisodesOverflow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.availEpisodesOverflow.FlatAppearance.BorderSize = 0;
+            this.availEpisodesOverflow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.availEpisodesOverflow.ForeColor = System.Drawing.Color.White;
+            this.availEpisodesOverflow.Location = new System.Drawing.Point(672, 3);
+            this.availEpisodesOverflow.Name = "availEpisodesOverflow";
+            this.availEpisodesOverflow.Size = new System.Drawing.Size(41, 37);
+            this.availEpisodesOverflow.TabIndex = 6;
+            this.availEpisodesOverflow.UseVisualStyleBackColor = false;
+            this.availEpisodesOverflow.Click += new System.EventHandler(this.availEpisodesOverflow_Click);
             // 
             // episodeContext
             // 
@@ -165,7 +210,7 @@
             // updatedLabel
             // 
             this.updatedLabel.AutoSize = true;
-            this.updatedLabel.Location = new System.Drawing.Point(313, 27);
+            this.updatedLabel.Location = new System.Drawing.Point(328, 27);
             this.updatedLabel.Name = "updatedLabel";
             this.updatedLabel.Size = new System.Drawing.Size(80, 19);
             this.updatedLabel.Style = MetroFramework.MetroColorStyle.Blue;
@@ -195,6 +240,7 @@
             // 
             // menuItem6
             // 
+            this.menuItem6.Enabled = false;
             this.menuItem6.Index = 2;
             this.menuItem6.Text = "---";
             // 
@@ -204,17 +250,6 @@
             this.launchIgAvail_menu.Index = 3;
             this.launchIgAvail_menu.Text = "Launch Index Generator";
             this.launchIgAvail_menu.Click += new System.EventHandler(this.launchIgEpisodes_menu_Click);
-            // 
-            // overlayPb
-            // 
-            this.overlayPb.BackColor = System.Drawing.Color.Transparent;
-            this.overlayPb.Image = global::EpisodeManager_WinForms.Properties.Resources.DropZipOverlay;
-            this.overlayPb.Location = new System.Drawing.Point(553, 39);
-            this.overlayPb.Name = "overlayPb";
-            this.overlayPb.Size = new System.Drawing.Size(100, 50);
-            this.overlayPb.TabIndex = 6;
-            this.overlayPb.TabStop = false;
-            this.overlayPb.Visible = false;
             // 
             // aboutButton
             // 
@@ -252,58 +287,11 @@
             // 
             this.pictureBox1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.Icon_Gray;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox1.Location = new System.Drawing.Point(274, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(285, 19);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 32);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            // 
-            // metroTabPage1
-            // 
-            this.metroTabPage1.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.episodeInfoControlsbgo;
-            this.metroTabPage1.Controls.Add(this.episodesMoreButton);
-            this.metroTabPage1.Controls.Add(this.localEpisodes);
-            this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 35);
-            this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(723, 467);
-            this.metroTabPage1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "Local Episodes";
-            this.metroTabPage1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
-            // 
-            // episodesMoreButton
-            // 
-            this.episodesMoreButton.AutoSize = true;
-            this.episodesMoreButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.episodesMoreButton.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
-            this.episodesMoreButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.episodesMoreButton.FlatAppearance.BorderSize = 0;
-            this.episodesMoreButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.episodesMoreButton.ForeColor = System.Drawing.Color.White;
-            this.episodesMoreButton.Location = new System.Drawing.Point(672, 3);
-            this.episodesMoreButton.Name = "episodesMoreButton";
-            this.episodesMoreButton.Size = new System.Drawing.Size(41, 37);
-            this.episodesMoreButton.TabIndex = 5;
-            this.episodesMoreButton.UseVisualStyleBackColor = false;
-            this.episodesMoreButton.Click += new System.EventHandler(this.episodesMoreButton_Click_1);
-            // 
-            // availEpisodesOverflow
-            // 
-            this.availEpisodesOverflow.AutoSize = true;
-            this.availEpisodesOverflow.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.availEpisodesOverflow.BackgroundImage = global::EpisodeManager_WinForms.Properties.Resources.more_32;
-            this.availEpisodesOverflow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.availEpisodesOverflow.FlatAppearance.BorderSize = 0;
-            this.availEpisodesOverflow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.availEpisodesOverflow.ForeColor = System.Drawing.Color.White;
-            this.availEpisodesOverflow.Location = new System.Drawing.Point(672, 3);
-            this.availEpisodesOverflow.Name = "availEpisodesOverflow";
-            this.availEpisodesOverflow.Size = new System.Drawing.Size(41, 37);
-            this.availEpisodesOverflow.TabIndex = 6;
-            this.availEpisodesOverflow.UseVisualStyleBackColor = false;
-            this.availEpisodesOverflow.Click += new System.EventHandler(this.availEpisodesOverflow_Click);
             // 
             // localEpisodes
             // 
@@ -316,8 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(771, 586);
-            this.Controls.Add(this.overlayPb);
+            this.ClientSize = new System.Drawing.Size(771, 575);
             this.Controls.Add(this.updatedLabel);
             this.Controls.Add(this.aboutButton);
             this.Controls.Add(this.settingsButton);
@@ -335,12 +322,11 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.Main_NEW_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.Main_NEW_DragEnter);
             this.metroTabControl1.ResumeLayout(false);
-            this.metroTabPage2.ResumeLayout(false);
-            this.metroTabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.overlayPb)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.metroTabPage1.ResumeLayout(false);
             this.metroTabPage1.PerformLayout();
+            this.metroTabPage2.ResumeLayout(false);
+            this.metroTabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -370,7 +356,6 @@
         private System.Windows.Forms.ContextMenu availContext;
         private System.Windows.Forms.MenuItem menuItem4;
         private System.Windows.Forms.MenuItem menuItem5;
-        private System.Windows.Forms.PictureBox overlayPb;
         private System.Windows.Forms.MenuItem menuItem8;
         private System.Windows.Forms.MenuItem launchIgEpisodes_menu;
         private System.Windows.Forms.MenuItem menuItem6;

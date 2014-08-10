@@ -72,7 +72,19 @@ namespace EpisodeManager_WinForms
 
             if (File.Exists(Main_NEW.smbxExeLoc) == true)
             {
-                smbxversionlabel.Text = "SMBX Found: " + GetFileVersionInfo(Main_NEW.smbxExeLoc).ToString();
+                string ver = GetFileVersionInfo(Main_NEW.smbxExeLoc).ToString();
+                if(!String.IsNullOrEmpty(ver))
+                { 
+                    smbxversionlabel.Text = "SMBX Found: " + GetFileVersionInfo(Main_NEW.smbxExeLoc).ToString();
+                }
+                else if(ver == "1.03")
+                {
+                    smbxversionlabel.Text = "SMBX Found: 1.3";
+                }
+                else
+                {
+                    smbxversionlabel.Text = "SMBX Found! Version Unknown." + GetFileVersionInfo(Main_NEW.smbxExeLoc).ToString();
+                }
                 smbxversionlabel.ForeColor = Color.DarkGreen;
             }
             else
@@ -206,7 +218,19 @@ namespace EpisodeManager_WinForms
             //check if it exists and change the version if needed.
             if (File.Exists(execLocTb.Text) == true)
             {
-                smbxversionlabel.Text = "SMBX Found: " + GetFileVersionInfo(execLocTb.Text).ToString();
+                String ver = GetFileVersionInfo(execLocTb.Text).ToString();
+                if(!String.IsNullOrEmpty(ver))
+                {
+                    smbxversionlabel.Text = "SMBX Found: " + ver;
+                }
+                else if (ver == "1.03")
+                {
+                    smbxversionlabel.Text = "SMBX Found: 1.3";
+                }
+                else
+                {
+                    smbxversionlabel.Text = "SMBX Found! Version Unknown." + GetFileVersionInfo(execLocTb.Text).ToString();
+                }
                 smbxversionlabel.ForeColor = Color.DarkGreen;
             }
             else
@@ -340,6 +364,11 @@ namespace EpisodeManager_WinForms
                 MessageBox.Show("Cache doesn't exist!");
             }
             
+        }
+
+        private void execLocTb_Click(object sender, EventArgs e)
+        {
+
         }
     
     }

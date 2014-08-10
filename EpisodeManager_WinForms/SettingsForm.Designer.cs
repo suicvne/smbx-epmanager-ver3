@@ -78,7 +78,7 @@
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(688, 270);
-            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroTabControl1.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.Theme = MetroFramework.MetroThemeStyle.Light;
             this.metroTabControl1.UseStyleColors = true;
@@ -117,7 +117,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(87, 66);
+            this.metroLabel1.Location = new System.Drawing.Point(79, 66);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(80, 19);
             this.metroLabel1.Style = MetroFramework.MetroColorStyle.Blue;
@@ -130,7 +130,7 @@
             this.smbxPathTb.Location = new System.Drawing.Point(167, 62);
             this.smbxPathTb.Name = "smbxPathTb";
             this.smbxPathTb.Size = new System.Drawing.Size(423, 23);
-            this.smbxPathTb.Style = MetroFramework.MetroColorStyle.Green;
+            this.smbxPathTb.Style = MetroFramework.MetroColorStyle.Purple;
             this.smbxPathTb.TabIndex = 20;
             this.smbxPathTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.smbxPathTb.UseStyleColors = true;
@@ -139,14 +139,13 @@
             // 
             this.smbxversionlabel.AutoSize = true;
             this.smbxversionlabel.CustomForeColor = true;
-            this.smbxversionlabel.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.smbxversionlabel.ForeColor = System.Drawing.Color.DarkGreen;
-            this.smbxversionlabel.Location = new System.Drawing.Point(167, 146);
+            this.smbxversionlabel.Location = new System.Drawing.Point(167, 149);
             this.smbxversionlabel.Name = "smbxversionlabel";
-            this.smbxversionlabel.Size = new System.Drawing.Size(101, 19);
+            this.smbxversionlabel.Size = new System.Drawing.Size(14, 19);
             this.smbxversionlabel.Style = MetroFramework.MetroColorStyle.Blue;
             this.smbxversionlabel.TabIndex = 27;
-            this.smbxversionlabel.Text = "SMBX Found: ";
+            this.smbxversionlabel.Text = "s";
             this.smbxversionlabel.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // worldPathTb
@@ -154,7 +153,7 @@
             this.worldPathTb.Location = new System.Drawing.Point(167, 91);
             this.worldPathTb.Name = "worldPathTb";
             this.worldPathTb.Size = new System.Drawing.Size(423, 23);
-            this.worldPathTb.Style = MetroFramework.MetroColorStyle.Green;
+            this.worldPathTb.Style = MetroFramework.MetroColorStyle.Purple;
             this.worldPathTb.TabIndex = 21;
             this.worldPathTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.worldPathTb.UseStyleColors = true;
@@ -162,7 +161,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(45, 124);
+            this.metroLabel3.Location = new System.Drawing.Point(37, 124);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(119, 19);
             this.metroLabel3.Style = MetroFramework.MetroColorStyle.Blue;
@@ -175,16 +174,17 @@
             this.execLocTb.Location = new System.Drawing.Point(167, 120);
             this.execLocTb.Name = "execLocTb";
             this.execLocTb.Size = new System.Drawing.Size(423, 23);
-            this.execLocTb.Style = MetroFramework.MetroColorStyle.Green;
+            this.execLocTb.Style = MetroFramework.MetroColorStyle.Purple;
             this.execLocTb.TabIndex = 22;
             this.execLocTb.Theme = MetroFramework.MetroThemeStyle.Light;
             this.execLocTb.UseStyleColors = true;
             this.execLocTb.TextChanged += new System.EventHandler(this.execLocTb_TextChanged);
+            this.execLocTb.Click += new System.EventHandler(this.execLocTb_Click);
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(58, 95);
+            this.metroLabel2.Location = new System.Drawing.Point(50, 95);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(106, 19);
             this.metroLabel2.Style = MetroFramework.MetroColorStyle.Blue;
@@ -198,7 +198,7 @@
             this.metroButton2.Location = new System.Drawing.Point(596, 62);
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(31, 23);
-            this.metroButton2.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroButton2.Style = MetroFramework.MetroColorStyle.Purple;
             this.metroButton2.TabIndex = 23;
             this.metroButton2.Text = "...";
             this.metroButton2.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -376,14 +376,15 @@
             this.ClientSize = new System.Drawing.Size(728, 350);
             this.Controls.Add(this.metroButton3);
             this.Controls.Add(this.metroTabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SettingsForm";
             this.Resizable = false;
-            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.DropShadow;
+            this.ShadowType = MetroFramework.Forms.MetroForm.MetroFormShadowType.SystemShadow;
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Style = MetroFramework.MetroColorStyle.Green;
+            this.Style = MetroFramework.MetroColorStyle.Purple;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.metroTabControl1.ResumeLayout(false);
