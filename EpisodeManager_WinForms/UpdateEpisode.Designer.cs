@@ -108,11 +108,6 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.CustomBackground = false;
-            this.metroLabel1.CustomForeColor = false;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.metroLabel1.Location = new System.Drawing.Point(61, 19);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(76, 19);
@@ -120,7 +115,6 @@
             this.metroLabel1.TabIndex = 14;
             this.metroLabel1.Text = "Is this okay?";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroLabel1.UseStyleColors = false;
             // 
             // iconPicture
             // 
@@ -142,11 +136,6 @@
             // 
             // metroLabel2
             // 
-            this.metroLabel2.CustomBackground = false;
-            this.metroLabel2.CustomForeColor = false;
-            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.metroLabel2.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.metroLabel2.Location = new System.Drawing.Point(6, 107);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(205, 44);
@@ -155,16 +144,10 @@
             this.metroLabel2.Text = "The following changes will be \r\ndownloaded:\r\n";
             this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroLabel2.UseStyleColors = false;
             // 
             // updatingToLabel
             // 
             this.updatingToLabel.AutoSize = true;
-            this.updatingToLabel.CustomBackground = false;
-            this.updatingToLabel.CustomForeColor = false;
-            this.updatingToLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.updatingToLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.updatingToLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.updatingToLabel.Location = new System.Drawing.Point(193, 19);
             this.updatingToLabel.Name = "updatingToLabel";
             this.updatingToLabel.Size = new System.Drawing.Size(155, 19);
@@ -173,7 +156,6 @@
             this.updatingToLabel.Text = "Updating to Version 1000";
             this.updatingToLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.updatingToLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.updatingToLabel.UseStyleColors = false;
             // 
             // changesListView
             // 
@@ -216,11 +198,9 @@
             // 
             // UpdateEpisode
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(615, 641);
             this.Controls.Add(this.InitialCheckGroup);
-            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "UpdateEpisode";

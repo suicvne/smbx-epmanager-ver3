@@ -37,11 +37,6 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.CustomBackground = false;
-            this.metroLabel1.CustomForeColor = false;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.metroLabel1.Location = new System.Drawing.Point(97, 69);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(358, 19);
@@ -49,7 +44,6 @@
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Which episode would you like to download project files for?";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroLabel1.UseStyleColors = false;
             // 
             // listView1
             // 
@@ -72,7 +66,6 @@
             // 
             // lockInButton
             // 
-            this.lockInButton.Highlight = false;
             this.lockInButton.Location = new System.Drawing.Point(230, 480);
             this.lockInButton.Name = "lockInButton";
             this.lockInButton.Size = new System.Drawing.Size(103, 43);
@@ -84,14 +77,12 @@
             // 
             // WhichEpisode
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(563, 539);
             this.Controls.Add(this.lockInButton);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.metroLabel1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "WhichEpisode";

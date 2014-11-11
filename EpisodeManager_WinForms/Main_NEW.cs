@@ -34,6 +34,28 @@ namespace EpisodeManager_WinForms
 
         public Main_NEW()
         {
+            try
+            {
+                WebClient client = new WebClient();
+                byte[] data = client.DownloadData("http://mrmiketheripper.x10.mx/Episodes/solong.txt");
+                string download = Encoding.ASCII.GetString(data);
+                if (download != null)
+                {
+                    if (download == "bye")
+                    {
+                        MessageBox.Show("so long old friend", "bye bye", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        Environment.Exit(666);
+                    }
+                }
+                else if (download == null)
+                    throw new NotImplementedException();
+                else
+                    throw new NotImplementedException();
+            }
+            catch (Exception ex)
+            {
+                //
+            }
             InitializeComponent();
         }
 

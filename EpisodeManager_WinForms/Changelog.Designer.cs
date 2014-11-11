@@ -39,11 +39,6 @@
             // availableVersionLabel
             // 
             this.availableVersionLabel.AutoSize = true;
-            this.availableVersionLabel.CustomBackground = false;
-            this.availableVersionLabel.CustomForeColor = false;
-            this.availableVersionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.availableVersionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.availableVersionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.availableVersionLabel.Location = new System.Drawing.Point(24, 94);
             this.availableVersionLabel.Name = "availableVersionLabel";
             this.availableVersionLabel.Size = new System.Drawing.Size(81, 19);
@@ -51,16 +46,10 @@
             this.availableVersionLabel.TabIndex = 1;
             this.availableVersionLabel.Text = "metroLabel1";
             this.availableVersionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.availableVersionLabel.UseStyleColors = false;
             // 
             // currentVersionLabel
             // 
             this.currentVersionLabel.AutoSize = true;
-            this.currentVersionLabel.CustomBackground = false;
-            this.currentVersionLabel.CustomForeColor = false;
-            this.currentVersionLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.currentVersionLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.currentVersionLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.currentVersionLabel.Location = new System.Drawing.Point(24, 72);
             this.currentVersionLabel.Name = "currentVersionLabel";
             this.currentVersionLabel.Size = new System.Drawing.Size(83, 19);
@@ -68,16 +57,10 @@
             this.currentVersionLabel.TabIndex = 2;
             this.currentVersionLabel.Text = "metroLabel2";
             this.currentVersionLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.currentVersionLabel.UseStyleColors = false;
             // 
             // updateConfirmLabel
             // 
             this.updateConfirmLabel.AutoSize = true;
-            this.updateConfirmLabel.CustomBackground = false;
-            this.updateConfirmLabel.CustomForeColor = false;
-            this.updateConfirmLabel.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.updateConfirmLabel.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.updateConfirmLabel.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.updateConfirmLabel.Location = new System.Drawing.Point(132, 428);
             this.updateConfirmLabel.Name = "updateConfirmLabel";
             this.updateConfirmLabel.Size = new System.Drawing.Size(162, 19);
@@ -85,12 +68,10 @@
             this.updateConfirmLabel.TabIndex = 3;
             this.updateConfirmLabel.Text = "Would you like to update?";
             this.updateConfirmLabel.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.updateConfirmLabel.UseStyleColors = false;
             // 
             // yesButton
             // 
             this.yesButton.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.yesButton.Highlight = false;
             this.yesButton.Location = new System.Drawing.Point(132, 450);
             this.yesButton.Name = "yesButton";
             this.yesButton.Size = new System.Drawing.Size(75, 36);
@@ -103,7 +84,6 @@
             // noButton
             // 
             this.noButton.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.noButton.Highlight = false;
             this.noButton.Location = new System.Drawing.Point(219, 450);
             this.noButton.Name = "noButton";
             this.noButton.Size = new System.Drawing.Size(75, 36);
@@ -124,8 +104,7 @@
             // 
             // Changelog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(459, 509);
             this.Controls.Add(this.changelogTextBox);
             this.Controls.Add(this.noButton);
@@ -133,7 +112,6 @@
             this.Controls.Add(this.updateConfirmLabel);
             this.Controls.Add(this.currentVersionLabel);
             this.Controls.Add(this.availableVersionLabel);
-            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Changelog";

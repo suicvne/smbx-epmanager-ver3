@@ -112,7 +112,7 @@
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.Location = new System.Drawing.Point(4, 35);
             this.metroTabPage2.Name = "metroTabPage2";
-            this.metroTabPage2.Size = new System.Drawing.Size(723, 341);
+            this.metroTabPage2.Size = new System.Drawing.Size(723, 456);
             this.metroTabPage2.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroTabPage2.TabIndex = 1;
             this.metroTabPage2.Text = "Available Episodes";
@@ -296,14 +296,14 @@
             // localEpisodes
             // 
             this.localEpisodes.Location = new System.Drawing.Point(1, 0);
+            this.localEpisodes.Margin = new System.Windows.Forms.Padding(4);
             this.localEpisodes.Name = "localEpisodes";
             this.localEpisodes.Size = new System.Drawing.Size(716, 466);
             this.localEpisodes.TabIndex = 6;
             // 
             // Main_NEW
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(771, 575);
             this.Controls.Add(this.updatedLabel);
             this.Controls.Add(this.aboutButton);

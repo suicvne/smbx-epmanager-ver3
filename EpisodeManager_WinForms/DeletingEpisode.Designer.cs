@@ -34,26 +34,17 @@
             // 
             // metroProgressBar
             // 
-            this.metroProgressBar.FontSize = MetroFramework.MetroProgressBarSize.Medium;
-            this.metroProgressBar.FontWeight = MetroFramework.MetroProgressBarWeight.Light;
-            this.metroProgressBar.HideProgressText = true;
             this.metroProgressBar.Location = new System.Drawing.Point(23, 106);
             this.metroProgressBar.Name = "metroProgressBar";
             this.metroProgressBar.ProgressBarStyle = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.metroProgressBar.Size = new System.Drawing.Size(432, 35);
             this.metroProgressBar.Style = MetroFramework.MetroColorStyle.Green;
             this.metroProgressBar.TabIndex = 0;
-            this.metroProgressBar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.metroProgressBar.Theme = MetroFramework.MetroThemeStyle.Light;
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.CustomBackground = false;
-            this.metroLabel1.CustomForeColor = false;
-            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Medium;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Light;
-            this.metroLabel1.LabelMode = MetroFramework.Controls.MetroLabelMode.Default;
             this.metroLabel1.Location = new System.Drawing.Point(23, 84);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(76, 19);
@@ -61,19 +52,16 @@
             this.metroLabel1.TabIndex = 1;
             this.metroLabel1.Text = "Deleting \'\'...";
             this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroLabel1.UseStyleColors = false;
             // 
-            // DeletingEpisode
+            // LoadingIndex
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(479, 159);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroProgressBar);
-            this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "DeletingEpisode";
+            this.Name = "LoadingIndex";
             this.Resizable = false;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
